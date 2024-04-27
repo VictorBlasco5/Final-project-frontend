@@ -1,11 +1,13 @@
 import "./Header.css"
+import { Navigator } from "../Navigator/Navigator"
 
 
 export const Header = () => {
 
     return (
         <div className="headerDesign">
-            HEADER
+            <Navigator title={"Home"} destination={"/"} />
+            <Navigator title={"Register"} destination={"/register"} />
         </div>
     )
 }
