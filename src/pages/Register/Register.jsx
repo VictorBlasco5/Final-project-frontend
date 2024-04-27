@@ -1,3 +1,4 @@
+import "./Register.css"
 
 export const Register = () => {
 
