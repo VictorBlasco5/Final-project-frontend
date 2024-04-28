@@ -8,5 +8,25 @@
     flex-direction: row;
     justify-content: flex-end;
     align-items: center;
+}
 
+.logOutDesign {
+    color: gray;
+    font-weight: bold;
+
+    margin: 1em;
+
+    transition: 0.3s;
+}
+
+.logOutDesign:hover {
+
+    transition: 0.3s;
+    color: black;
+    cursor: pointer;
+}
+
+.positionNavBar {
+    display: flex;
+    flex-direction: row;
 }
