@@ -1,8 +1,8 @@
 import "./CInput.css"
 
-export const CInput = ({ placeholder, type, name, nickname, value, disabled, changeEmit, onBlurFunction}) => {    return (
+export const CInput = ({ className, placeholder, type, name, nickname, value, disabled, changeEmit, onBlurFunction}) => {    return (
         <input 
-        className="cInputDesign"
+        className={className}
         placeholder={placeholder}
         type={type}
         name={name}

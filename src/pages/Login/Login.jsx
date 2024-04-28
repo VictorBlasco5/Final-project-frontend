@@ -51,12 +51,14 @@ export const Login = () => {
         <>
             <div className="loginDesign">
                 <CInput
+                    className="cInputDesign"
                     type="email"
                     name="email"
                     value={user.email || ""}
                     changeEmit={imputHandler}
                 />
                 <CInput
+                    className="cInputDesign"
                     type="password"
                     name="password"
                     value={user.password || ""}

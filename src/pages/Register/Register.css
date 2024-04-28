@@ -9,3 +9,14 @@
     align-items: center;
     justify-content: center;
 }
+
+.error {
+    height: 1em;
+    color: red;
+}
+
+.successfully {
+    height: 1em;
+    color: black;
+    font-weight: bold;
+}
