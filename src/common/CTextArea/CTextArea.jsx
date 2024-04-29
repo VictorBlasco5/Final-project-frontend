@@ -1,7 +1,7 @@
-import "./CInput.css"
+import "./CTextArea.css"
 
-export const CInput = ({ className, placeholder, type, name, nickname, value, disabled, changeEmit, onBlurFunction}) => {    return (
-        <input 
+export const CTextArea = ({ className, placeholder, type, name, nickname, value, disabled, changeEmit, onBlurFunction}) => {    return (
+        <textarea
         className={className}
         placeholder={placeholder}
         type={type}

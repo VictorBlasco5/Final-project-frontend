@@ -1,0 +1,21 @@
+.presentation {
+    height: 5em;
+    width: 20em;
+    background-color: rgb(255, 255, 255);
+    border-radius: 0.5em;
+    margin-left: 1em;
+    resize: none;
+    font-family: 'Roboto', sans-serif;
+    color: black;
+}
+
+.urlImage {
+    height: 6em;
+    width: 30em;
+    border-radius: 0.5em;
+    margin-left: 1em;
+    margin-bottom: 1em;
+    color: black;
+    background-color: rgb(255, 255, 255);
+    font-family: 'Roboto', sans-serif;
+}
