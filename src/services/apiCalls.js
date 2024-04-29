@@ -101,3 +101,29 @@ export const UpdateProfile = async (token, data) => {
         return error;
     }
 }
+
+export const GetMatches = async (token) => {
+
+    const options = {
+        method: "GET",
+        headers: {
+            "Content-Type": "application/json",
+            "Authorization": `Bearer ${token}`
+        },
+    };
+
+    try {
+        const response = await fetch(`${root}matches`, options);
+
+        const data = await response.json();
+        console.log(data);
+
+        if (!data.success) {
+            throw new Error(data.message);
+        }
+
+        return data.data;
+    } catch (error) {
+        return error;
+    }
+}

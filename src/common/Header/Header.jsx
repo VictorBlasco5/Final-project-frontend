@@ -21,7 +21,7 @@ export const Header = () => {
 
     return (
         <div className="headerDesign">
-            <Navigator title={"Home"} path={"/"} />
+            <Navigator title={"Matches"} path={"/"} />
             {
                 reduxUser?.credentials?.token
 
