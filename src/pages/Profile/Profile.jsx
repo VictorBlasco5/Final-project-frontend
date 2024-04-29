@@ -5,6 +5,7 @@ import { useSelector } from "react-redux"
 import { useState, useEffect } from "react"
 import { CInput } from "../../common/CInput/CInput";
 import { GetProfile } from "../../services/apiCalls"
+import { CTextArea } from "../../common/CTextArea/CTextArea";
 
 export const Profile = () => {
 
@@ -85,7 +86,15 @@ export const Profile = () => {
                     disabled={"disabled"}
                     changeEmit={(e) => inputHandler(e)}
                 />
-                <div>Presentacion: {user.presentation || ""}</div>
+                <CTextArea
+                    className={`presentation`}
+                    type={"text"}
+                    placeholder={""}
+                    name={"presentation"}
+                    value={user.presentation || ""}
+                    disabled={"disabled"}
+                    changeEmit={(e) => inputHandler(e)}>
+                </CTextArea>
                 <button onClick={() => navigate("/profile-edit")}>Editar perfil</button>
             </div>
         </>
