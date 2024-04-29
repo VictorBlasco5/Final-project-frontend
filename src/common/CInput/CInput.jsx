@@ -9,7 +9,7 @@ export const CInput = ({ className, placeholder, type, name, nickname, value, di
         nickname={nickname}
         value={value}
         disabled={disabled}
-        onChange={(e)=>changeEmit(e)}
+        onChange={changeEmit}
         onBlur={onBlurFunction}
         />
     )

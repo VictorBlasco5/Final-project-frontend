@@ -1,0 +1,11 @@
+.profileEdit {
+    height: 88vh;
+    width: 100vw;
+
+    background-color: rgb(158, 93, 167);
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
