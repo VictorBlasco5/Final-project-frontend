@@ -6,6 +6,7 @@ import { useState, useEffect } from "react"
 import { CInput } from "../../common/CInput/CInput";
 import { GetProfile, UpdateProfile } from "../../services/apiCalls"
 import { CButton } from "../../common/CButton/CButton"
+import { CTextArea } from "../../common/CTextArea/CTextArea"
 
 
 
@@ -74,7 +75,7 @@ export const ProfileEdit = () => {
     const updateData = async () => {
         try {
             const fetched = await UpdateProfile(reduxUser.credentials.token, user)
-            console.log(fetched,"holi");
+            console.log(fetched, "holi");
 
             setChange("disabled")
 
@@ -87,59 +88,82 @@ export const ProfileEdit = () => {
     return (
         <>
             <div className="profileEdit">
-                <img className="image" src={user.image} alt="image" />
-                <CInput
-                    className={`cInputDesign`}
-                    type={"text"}
-                    placeholder={""}
-                    name={"image"}
-                    value={user.image || ""}
-                    disabled={change}
-                    changeEmit={(e) => inputHandler(e)}
-                />
-                <CInput
-                    className={`cInputDesign`}
-                    type={"text"}
-                    placeholder={""}
-                    name={"name"}
-                    value={user.name || ""}
-                    disabled={change}
-                    changeEmit={(e) => inputHandler(e)}
-                />
-                <CInput
-                    className={`cInputDesign`}
-                    type={"text"}
-                    placeholder={""}
-                    name={"email"}
-                    value={user.email || ""}
-                    disabled={"disabled"}
-                    changeEmit={(e) => inputHandler(e)}
-                />
-                <CInput
-                    className={`cInputDesign`}
-                    type={"text"}
-                    placeholder={""}
-                    name={"nickname"}
-                    value={user.nickname || ""}
-                    disabled={change}
-                    changeEmit={(e) => inputHandler(e)}
-                />
-                <CInput
-                    className={`cInputDesign`}
-                    type={"text"}
-                    placeholder={""}
-                    name={"favorite_position"}
-                    value={user.favorite_position || ""}
-                    disabled={change}
-                    changeEmit={(e) => inputHandler(e)}
-                />
-               
-                <div>Presentacion: {user.presentation || ""}</div>
-                <CButton
-                className={"cButtonDesign"}
-                title={change === "" ? "Confirmar" : "Editar"}
-                functionEmit={change === "" ? updateData : () => setChange("")}
-            />
+                <div className="cont">
+
+                    <img className="image" src={user.image} alt="image" />
+                    <div className="row">URL foto:
+                        <CTextArea
+                            className={`urlImage`}
+                            type={"text"}
+                            placeholder={""}
+                            name={"image"}
+                            value={user.image || ""}
+                            disabled={change}
+                            changeEmit={(e) => inputHandler(e)}
+                        />
+                    </div>
+                    <div className="row">Presentación:
+                        <CTextArea
+                            className={`presentation`}
+                            type={"text"}
+                            placeholder={""}
+                            name={"presentation"}
+                            value={user.presentation || ""}
+                            disabled={change}
+                            changeEmit={(e) => inputHandler(e)}>
+                        </CTextArea>
+                    </div>
+                    <div className="row">Nombre:
+                        <CInput
+                            className={`input`}
+                            type={"text"}
+                            placeholder={""}
+                            name={"name"}
+                            value={user.name || ""}
+                            disabled={change}
+                            changeEmit={(e) => inputHandler(e)}
+                        />
+                    </div>
+                    <div className="row">Email:
+                        <CInput
+                            className={`input`}
+                            type={"text"}
+                            placeholder={""}
+                            name={"email"}
+                            value={user.email || ""}
+                            disabled={"disabled"}
+                            changeEmit={(e) => inputHandler(e)}
+                        />
+                    </div>
+                    <div className="row">Nickname:
+                        <CInput
+                            className={`input`}
+                            type={"text"}
+                            placeholder={""}
+                            name={"nickname"}
+                            value={user.nickname || ""}
+                            disabled={change}
+                            changeEmit={(e) => inputHandler(e)}
+                        />
+                    </div>
+                    <div className="row">Posición favorita:
+                        <CInput
+                            className={`input`}
+                            type={"text"}
+                            placeholder={""}
+                            name={"favorite_position"}
+                            value={user.favorite_position || ""}
+                            disabled={change}
+                            changeEmit={(e) => inputHandler(e)}
+                        />
+                    </div>
+
+                    <CButton
+                        className={"cButtonDesign"}
+                        title={change === "" ? "Confirmar" : "Editar"}
+                        functionEmit={change === "" ? updateData : () => setChange("")}
+                    />
+                </div >
             </div>
         </>
     )
