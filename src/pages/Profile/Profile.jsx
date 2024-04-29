@@ -2,7 +2,9 @@ import "./Profile.css"
 import { useNavigate } from "react-router-dom"
 import { userData } from "../../app/slices/userSlice"
 import { useSelector } from "react-redux"
-import { useEffect } from "react"
+import { useState, useEffect } from "react"
+import { CInput } from "../../common/CInput/CInput";
+import { GetProfile } from "../../services/apiCalls"
 
 export const Profile = () => {
 
@@ -12,17 +14,79 @@ export const Profile = () => {
 
     const reduxUser = useSelector(userData)
 
+    const [loadedData, setLoadedData] = useState(false)
+    const [user, setUser] = useState({
+        nickname: "",
+        favorite_position: "",
+        presentation: "",
+        image: "",
+    })
+
+    const inputHandler = (e) => {
+        setUser((prevState) => ({
+            ...prevState,
+            [e.target.name]: e.target.value,
+        }));
+    };
+
     useEffect(() => {
         if (!reduxUser.credentials.token) {
             navigate("/")
         }
-    },[reduxUser])
+    }, [reduxUser])
+
+    useEffect(() => {
+
+        const getUserProfile = async () => {
+            try {
+
+                const fetched = await GetProfile(reduxUser.credentials.token)
+                console.log(fetched, "datos");
+
+                setLoadedData(true)
+
+                setUser({
+                    nickname: fetched.data.nickname,
+                    favorite_position: fetched.data.favorite_position,
+                    presentation: fetched.data.presentation,
+                    image: fetched.data.image,
+                })
+
+            } catch (error) {
+                console.log(error)
+            }
+        }
+
+        if (!loadedData) {
+            getUserProfile()
+        }
+
+    }, [user])
 
     return (
         <>
-        <div className="profileDesign">
-            Profile
-        </div>
+            <div className="profileDesign">
+                <img className="image" src={user.image} alt="image" />
+                <CInput
+                    className={`cInputDesign`}
+                    type={"text"}
+                    placeholder={""}
+                    name={"nickname"}
+                    value={user.nickname || ""}
+                    disabled={"disabled"}
+                    onChangeFunction={(e) => inputHandler(e)}
+                />
+                <CInput
+                    className={`cInputDesign`}
+                    type={"text"}
+                    placeholder={""}
+                    name={"favorite_position"}
+                    value={user.favorite_position || ""}
+                    disabled={"disabled"}
+                    onChangeFunction={(e) => inputHandler(e)}
+                />
+                <div>Presentacion: {user.presentation || ""}</div>
+            </div>
         </>
     )
 }
