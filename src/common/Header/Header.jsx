@@ -21,19 +21,29 @@ export const Header = () => {
 
     return (
         <div className="headerDesign">
-            <Navigator title={"Matches"} path={"/"} />
+
             {
                 reduxUser?.credentials?.token
-
                     ? (
                         <div className="positionNavBar">
+                            {reduxUser?.credentials?.user?.roleName === "admin"
+                                ? (
+                                    <div ><Navigator title={"Admin"} path={"/admin"} /></div>
+                                ) : (
+                                    <div></div>
+                                )}
+                            {reduxUser?.credentials?.user?.roleName === "user"
+                                ? (
+                                    <div > <Navigator title={"Matches"} path={"/"} /></div>
+                                ) : (
+                                    <div></div>
+                                )}
                             <Navigator title={reduxUser?.credentials?.user?.name} path="/profile" />
-                            <div className="logOutDesign"
+                            < div className="logOutDesign"
                                 onClick={() => dispatch(logout({ credentials: "" }))}>
                                 Log out
                             </div>
                         </div>
-
                     ) : (
                         <div className="positionNavBar">
                             <Navigator title={"Register"} path={"/register"} />
@@ -41,6 +51,6 @@ export const Header = () => {
                         </div>
                     )
             }
-        </div>
+        </div >
     )
 }
