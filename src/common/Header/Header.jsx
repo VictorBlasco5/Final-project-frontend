@@ -16,7 +16,7 @@ export const Header = () => {
     const dispatch = useDispatch()
 
     useEffect(() => {
-        console.log(reduxUser, "credenciales auth");
+        // console.log(reduxUser, "credenciales auth");
     }, [reduxUser])
 
     return (

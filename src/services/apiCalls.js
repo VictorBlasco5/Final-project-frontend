@@ -154,3 +154,29 @@ export const CreateMatch = async (token, matchData) => {
         return error;
     }
 }
+
+export const GetCourts = async (token, courts) => {
+
+    const options = {
+        method: "GET",
+        headers: {
+            "Content-Type": "application/json",
+            "Authorization": `Bearer ${token}`
+        },
+    };
+
+    try {
+        const response = await fetch(`${root}courts`, options);
+
+        const data = await response.json();
+        console.log(data,"courts");
+
+        if (!data.success) {
+            throw new Error(data.message);
+        }
+
+        return data;
+    } catch (error) {
+        return error;
+    }
+}

@@ -30,7 +30,7 @@ export const Match = () => {
     }
 
     const formatDate = (dateString) => {
-        const options = { year: 'numeric', month: 'long', day: 'numeric', hour12: false };
+        const options = { year: 'numeric', month: 'long', day: 'numeric', hour: 'numeric', minute: 'numeric', hour12: false };
         return new Date(dateString).toLocaleDateString('en-US', options);
     };
 

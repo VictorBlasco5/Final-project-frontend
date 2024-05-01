@@ -1,11 +1,11 @@
 import "./NewMatch.css";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { userData } from "../../app/slices/userSlice";
 import { CInput } from "../../common/CInput/CInput";
 import { validation } from "../../utils/functions";
-import { CreateMatch } from "../../services/apiCalls";
+import { CreateMatch, GetCourts } from "../../services/apiCalls";
 import { CTextArea } from "../../common/CTextArea/CTextArea";
 
 export const NewMatch = () => {
@@ -13,41 +13,58 @@ export const NewMatch = () => {
     const reduxUser = useSelector(userData)
     const navigate = useNavigate()
     const token = reduxUser.credentials.token || ({});
-    const [match, setMatch] = useState({
+
+    const [matches, setMatches] = useState({
         number_players: "",
         information: "",
         match_date: "",
         court_id: "",
     })
-
     const [msgError, setMsgError] = useState("");
     const [msgSuccessfully, setMsgSuccessfully] = useState("");
-    const [matchError, setMatchError] = useState({
-        number_playersError: "",
-        informationError: "",
-        match_dateError: "",
-        court_idError: "",
-    })
+    const [courts, setCourts] = useState([{}])
+    // const [matchError, setMatchError] = useState({
+    //     number_playersError: "",
+    //     informationError: "",
+    //     match_dateError: "",
+    //     court_idError: "",
+    // })
 
-    const checkError = (e) => {
-        const error = validation(e.target.name, e.target.value);
+    // const checkError = (e) => {
+    //     const error = validation(e.target.name, e.target.value);
 
-        setMatchError((prevState) => ({
-            ...prevState,
-            [e.target.name + "Error"]: error,
-        }));
-    };
+    //     setMatchError((prevState) => ({
+    //         ...prevState,
+    //         [e.target.name + "Error"]: error,
+    //     }));
+    // };
 
-    const imputHandler = (e) => {
-        setMatch((prevState) => ({
+    const inputHandler = (e) => {
+        setMatches((prevState) => ({
             ...prevState,
             [e.target.name]: e.target.value,
         }))
     }
 
+    
+    useEffect(() => {
+        const fetchData = async () => {
+            try {
+                if (token) {
+                    const fetched = await GetCourts(token);
+                    setCourts(fetched.data);
+                }
+            } catch (error) {
+                console.log(error);
+            }
+        };
+
+        fetchData();
+    }, [token]);
+
     const newMatch = async () => {
         try {
-            const fetched = await CreateMatch(token, match)
+            const fetched = await CreateMatch(token, matches)
             if (fetched && fetched.success) {
                 setMsgSuccessfully("Match created")
                 setTimeout(() => {
@@ -69,40 +86,52 @@ export const NewMatch = () => {
                 type="text"
                 name={"number_players"}
                 placeholder={"Numero de jugadores"}
-                value={match.number_players || ""}
+                value={matches.number_players || ""}
                 disabled={""}
-                changeEmit={imputHandler}
-                onBlurFunction={(e) => checkError(e)}
+                changeEmit={inputHandler}
+            // onBlurFunction={(e) => checkError(e)}
             />
             <CTextArea
                 className={`cInputNewMatchInfo`}
                 type="text"
                 name={"information"}
-                value={match.information || ""}
+                value={matches.information || ""}
                 placeholder={"Información..."}
                 disabled={""}
-                changeEmit={imputHandler}
-                onBlurFunction={(e) => checkError(e)}
+                changeEmit={inputHandler}
+            // onBlurFunction={(e) => checkError(e)}
             />
             <CInput
-                className={`cInputNewMatch ${matchError.match_dateError !== "" ? "inputDesignError" : ""}`}
+                className={`cInputNewMatch`}
                 type={"datetime-local"}
                 placeholder={""}
                 name={"match_date"}
-                value={match.match_date || ""}
+                value={matches.match_date || ""}
                 disabled={""}
-                changeEmit={imputHandler}
+                changeEmit={inputHandler}
             />
-            <CInput
-                className={`cInputNewMatch ${matchError.court_idError !== "" ? "inputDesignError" : ""}`}
-                type="text"
-                name={"court_id"}
-                placeholder={"Court_id"}
-                value={match.court_id || ""}
-                disabled={""}
-                changeEmit={imputHandler}
-                onBlurFunction={(e) => checkError(e)}
-            />
+            {console.log(courts, "courts")}
+            {
+                courts.length > 0
+                    ? (
+                        <select className="cInputNewMatch" name="court_id" onChange={inputHandler} defaultValue={""} >
+                            <option value="" disabled>
+                                Select court
+                            </option>
+                            {courts.map(
+                                court => {
+                                    return (
+                                        <option value={`${court.id}`} >{court.name}</option>
+                                    )
+                                }
+                            )
+                            }
+                        </select>)
+                    : (
+                        <p>LOADING </p>
+                    )
+            }
+
 
             <button
                 className="buttonCreateMatch"
