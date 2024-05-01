@@ -31,3 +31,31 @@
 .margin{
     margin: 0.5em;
 }
+
+.buttonAdd {
+    height: 3em;
+    width: 3em;
+    background-color: transparent;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 1em 0em -4em 3em;
+}
+
+.buttonAdd:focus {
+    outline: none;
+}
+
+.add {
+    height: 3em;
+    width: 3em;
+    background-color: transparent;
+    border-radius: 0.5em;
+}
+
+.add:hover {
+    background-color: rgb(255, 255, 255);
+    border-radius: 0.6em;
+    transition: 0.5s;
+}

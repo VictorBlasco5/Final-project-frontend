@@ -1,0 +1,52 @@
+.newMatchDesign {
+    height: 88vh;
+    width: 100vw;
+    background-color: lightseagreen;
+    overflow-y: auto;
+
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+.cInputNewMatch {
+    width: 13em;
+    height: 2em;
+    border-radius: 0.5em;
+    margin-top: 2em;
+    border: 0.1em solid black;
+}
+
+.cInputNewMatchInfo {
+    height: 5em;
+    width: 20em;
+    border-radius: 0.5em;
+    border: 0.1em solid black;
+
+    margin-top: 2em;
+    resize: none;
+    font-family: 'Roboto', sans-serif;
+    color: black;
+}
+
+.buttonCreateMatch{
+    width: 9em;
+    height: 2.5em;
+    border-radius: 0.5em;
+    margin-top: 2em;
+    background-color: lightcoral;
+    color: white;
+    font-family: 'Roboto', sans-serif;
+    border: none;
+    cursor: pointer;
+}
+
+.buttonCreateMatch:hover{
+    background-color: rgb(238, 25, 25);
+    color: white;
+}
+
+.buttonCreateMatch:focus{
+    outline: none;
+}
+

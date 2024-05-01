@@ -3,13 +3,15 @@ import { GetMatches } from "../../services/apiCalls";
 import { userData } from "../../app/slices/userSlice";
 import { useSelector } from "react-redux";
 import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom"
+import add from "../../../img/add.png";
 
 export const Match = () => {
 
     const reduxUser = useSelector(userData)
     const token = reduxUser.credentials.token || ({});
     const [matches, setMatches] = useState([])
-
+    const navigate = useNavigate()
     useEffect(() => {
 
         if (token) {
@@ -35,6 +37,9 @@ export const Match = () => {
     return (
         <>
             <div className="homeDesign">
+                <button className="buttonAdd" onClick={() => navigate("/new-match")}>
+                    <img className="add" src={add} alt="+" />
+                </button>
                 {matches.length > 0 ? (
                     <div className="positionPostCard">
                         {matches.map(match => (

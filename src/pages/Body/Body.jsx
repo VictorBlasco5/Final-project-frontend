@@ -3,7 +3,8 @@ import { Register } from "../Register/Register"
 import { Login } from "../Login/Login"
 import { Profile } from "../Profile/Profile"
 import { ProfileEdit } from "../ProfileEdit/ProfileEdit"
-import { Match } from "../Match/Matchs"
+import { Match } from "../Match/Match"
+import { NewMatch } from "../NewMatch/NewMatch"
 
 
 
@@ -17,6 +18,7 @@ export const Body = () => {
             <Route path="/login" element={<Login />} />
             <Route path="/profile" element={<Profile />} />
             <Route path="/profile-edit" element={<ProfileEdit />} />
+            <Route path="/new-match" element={<NewMatch />} />
         </Routes>
     )
 }
