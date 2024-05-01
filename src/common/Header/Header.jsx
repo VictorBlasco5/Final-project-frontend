@@ -16,12 +16,12 @@ export const Header = () => {
     const dispatch = useDispatch()
 
     useEffect(() => {
-        console.log(reduxUser, "credenciales auth");
+        // console.log(reduxUser, "credenciales auth");
     }, [reduxUser])
 
     return (
         <div className="headerDesign">
-            <Navigator title={"Home"} path={"/"} />
+            <Navigator title={"Matches"} path={"/"} />
             {
                 reduxUser?.credentials?.token
 
