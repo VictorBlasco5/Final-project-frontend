@@ -22,6 +22,7 @@
     margin:1em;
     background-color: rgb(228, 228, 228);
     overflow-y: auto;
+    font-size: small;
 }
 
 .header{
@@ -42,7 +43,7 @@
 }
 
 .buttonDeleteAdmin {
-    height: 3em;
+    height: 2.5em;
     width: 2em;
     background-color: transparent;
     border: none;
@@ -65,66 +66,3 @@
     
     transform: scale(1.15);
 }
-/* 
-.name {
-    height: 1em;
-    width: 5em;
-
-    border: 2px solid;
-    border-color: black;
-    background-color: white;
-}
-
-.nickname{
-    height: 1em;
-    width: 5em;
-
-    border: 2px solid;
-    border-color: black;
-    background-color: white;
-}
-
-.email {
-    height: 1em;
-    width: 10em;
-
-    border: 2px solid;
-    border-color: black;
-    background-color: white;
-}
-
-.favoritePosition{
-    height: 1em;
-    width: 5em;
-
-    border: 2px solid;
-    border-color: black;
-    background-color: white;
-}
-
-.present {
-    height: 1em;
-    width: 10em;
-
-    border: 2px solid;
-    border-color: black;
-    background-color: white;
-}
-
-.img {
-    height: 1em;
-    width: 20em;
-
-    border: 2px solid;
-    border-color: black;
-    background-color: white;
-}
-
-.role {
-    height: 1em;
-    width: 7em;
-
-    border: 2px solid;
-    border-color: black;
-    background-color: white;
-} */

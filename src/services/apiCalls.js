@@ -230,3 +230,29 @@ export const DeleteUsers = async (userId, token) => {
         return error;
     }
 }
+
+export const DeleteMatch = async (matchId, token) => {
+
+    const options = {
+        method: "DELETE",
+        headers: {
+            "Content-Type": "application/json",
+            "Authorization": `Bearer ${token}`
+        },
+    };
+
+    try {
+        const response = await fetch(`${root}matches/${matchId}`, options);
+
+        const data = await response.json();
+        console.log(data,"delete match");
+
+        if (!data.success) {
+            throw new Error(data.message);
+        }
+
+        return data;
+    } catch (error) {
+        return error;
+    }
+}
