@@ -169,7 +169,32 @@ export const GetCourts = async (token, courts) => {
         const response = await fetch(`${root}courts`, options);
 
         const data = await response.json();
-        console.log(data,"courts");
+        console.log(data, "courts");
+
+        if (!data.success) {
+            throw new Error(data.message);
+        }
+
+        return data;
+    } catch (error) {
+        return error;
+    }
+}
+
+export const GetUsers = async (token) => {
+
+    const options = {
+        method: "GET",
+        headers: {
+            "Content-Type": "application/json",
+            "Authorization": `Bearer ${token}`
+        },
+    };
+
+    try {
+        const response = await fetch(`${root}users`, options);
+
+        const data = await response.json();
 
         if (!data.success) {
             throw new Error(data.message);

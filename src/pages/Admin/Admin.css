@@ -6,6 +6,97 @@
 
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: flex-start;
     align-items: center;
+    overflow-y: auto;
 }
+
+.containTable {
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    background-color: darkolivegreen;
+}
+
+.table {
+    margin:1em;
+    background-color: rgb(228, 228, 228);
+    overflow-y: auto;
+}
+
+.table th,
+.table td {
+  padding: 3px;
+  text-align: left;
+}
+
+.table tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
+
+.buttonTableAdmin {
+    background-color: transparent;
+}
+/* 
+.name {
+    height: 1em;
+    width: 5em;
+
+    border: 2px solid;
+    border-color: black;
+    background-color: white;
+}
+
+.nickname{
+    height: 1em;
+    width: 5em;
+
+    border: 2px solid;
+    border-color: black;
+    background-color: white;
+}
+
+.email {
+    height: 1em;
+    width: 10em;
+
+    border: 2px solid;
+    border-color: black;
+    background-color: white;
+}
+
+.favoritePosition{
+    height: 1em;
+    width: 5em;
+
+    border: 2px solid;
+    border-color: black;
+    background-color: white;
+}
+
+.present {
+    height: 1em;
+    width: 10em;
+
+    border: 2px solid;
+    border-color: black;
+    background-color: white;
+}
+
+.img {
+    height: 1em;
+    width: 20em;
+
+    border: 2px solid;
+    border-color: black;
+    background-color: white;
+}
+
+.role {
+    height: 1em;
+    width: 7em;
+
+    border: 2px solid;
+    border-color: black;
+    background-color: white;
+} */
