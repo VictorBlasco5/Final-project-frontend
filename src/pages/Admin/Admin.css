@@ -24,7 +24,10 @@
     overflow-y: auto;
 }
 
-.table th,
+.header{
+    background-color: #f2f2f2;
+}
+
 .table td {
   padding: 3px;
   text-align: left;
@@ -36,6 +39,31 @@
 
 .buttonTableAdmin {
     background-color: transparent;
+}
+
+.buttonDeleteAdmin {
+    height: 3em;
+    width: 2em;
+    background-color: transparent;
+    border: none;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.buttonDeleteAdmin:focus {
+    outline: none;
+}
+
+.deleteUser {
+    height: 2em;
+    width: 2em;
+}
+
+.deleteUser:hover {
+    
+    transform: scale(1.15);
 }
 /* 
 .name {

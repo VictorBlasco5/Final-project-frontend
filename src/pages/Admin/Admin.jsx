@@ -2,7 +2,8 @@ import "./Admin.css";
 import { useState, useEffect } from "react";
 import { useSelector } from "react-redux"
 import { userData } from "../../app/slices/userSlice"
-import { GetUsers } from "../../services/apiCalls";
+import { DeleteUsers, GetUsers } from "../../services/apiCalls";
+import deleteUser from "../../../img/userRemove.png";
 
 export const Admin = () => {
 
@@ -39,6 +40,17 @@ export const Admin = () => {
         }
     }, [users])
 
+    const userRemove = async (userId) => {
+        try {
+            await DeleteUsers(userId, token)
+            const updatedUsers = await GetUsers(token);
+            setUsers(updatedUsers.data);
+
+        } catch (error) {
+            console.log(error)
+        }
+    }
+
 
     return (
         <div className="adminDesign">
@@ -53,7 +65,7 @@ export const Admin = () => {
                         {users.length > 0 ? (
                             <table>
                                 <thead>
-                                    <tr>
+                                    <tr className="header">
                                         <th>Id</th>
                                         <th>Nombre</th>
                                         <th>Nickname</th>
@@ -62,6 +74,7 @@ export const Admin = () => {
                                         <th>Presentación</th>
                                         <th>Url foto</th>
                                         <th>Rol</th>
+                                        <th></th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -75,6 +88,11 @@ export const Admin = () => {
                                             <td>{user.presentation}</td>
                                             <td>{user.image}</td>
                                             <td>{user.role}</td>
+                                            <button
+                                                className="buttonDeleteAdmin"
+                                                onClick={() => userRemove(user.id)}>
+                                                <img className="deleteUser" src={deleteUser} alt="" />
+                                            </button>
                                         </tr>
                                     ))}
                                 </tbody>
