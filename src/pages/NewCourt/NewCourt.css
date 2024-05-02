@@ -1,0 +1,11 @@
+.newCourtDesign {
+    height: 88vh;
+    width: 100vw;
+
+    background-color: mediumturquoise;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
