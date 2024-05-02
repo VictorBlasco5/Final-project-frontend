@@ -2,7 +2,7 @@ import "./Admin.css";
 import { useState, useEffect } from "react";
 import { useSelector } from "react-redux"
 import { userData } from "../../app/slices/userSlice"
-import { DeleteMatch, DeleteUsers, GetMatches, GetUsers } from "../../services/apiCalls";
+import { DeleteMatch, DeleteUsers, GetCourts, GetMatches, GetUsers } from "../../services/apiCalls";
 import deleteUser from "../../../img/userRemove.png";
 import deleteMatch from "../../../img/delete.png";
 
@@ -10,22 +10,29 @@ export const Admin = () => {
 
     const [users, setUsers] = useState([])
     const [matches, setMatches] = useState([])
+    const [courts, setCourts] = useState([])
     const reduxUser = useSelector(userData)
     const token = reduxUser.credentials.token || ({});
     const [showUsers, setShowUsers] = useState(true);
-    // const [showMatches, setShowMatches] = useState(false);
-    // const [showCourts, setShowCourts] = useState(false);
+    const [showMatches, setShowMatches] = useState(false);
+    const [showCourts, setShowCourts] = useState(false);
 
     const handleShowUsers = () => {
         setShowUsers(true);
-    };
-
-    const handleShowCourts = () => {
-        setShowUsers(false);
+        setShowMatches(false);
+        setShowCourts(false);
     };
 
     const handleShowMatches = () => {
         setShowUsers(false);
+        setShowMatches(true);
+        setShowCourts(false);
+    };
+
+    const handleShowCourts = () => {
+        setShowUsers(false);
+        setShowMatches(false);
+        setShowCourts(true);
     };
 
     useEffect(() => {
@@ -67,7 +74,7 @@ export const Admin = () => {
             }
             recoverMatches()
         }
-    }, [users])
+    }, [matches])
 
     const matchRemove = async (matchId) => {
         try {
@@ -80,52 +87,116 @@ export const Admin = () => {
         }
     }
 
-    const formatDate = (dateString) => {
-        const options = { year: 'numeric', month: 'long', day: 'numeric', hour: 'numeric', minute: 'numeric', hour12: false };
-        return new Date(dateString).toLocaleDateString('en-US', options);
-    };
+    useEffect(() => {
+        if (courts.length === 0) {
+            const recoverCourts = async () => {
+                try {
+                    const fetched = await GetCourts(token)
+                    setCourts(fetched.data)
 
-    return (
+                } catch (error) {
+                    console.log(error);
+                }
+            }
+            recoverCourts()
+        }
+    }, [courts])
+
+    // const formatDate = (dateString) => {
+    //     const options = { year: 'numeric', month: 'long', day: 'numeric', hour: 'numeric', minute: 'numeric', hour12: false };
+    //     return new Date(dateString).toLocaleDateString('es-ES', options);
+    // };
+
+    const formatDate = (dateString) => {
+        const options = { timeZone: 'Europe/Madrid', year: 'numeric', month: 'long', day: 'numeric', hour: 'numeric', minute: 'numeric', hour12: false };
+        return new Date(dateString).toLocaleString('es-ES', options);
+    };
+    
+
+return (
+    <div className="adminDesign">
+        <div className="containTable">
+            <button className="buttonTableAdmin" onClick={handleShowUsers}>Users</button>
+            <button className="buttonTableAdmin" onClick={handleShowCourts}>Pistas</button>
+            <button className="buttonTableAdmin" onClick={handleShowMatches}>Partidos</button>
+        </div>
         <div className="adminDesign">
-            <div className="containTable">
-                <button className="buttonTableAdmin" onClick={handleShowUsers}>Users</button>
-                <button className="buttonTableAdmin" onClick={handleShowCourts}>Pistas</button>
-                <button className="buttonTableAdmin" onClick={handleShowMatches}>Partidos</button>
-            </div>
-            <div className="adminDesign">
-                {showUsers ? (
+            {showUsers ? (
+                <div className="table">
+                    {users.length > 0 ? (
+                        <table>
+                            <thead>
+                                <tr className="header">
+                                    <th>Id</th>
+                                    <th>Nombre</th>
+                                    <th>Nickname</th>
+                                    <th>Email</th>
+                                    <th>Posición</th>
+                                    <th>Presentación</th>
+                                    <th>Url foto</th>
+                                    <th>Rol</th>
+                                    <th></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {users.map(user => (
+                                    <tr key={user.id}>
+                                        <td>{user.id}</td>
+                                        <td>{user.name}</td>
+                                        <td>{user.nickname}</td>
+                                        <td>{user.email}</td>
+                                        <td>{user.favorite_position}</td>
+                                        <td>{user.presentation}</td>
+                                        <td>{user.image}</td>
+                                        <td>{user.role.name}</td>
+                                        <td>
+                                            <button
+                                                className="buttonDeleteAdmin"
+                                                onClick={() => userRemove(user.id)}>
+                                                <img className="deleteUser" src={deleteUser} alt="" />
+                                            </button>
+                                        </td>
+                                    </tr>
+                                ))}
+                            </tbody>
+                        </table>
+                    ) : (
+                        <div>CARGANDO</div>
+                    )}
+                </div>
+            ) : null}
+                <div>
+                    {showMatches ? (
                     <div className="table">
-                        {users.length > 0 ? (
+                        {matches && matches.length > 0 ? (
                             <table>
                                 <thead>
                                     <tr className="header">
                                         <th>Id</th>
-                                        <th>Nombre</th>
-                                        <th>Nickname</th>
-                                        <th>Email</th>
-                                        <th>Posición</th>
-                                        <th>Presentación</th>
-                                        <th>Url foto</th>
-                                        <th>Rol</th>
+                                        <th>Número jugadores</th>
+                                        <th>Información</th>
+                                        <th>Fecha</th>
+                                        <th>Fecha creación</th>
+                                        <th>Fecha actualización</th>
+                                        <th>Pista</th>
                                         <th></th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    {users.map(user => (
-                                        <tr key={user.id}>
-                                            <td>{user.id}</td>
-                                            <td>{user.name}</td>
-                                            <td>{user.nickname}</td>
-                                            <td>{user.email}</td>
-                                            <td>{user.favorite_position}</td>
-                                            <td>{user.presentation}</td>
-                                            <td>{user.image}</td>
-                                            <td>{user.role.name}</td>
+                                    {matches.map(match => (
+                                        <tr key={match.id}>
+                                            <td>{match.id}</td>
+                                            <td>{match.number_players}</td>
+                                            <td>{match.information}</td>
+                                            <td>{formatDate(match.match_date)}</td>
+                                            <td>{formatDate(match.created_at)}</td>
+                                            <td>{formatDate(match.updated_at)}</td>
+                                            <td>{match.court.name}</td>
                                             <td>
                                                 <button
                                                     className="buttonDeleteAdmin"
-                                                    onClick={() => userRemove(user.id)}>
-                                                    <img className="deleteUser" src={deleteUser} alt="" />
+                                                    onClick={() => matchRemove(match.id)}>
+                                                    <img className="deleteUser" src={deleteMatch} alt="" />
                                                 </button>
                                             </td>
                                         </tr>
@@ -133,54 +204,41 @@ export const Admin = () => {
                                 </tbody>
                             </table>
                         ) : (
-                            <div>CARGANDO</div>
+                            <div>LOADING</div>
                         )}
-                    </div>
-                ) : (
-                    <div>
-                        <div className="table">
-                            {matches && matches.length > 0 ? (
-                                <table>
-                                    <thead>
-                                        <tr className="header">
-                                            <th>Id</th>
-                                            <th>Número jugadores</th>
-                                            <th>Información</th>
-                                            <th>Fecha</th>
-                                            <th>Fecha creación</th>
-                                            <th>Fecha actualización</th>
-                                            <th>Pista</th>
-                                            <th></th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        {matches.map(match => (
-                                            <tr key={match.id}>
-                                                <td>{match.id}</td>
-                                                <td>{match.number_players}</td>
-                                                <td>{match.information}</td>
-                                                <td>{formatDate(match.match_date)}</td>
-                                                <td>{formatDate(match.created_at)}</td>
-                                                <td>{formatDate(match.updated_at)}</td>
-                                                <td>{match.court.name}</td>
-                                                <td>
-                                                    <button
-                                                        className="buttonDeleteAdmin"
-                                                        onClick={() => matchRemove(match.id)}>
-                                                        <img className="deleteUser" src={deleteMatch} alt="" />
-                                                    </button>
-                                                </td>
-                                            </tr>
-                                        ))}
-                                    </tbody>
-                                </table>
-                            ) : (
-                                <div>LOADING</div>
-                            )}
                         </div>
-                    </div>
-                )}
-            </div>
+                    ) : null} 
+                </div>
+            {showCourts ? (
+                <div className="table">
+                    {courts && courts.length > 0 ? (
+                        <table>
+                            <thead>
+                                <tr className="header">
+                                    <th>Id</th>
+                                    <th>Nombre</th>
+                                    <th>Dirección</th>
+                                    <th>Fecha creación</th>
+                                    <th>Fecha actualización</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {courts.map(court => (
+                                    <tr key={court.id}>
+                                        <td>{court.id}</td>
+                                        <td>{court.name}</td>
+                                        <td>{court.direction}</td>
+                                        <td>{formatDate(court.created_at)}</td>
+                                        <td>{formatDate(court.updated_at)}</td>
+                                    </tr>
+                                ))}
+                            </tbody>
+                        </table>
+                    ) : (
+                        <div>LOADING</div>
+                    )}
+                </div>
+            ) : null}
         </div>
-    )
-}
+    </div>
+)};
