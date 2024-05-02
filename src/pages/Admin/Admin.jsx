@@ -2,7 +2,7 @@ import "./Admin.css";
 import { useState, useEffect } from "react";
 import { useSelector } from "react-redux"
 import { userData } from "../../app/slices/userSlice"
-import { DeleteMatch, DeleteUsers, GetCourts, GetMatches, GetUsers } from "../../services/apiCalls";
+import { DeleteCourt, DeleteMatch, DeleteUsers, GetCourts, GetMatches, GetUsers } from "../../services/apiCalls";
 import deleteUser from "../../../img/userRemove.png";
 import deleteMatch from "../../../img/delete.png";
 
@@ -102,16 +102,21 @@ export const Admin = () => {
         }
     }, [courts])
 
-    // const formatDate = (dateString) => {
-    //     const options = { year: 'numeric', month: 'long', day: 'numeric', hour: 'numeric', minute: 'numeric', hour12: false };
-    //     return new Date(dateString).toLocaleDateString('es-ES', options);
-    // };
+    const courtRemove = async (courtId) => {
+        try {
+            await DeleteCourt(courtId, token)
+            const updatedCourts = await GetCourts(token);
+            setCourts(updatedCourts.data);
+
+        } catch (error) {
+            console.log(error)
+        }
+    }
 
     const formatDate = (dateString) => {
-        const options = { timeZone: 'Europe/Madrid', year: 'numeric', month: 'long', day: 'numeric', hour: 'numeric', minute: 'numeric', hour12: false };
-        return new Date(dateString).toLocaleString('es-ES', options);
+        const options = { year: 'numeric', month: 'long', day: 'numeric', hour: 'numeric', minute: 'numeric', hour12: false };
+        return new Date(dateString).toLocaleDateString('es-ES', options);
     };
-    
 
 return (
     <div className="adminDesign">
@@ -153,7 +158,7 @@ return (
                                             <button
                                                 className="buttonDeleteAdmin"
                                                 onClick={() => userRemove(user.id)}>
-                                                <img className="deleteUser" src={deleteUser} alt="" />
+                                                <img className="deleteUser" src={deleteUser} alt="Eliminar" />
                                             </button>
                                         </td>
                                     </tr>
@@ -196,7 +201,7 @@ return (
                                                 <button
                                                     className="buttonDeleteAdmin"
                                                     onClick={() => matchRemove(match.id)}>
-                                                    <img className="deleteUser" src={deleteMatch} alt="" />
+                                                    <img className="deleteUser" src={deleteMatch} alt="Eliminar" />
                                                 </button>
                                             </td>
                                         </tr>
@@ -220,6 +225,7 @@ return (
                                     <th>Dirección</th>
                                     <th>Fecha creación</th>
                                     <th>Fecha actualización</th>
+                                    <th></th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -230,6 +236,13 @@ return (
                                         <td>{court.direction}</td>
                                         <td>{formatDate(court.created_at)}</td>
                                         <td>{formatDate(court.updated_at)}</td>
+                                        <td>
+                                            <button
+                                                className="buttonDeleteAdmin"
+                                                onClick={() => courtRemove(court.id)}>
+                                                <img className="deleteUser" src={deleteMatch} alt="Eliminar" />
+                                            </button>
+                                        </td>
                                     </tr>
                                 ))}
                             </tbody>

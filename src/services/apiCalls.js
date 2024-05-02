@@ -155,6 +155,32 @@ export const CreateMatch = async (token, matchData) => {
     }
 }
 
+export const DeleteMatch = async (matchId, token) => {
+
+    const options = {
+        method: "DELETE",
+        headers: {
+            "Content-Type": "application/json",
+            "Authorization": `Bearer ${token}`
+        },
+    };
+
+    try {
+        const response = await fetch(`${root}matches/${matchId}`, options);
+
+        const data = await response.json();
+        console.log(data,"delete match");
+
+        if (!data.success) {
+            throw new Error(data.message);
+        }
+
+        return data;
+    } catch (error) {
+        return error;
+    }
+}
+
 export const GetCourts = async (token, courts) => {
 
     const options = {
@@ -170,6 +196,32 @@ export const GetCourts = async (token, courts) => {
 
         const data = await response.json();
         console.log(data, "courts");
+
+        if (!data.success) {
+            throw new Error(data.message);
+        }
+
+        return data;
+    } catch (error) {
+        return error;
+    }
+}
+
+export const DeleteCourt = async (courtId, token) => {
+
+    const options = {
+        method: "DELETE",
+        headers: {
+            "Content-Type": "application/json",
+            "Authorization": `Bearer ${token}`
+        },
+    };
+
+    try {
+        const response = await fetch(`${root}courts/${courtId}`, options);
+
+        const data = await response.json();
+        console.log(data,"delete court");
 
         if (!data.success) {
             throw new Error(data.message);
@@ -231,28 +283,3 @@ export const DeleteUsers = async (userId, token) => {
     }
 }
 
-export const DeleteMatch = async (matchId, token) => {
-
-    const options = {
-        method: "DELETE",
-        headers: {
-            "Content-Type": "application/json",
-            "Authorization": `Bearer ${token}`
-        },
-    };
-
-    try {
-        const response = await fetch(`${root}matches/${matchId}`, options);
-
-        const data = await response.json();
-        console.log(data,"delete match");
-
-        if (!data.success) {
-            throw new Error(data.message);
-        }
-
-        return data;
-    } catch (error) {
-        return error;
-    }
-}
