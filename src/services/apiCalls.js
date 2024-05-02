@@ -207,6 +207,33 @@ export const GetCourts = async (token, courts) => {
     }
 }
 
+export const CreateCourt = async (token, courtData) => {
+    const options = {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json",
+            "Authorization": `Bearer ${token}`
+        },
+        body: JSON.stringify(courtData)
+    };
+
+    try {
+        const response = await fetch(`${root}courts`, options);
+
+        const data = await response.json();
+        console.log("datos");
+        console.log(data)
+
+        if (!data.success) {
+            throw new Error(data.message);
+        }
+
+        return data;
+    } catch (error) {
+        return error;
+    }
+}
+
 export const DeleteCourt = async (courtId, token) => {
 
     const options = {
