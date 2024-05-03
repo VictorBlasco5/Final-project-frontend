@@ -2,7 +2,7 @@
     height: 88vh;
     width: 100vw;
 
-    background-color: mediumturquoise;
+    background-color: rgb(222, 255, 254);
 
     display: flex;
     flex-direction: column;
@@ -12,13 +12,17 @@
 }
 
 .containTable {
-    width: 100%;
+    width: 90%;
     display: flex;
     justify-content: space-around;
-    background-color: darkolivegreen;
+    background: linear-gradient(to bottom, transparent 95%, rgb(0, 0, 0) 80%);
+    margin-left: 2em;
+    margin-right: 2em;
+    
 }
 
 .table {
+    width: 74%;
     margin:1em;
     background-color: rgb(228, 228, 228);
     overflow-y: auto;
@@ -40,6 +44,15 @@
 
 .buttonTableAdmin {
     background-color: transparent;
+    border: none;
+}
+
+.buttonTableAdmin:hover {
+    color: gray;
+}
+
+.buttonTableAdmin:focus {
+    outline: none;
 }
 
 .buttonDeleteAdmin {

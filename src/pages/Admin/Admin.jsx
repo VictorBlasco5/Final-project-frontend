@@ -173,50 +173,48 @@ export const Admin = () => {
                         )}
                     </div>
                 ) : null}
-                <div>
-                    {showMatches ? (
-                        <div className="table">
-                            {matches && matches.length > 0 ? (
-                                <table>
-                                    <thead>
-                                        <tr className="header">
-                                            <th>Id</th>
-                                            <th>Número jugadores</th>
-                                            <th>Información</th>
-                                            <th>Fecha</th>
-                                            <th>Fecha creación</th>
-                                            <th>Fecha actualización</th>
-                                            <th>Pista</th>
-                                            <th></th>
+                {showMatches ? (
+                    <div className="table">
+                        {matches && matches.length > 0 ? (
+                            <table>
+                                <thead>
+                                    <tr className="header">
+                                        <th>Id</th>
+                                        <th>Número jugadores</th>
+                                        <th>Información</th>
+                                        <th>Fecha</th>
+                                        <th>Fecha creación</th>
+                                        <th>Fecha actualización</th>
+                                        <th>Pista</th>
+                                        <th></th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {matches.map(match => (
+                                        <tr key={match.id}>
+                                            <td>{match.id}</td>
+                                            <td>{match.number_players}</td>
+                                            <td>{match.information}</td>
+                                            <td>{formatDate(match.match_date)}</td>
+                                            <td>{formatDate(match.created_at)}</td>
+                                            <td>{formatDate(match.updated_at)}</td>
+                                            <td>{match.court.name}</td>
+                                            <td>
+                                                <button
+                                                    className="buttonDeleteAdmin"
+                                                    onClick={() => matchRemove(match.id)}>
+                                                    <img className="deleteUser" src={deleteMatch} alt="Eliminar" />
+                                                </button>
+                                            </td>
                                         </tr>
-                                    </thead>
-                                    <tbody>
-                                        {matches.map(match => (
-                                            <tr key={match.id}>
-                                                <td>{match.id}</td>
-                                                <td>{match.number_players}</td>
-                                                <td>{match.information}</td>
-                                                <td>{formatDate(match.match_date)}</td>
-                                                <td>{formatDate(match.created_at)}</td>
-                                                <td>{formatDate(match.updated_at)}</td>
-                                                <td>{match.court.name}</td>
-                                                <td>
-                                                    <button
-                                                        className="buttonDeleteAdmin"
-                                                        onClick={() => matchRemove(match.id)}>
-                                                        <img className="deleteUser" src={deleteMatch} alt="Eliminar" />
-                                                    </button>
-                                                </td>
-                                            </tr>
-                                        ))}
-                                    </tbody>
-                                </table>
-                            ) : (
-                                <div>LOADING</div>
-                            )}
-                        </div>
-                    ) : null}
-                </div>
+                                    ))}
+                                </tbody>
+                            </table>
+                        ) : (
+                            <div>LOADING</div>
+                        )}
+                    </div>
+                ) : null}
                 {showCourts ? (
                     <div className="table">
                         {courts && courts.length > 0 ? (
@@ -229,9 +227,9 @@ export const Admin = () => {
                                         <th>Fecha creación</th>
                                         <th>Fecha actualización</th>
                                         <th>
-                                            <button 
-                                            className="buttonDeleteAdmin"
-                                            onClick={() => navigate("/new-court")}
+                                            <button
+                                                className="buttonDeleteAdmin"
+                                                onClick={() => navigate("/new-court")}
                                             >
                                                 <img className="deleteUser" src={add} alt="Nueva pista" />
                                             </button>
