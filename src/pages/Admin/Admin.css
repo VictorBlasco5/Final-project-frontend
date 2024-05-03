@@ -1,0 +1,81 @@
+.adminDesign {
+    height: 88vh;
+    width: 100vw;
+
+    background-color: rgb(222, 255, 254);
+
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    overflow-y: auto;
+}
+
+.containTable {
+    width: 90%;
+    display: flex;
+    justify-content: space-around;
+    background: linear-gradient(to bottom, transparent 95%, rgb(0, 0, 0) 80%);
+    margin-left: 2em;
+    margin-right: 2em;
+    
+}
+
+.table {
+    width: 74%;
+    margin:1em;
+    background-color: rgb(228, 228, 228);
+    overflow-y: auto;
+    font-size: small;
+}
+
+.header{
+    background-color: #f2f2f2;
+}
+
+.table td {
+  padding: 3px;
+  text-align: left;
+}
+
+.table tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
+
+.buttonTableAdmin {
+    background-color: transparent;
+    border: none;
+}
+
+.buttonTableAdmin:hover {
+    color: gray;
+}
+
+.buttonTableAdmin:focus {
+    outline: none;
+}
+
+.buttonDeleteAdmin {
+    height: 2.5em;
+    width: 2em;
+    background-color: transparent;
+    border: none;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.buttonDeleteAdmin:focus {
+    outline: none;
+}
+
+.deleteUser {
+    height: 2em;
+    width: 2em;
+}
+
+.deleteUser:hover {
+    
+    transform: scale(1.15);
+}

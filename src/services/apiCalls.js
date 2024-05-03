@@ -155,6 +155,32 @@ export const CreateMatch = async (token, matchData) => {
     }
 }
 
+export const DeleteMatch = async (matchId, token) => {
+
+    const options = {
+        method: "DELETE",
+        headers: {
+            "Content-Type": "application/json",
+            "Authorization": `Bearer ${token}`
+        },
+    };
+
+    try {
+        const response = await fetch(`${root}matches/${matchId}`, options);
+
+        const data = await response.json();
+        console.log(data,"delete match");
+
+        if (!data.success) {
+            throw new Error(data.message);
+        }
+
+        return data;
+    } catch (error) {
+        return error;
+    }
+}
+
 export const GetCourts = async (token, courts) => {
 
     const options = {
@@ -169,7 +195,7 @@ export const GetCourts = async (token, courts) => {
         const response = await fetch(`${root}courts`, options);
 
         const data = await response.json();
-        console.log(data,"courts");
+        console.log(data, "courts");
 
         if (!data.success) {
             throw new Error(data.message);
@@ -180,3 +206,107 @@ export const GetCourts = async (token, courts) => {
         return error;
     }
 }
+
+export const CreateCourt = async (token, courtData) => {
+    const options = {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json",
+            "Authorization": `Bearer ${token}`
+        },
+        body: JSON.stringify(courtData)
+    };
+
+    try {
+        const response = await fetch(`${root}courts`, options);
+
+        const data = await response.json();
+        console.log("datos");
+        console.log(data)
+
+        if (!data.success) {
+            throw new Error(data.message);
+        }
+
+        return data;
+    } catch (error) {
+        return error;
+    }
+}
+
+export const DeleteCourt = async (courtId, token) => {
+
+    const options = {
+        method: "DELETE",
+        headers: {
+            "Content-Type": "application/json",
+            "Authorization": `Bearer ${token}`
+        },
+    };
+
+    try {
+        const response = await fetch(`${root}courts/${courtId}`, options);
+
+        const data = await response.json();
+        console.log(data,"delete court");
+
+        if (!data.success) {
+            throw new Error(data.message);
+        }
+
+        return data;
+    } catch (error) {
+        return error;
+    }
+}
+
+export const GetUsers = async (token) => {
+
+    const options = {
+        method: "GET",
+        headers: {
+            "Content-Type": "application/json",
+            "Authorization": `Bearer ${token}`
+        },
+    };
+
+    try {
+        const response = await fetch(`${root}users`, options);
+
+        const data = await response.json();
+
+        if (!data.success) {
+            throw new Error(data.message);
+        }
+
+        return data;
+    } catch (error) {
+        return error;
+    }
+}
+
+export const DeleteUsers = async (userId, token) => {
+
+    const options = {
+        method: "DELETE",
+        headers: {
+            "Content-Type": "application/json",
+            "Authorization": `Bearer ${token}`
+        },
+    };
+
+    try {
+        const response = await fetch(`${root}users/${userId}`, options);
+
+        const data = await response.json();
+
+        if (!data.success) {
+            throw new Error(data.message);
+        }
+
+        return data;
+    } catch (error) {
+        return error;
+    }
+}
+

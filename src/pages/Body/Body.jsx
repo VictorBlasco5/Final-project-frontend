@@ -5,7 +5,8 @@ import { Profile } from "../Profile/Profile"
 import { ProfileEdit } from "../ProfileEdit/ProfileEdit"
 import { Match } from "../Match/Match"
 import { NewMatch } from "../NewMatch/NewMatch"
-
+import { Admin } from "../Admin/Admin"
+import { NewCourt } from "../NewCourt/NewCourt"
 
 
 export const Body = () => {
@@ -19,6 +20,8 @@ export const Body = () => {
             <Route path="/profile" element={<Profile />} />
             <Route path="/profile-edit" element={<ProfileEdit />} />
             <Route path="/new-match" element={<NewMatch />} />
+            <Route path="/admin" element={<Admin />} />
+            <Route path="/new-court" element={<NewCourt />} />
         </Routes>
     )
 }
