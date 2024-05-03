@@ -4,7 +4,7 @@ import { userData } from "../../app/slices/userSlice"
 import { useSelector } from "react-redux"
 import { useState, useEffect } from "react"
 import { CInput } from "../../common/CInput/CInput";
-import { GetProfile } from "../../services/apiCalls"
+import { GetMatchesAssistance, GetProfile } from "../../services/apiCalls"
 import { CTextArea } from "../../common/CTextArea/CTextArea";
 
 export const Profile = () => {
@@ -12,9 +12,9 @@ export const Profile = () => {
     const navigate = useNavigate()
 
     //conectar con redux lectura
-
     const reduxUser = useSelector(userData)
-
+    const token = reduxUser.credentials.token || ({});
+    const [matches, setMatches] = useState([])
     const [loadedData, setLoadedData] = useState(false)
     const [user, setUser] = useState({
         nickname: "",
@@ -35,6 +35,13 @@ export const Profile = () => {
             navigate("/")
         }
     }, [reduxUser])
+
+    useEffect(() => {
+
+        if (token) {
+            getMatchSigned()
+        }
+    }, [token])
 
     useEffect(() => {
 
@@ -63,6 +70,26 @@ export const Profile = () => {
         }
 
     }, [user])
+
+
+    const getMatchSigned = async () => {
+        try {
+            const fetched = await GetMatchesAssistance(token)
+            const signed = fetched.map(match => ({
+                ...match,
+                signedCount: match.signed_up?.length
+            }));
+            setMatches(signed)
+        } catch (error) {
+            console.log(error)
+        }
+    }
+
+    const formatDate = (dateString) => {
+        const options = { year: 'numeric', month: 'long', day: 'numeric', hour: 'numeric', minute: 'numeric', hour12: false };
+        return new Date(dateString).toLocaleDateString('es-US', options);
+    };
+
 
     return (
         <>
@@ -96,6 +123,22 @@ export const Profile = () => {
                     changeEmit={(e) => inputHandler(e)}>
                 </CTextArea>
                 <button onClick={() => navigate("/profile-edit")}>Editar perfil</button>
+
+                {matches.length > 0 ? (
+                    <div className="positionPostCard">
+                        {matches.map(match => (
+                            <div className="card" key={match.id}>
+                                <div className="margin">Jugadores: {match.number_players} Apuntados:{match.signedCount}</div>
+                                <div className="margin">{match.information}</div>
+                                <div className="margin">{formatDate(match.match_date)}</div>
+                                <div className="margin">{match.court.name}</div>
+                                <div className="margin">{match.court.direction}</div>
+                            </div>
+                        ))}
+                    </div>
+                ) : (
+                    <div></div>
+                )}
             </div>
         </>
     )
