@@ -310,3 +310,29 @@ export const DeleteUsers = async (userId, token) => {
     }
 }
 
+export const SignedUp = async (token, matchId) => {
+
+    const options = {
+        method: "PUT",
+        headers: {
+            "Content-Type": "application/json",
+            "Authorization": `Bearer ${token}`
+        },
+    };
+
+    try {
+        const response = await fetch(`${root}matches/assistance/${matchId}`, options);
+
+        const data = await response.json();
+        console.log("datos");
+        console.log(data)
+
+        if (!data.success) {
+            throw new Error(data.message);
+        }
+
+        return data;
+    } catch (error) {
+        return error;
+    }
+}
