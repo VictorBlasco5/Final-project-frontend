@@ -1,7 +1,7 @@
 import "./ProfileEdit.css"
 import { useNavigate } from "react-router-dom"
-import { userData } from "../../app/slices/userSlice"
-import { useSelector } from "react-redux"
+import { updatedUser, userData } from "../../app/slices/userSlice"
+import { useSelector, useDispatch } from "react-redux"
 import { useState, useEffect } from "react"
 import { CInput } from "../../common/CInput/CInput";
 import { GetProfile, UpdateProfile } from "../../services/apiCalls"
@@ -13,12 +13,9 @@ import { CTextArea } from "../../common/CTextArea/CTextArea"
 export const ProfileEdit = () => {
 
     const navigate = useNavigate()
-    const [change, setChange] = useState("disabled")
-
-    //conectar con redux lectura
-
+    const dispatch = useDispatch();
     const reduxUser = useSelector(userData)
-
+    const [change, setChange] = useState("disabled")
     const [loadedData, setLoadedData] = useState(false)
     const [user, setUser] = useState({
         nickname: "",
@@ -75,7 +72,11 @@ export const ProfileEdit = () => {
     const updateData = async () => {
         try {
             const fetched = await UpdateProfile(reduxUser.credentials.token, user)
-            console.log(fetched, "holi");
+            setUser((prevState) => ({
+                ...prevState,
+                name: fetched.data?.nickname || prevState.name,
+            }));
+            dispatch(updatedUser({ credentials: { ...reduxUser.credentials, user: { ...reduxUser.credentials.user, name: user.nickname } } }));
 
             setChange("disabled")
 
