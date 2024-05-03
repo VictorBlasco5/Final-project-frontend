@@ -31,18 +31,25 @@
 
 .buttonEditProfile {
     height: 2em;
-    width: 8em;
 
     display: flex;
     align-items: center;
     justify-content: center;
-    background-color: transparent;
 
+    background-color: transparent;
+    cursor: pointer;
+    border: 3.5px solid white;
+    outline: none;
+}
+
+.buttonEditProfile:hover {
+    background: linear-gradient(to bottom, transparent 0%, rgb(255, 255, 255) 100%);
     color: black;
-    border-color: rgb(255, 255, 255);
-    border-width: 0.2em;
-    margin: 1em;
-    font-family: 'Roboto', sans-serif;
+    border-color: white;
+}
+
+.buttonEditProfile:focus {
+    outline: none;
 }
 
 .positionProfile {
@@ -52,7 +59,6 @@
     color: black;
     background-color: transparent;
     text-align: center;
-    margin: 1em;
     border: none;
     font-size: 1.2em;
 }
@@ -93,8 +99,11 @@
 
 .positionCardProfile {
     display: flex;
-    margin-left: 9em;
     flex-wrap: wrap;
+    justify-content: flex-start;
+    margin-left: 9em;
+    margin-right: 9em;
+
 }
 
 .cardProfile {
@@ -117,4 +126,8 @@
     flex-direction: row;
     align-items: center;
     color: black;
+}
+
+.space {
+    width: 4em;
 }

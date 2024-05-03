@@ -89,8 +89,15 @@ export const ProfileEdit = () => {
         <>
             <div className="profileEdit">
                 <div className="cont">
-
-                    <img className="image" src={user.image} alt="image" />
+                    <div className="row">
+                        <CButton
+                            className={"buttonEditConfirm"}
+                            title={change === "" ? "Confirmar" : "Editar"}
+                            functionEmit={change === "" ? updateData : () => setChange("")}
+                        />
+                        <div className="space2"></div>
+                        <img className="image" src={user.image} alt="image" />
+                    </div>
                     <div className="row">URL foto:
                         <CTextArea
                             className={`urlImage`}
@@ -115,7 +122,7 @@ export const ProfileEdit = () => {
                     </div>
                     <div className="row">Nombre:
                         <CInput
-                            className={`input`}
+                            className={"name"}
                             type={"text"}
                             placeholder={""}
                             name={"name"}
@@ -126,7 +133,7 @@ export const ProfileEdit = () => {
                     </div>
                     <div className="row">Email:
                         <CInput
-                            className={`input`}
+                            className={`email`}
                             type={"text"}
                             placeholder={""}
                             name={"email"}
@@ -137,7 +144,7 @@ export const ProfileEdit = () => {
                     </div>
                     <div className="row">Nickname:
                         <CInput
-                            className={`input`}
+                            className={`name`}
                             type={"text"}
                             placeholder={""}
                             name={"nickname"}
@@ -148,7 +155,7 @@ export const ProfileEdit = () => {
                     </div>
                     <div className="row">Posición favorita:
                         <CInput
-                            className={`input`}
+                            className={`name`}
                             type={"text"}
                             placeholder={""}
                             name={"favorite_position"}
@@ -157,12 +164,6 @@ export const ProfileEdit = () => {
                             changeEmit={(e) => inputHandler(e)}
                         />
                     </div>
-
-                    <CButton
-                        className={"cButtonDesign"}
-                        title={change === "" ? "Confirmar" : "Editar"}
-                        functionEmit={change === "" ? updateData : () => setChange("")}
-                    />
                 </div >
             </div>
         </>
