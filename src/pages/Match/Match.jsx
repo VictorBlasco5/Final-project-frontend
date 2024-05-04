@@ -74,7 +74,7 @@ export const Match = () => {
                         {matches.map(match => (
                             <div className="card" key={match.id}>
                                 <div className="margin">Jugadores: {match.number_players} Apuntados:{match.signedCount}</div>
-                                <div className="margin">{match.information}</div>
+                                <div>{match.information.length > 35 ? match.information.substring(0, 35) + "..." : match.information}</div>
                                 <div className="margin">{formatDate(match.match_date)}</div>
                                 <div className="margin">{match.court.name}</div>
                                 <button className="buttonCard" onClick={() => signedMatch(match.id)}>

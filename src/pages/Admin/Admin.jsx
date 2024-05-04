@@ -154,8 +154,8 @@ export const Admin = () => {
                                             <td>{user.nickname}</td>
                                             <td>{user.email}</td>
                                             <td>{user.favorite_position}</td>
-                                            <td>{user.presentation}</td>
-                                            <td>{user.image}</td>
+                                            <td>{user.presentation.length > 80 ? user.presentation.substring(0, 80) + "..." : user.presentation}</td>
+                                            <td>{user.image.length > 50 ? user.image.substring(0, 50) + "..." : user.image}</td>
                                             <td>{user.role.name}</td>
                                             <td>
                                                 <button
@@ -194,7 +194,7 @@ export const Admin = () => {
                                         <tr key={match.id}>
                                             <td>{match.id}</td>
                                             <td>{match.number_players}</td>
-                                            <td>{match.information}</td>
+                                            <td>{match.information.length > 55 ? match.information.substring(0, 55) + "..." : match.information}</td>
                                             <td>{formatDate(match.match_date)}</td>
                                             <td>{formatDate(match.created_at)}</td>
                                             <td>{formatDate(match.updated_at)}</td>
