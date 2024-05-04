@@ -7,6 +7,7 @@ import { Match } from "../Match/Match"
 import { NewMatch } from "../NewMatch/NewMatch"
 import { Admin } from "../Admin/Admin"
 import { NewCourt } from "../NewCourt/NewCourt"
+import { MatchDetail } from "../MatchDetail/MatchDetail"
 
 
 export const Body = () => {
@@ -22,6 +23,7 @@ export const Body = () => {
             <Route path="/new-match" element={<NewMatch />} />
             <Route path="/admin" element={<Admin />} />
             <Route path="/new-court" element={<NewCourt />} />
+            <Route path="/match-detail" element={<MatchDetail />} />
         </Routes>
     )
 }
