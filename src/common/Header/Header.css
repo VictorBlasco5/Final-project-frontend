@@ -1,13 +1,33 @@
 .headerDesign {
     height: 12vh;
     width: 100vw;
-
+    
     background-color: burlywood;
 
     display: flex;
-    flex-direction: row;
-    justify-content: flex-end;
     align-items: center;
+    justify-content: space-between;
+}
+
+.ballNavBar {
+margin-left: 1em;
+}
+
+.ball {
+    color: black;
+    font-weight: bold;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.icon {
+    height: 3em;
+    width: 3em;
+}
+
+.positionNavBar {
+    display: flex;
 }
 
 .logOutDesign {
@@ -20,13 +40,7 @@
 }
 
 .logOutDesign:hover {
-
     transition: 0.3s;
     color: black;
     cursor: pointer;
-}
-
-.positionNavBar {
-    display: flex;
-    flex-direction: row;
 }

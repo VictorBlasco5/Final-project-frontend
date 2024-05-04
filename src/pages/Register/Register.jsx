@@ -80,7 +80,7 @@ export const Register = () => {
             <div className="registerDesign">
                 <CInput
                     className={`cInputDesign ${userError.nameError !== "" ? "inputDesignError" : ""}`}
-                    placeholder={"Name"}
+                    placeholder={"Nombre"}
                     type={"text"}
                     name={"name"}
                     value={user.name || ""}
@@ -113,7 +113,7 @@ export const Register = () => {
 
                 <CInput
                     className={`cInputDesign ${userError.passwordError !== "" ? "inputDesignError" : ""}`}
-                    placeholder={"Password"}
+                    placeholder={"Contraseña"}
                     type={"password"}
                     name={"password"}
                     value={user.password || ""}
