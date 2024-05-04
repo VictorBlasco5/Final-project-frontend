@@ -83,6 +83,7 @@ export const Login = () => {
                 <CInput
                     className={`cInputDesign ${userError.emailError !== "" ? "inputDesignError" : ""}`}
                     type="email"
+                    placeholder={"Email"}
                     name="email"
                     value={user.email || ""}
                     changeEmit={imputHandler}
@@ -91,6 +92,7 @@ export const Login = () => {
                 <div className="error">{userError.emailError}</div>
                 <CInput
                      className={`cInputDesign ${userError.passwordError !== "" ? "inputDesignError" : ""}`}
+                    placeholder={"Contraseña"}
                     type="password"
                     name="password"
                     value={user.password || ""}

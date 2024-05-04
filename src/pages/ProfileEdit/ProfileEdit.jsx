@@ -1,7 +1,7 @@
 import "./ProfileEdit.css"
 import { useNavigate } from "react-router-dom"
-import { userData } from "../../app/slices/userSlice"
-import { useSelector } from "react-redux"
+import { updatedUser, userData } from "../../app/slices/userSlice"
+import { useSelector, useDispatch } from "react-redux"
 import { useState, useEffect } from "react"
 import { CInput } from "../../common/CInput/CInput";
 import { GetProfile, UpdateProfile } from "../../services/apiCalls"
@@ -13,12 +13,9 @@ import { CTextArea } from "../../common/CTextArea/CTextArea"
 export const ProfileEdit = () => {
 
     const navigate = useNavigate()
-    const [change, setChange] = useState("disabled")
-
-    //conectar con redux lectura
-
+    const dispatch = useDispatch();
     const reduxUser = useSelector(userData)
-
+    const [change, setChange] = useState("disabled")
     const [loadedData, setLoadedData] = useState(false)
     const [user, setUser] = useState({
         nickname: "",
@@ -75,7 +72,11 @@ export const ProfileEdit = () => {
     const updateData = async () => {
         try {
             const fetched = await UpdateProfile(reduxUser.credentials.token, user)
-            console.log(fetched, "holi");
+            setUser((prevState) => ({
+                ...prevState,
+                name: fetched.data?.nickname || prevState.name,
+            }));
+            dispatch(updatedUser({ credentials: { ...reduxUser.credentials, user: { ...reduxUser.credentials.user, name: user.nickname } } }));
 
             setChange("disabled")
 
@@ -89,8 +90,15 @@ export const ProfileEdit = () => {
         <>
             <div className="profileEdit">
                 <div className="cont">
-
-                    <img className="image" src={user.image} alt="image" />
+                    <div className="row">
+                        <CButton
+                            className={"buttonEditConfirm"}
+                            title={change === "" ? "Confirmar" : "Editar"}
+                            functionEmit={change === "" ? updateData : () => setChange("")}
+                        />
+                        <div className="space2"></div>
+                        <img className="image" src={user.image} alt="image" />
+                    </div>
                     <div className="row">URL foto:
                         <CTextArea
                             className={`urlImage`}
@@ -115,7 +123,7 @@ export const ProfileEdit = () => {
                     </div>
                     <div className="row">Nombre:
                         <CInput
-                            className={`input`}
+                            className={"name"}
                             type={"text"}
                             placeholder={""}
                             name={"name"}
@@ -126,7 +134,7 @@ export const ProfileEdit = () => {
                     </div>
                     <div className="row">Email:
                         <CInput
-                            className={`input`}
+                            className={`email`}
                             type={"text"}
                             placeholder={""}
                             name={"email"}
@@ -137,7 +145,7 @@ export const ProfileEdit = () => {
                     </div>
                     <div className="row">Nickname:
                         <CInput
-                            className={`input`}
+                            className={`name`}
                             type={"text"}
                             placeholder={""}
                             name={"nickname"}
@@ -148,7 +156,7 @@ export const ProfileEdit = () => {
                     </div>
                     <div className="row">Posición favorita:
                         <CInput
-                            className={`input`}
+                            className={`name`}
                             type={"text"}
                             placeholder={""}
                             name={"favorite_position"}
@@ -157,12 +165,6 @@ export const ProfileEdit = () => {
                             changeEmit={(e) => inputHandler(e)}
                         />
                     </div>
-
-                    <CButton
-                        className={"cButtonDesign"}
-                        title={change === "" ? "Confirmar" : "Editar"}
-                        functionEmit={change === "" ? updateData : () => setChange("")}
-                    />
                 </div >
             </div>
         </>
