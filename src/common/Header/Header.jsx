@@ -1,6 +1,6 @@
 import "./Header.css"
 import { Navigator } from "../Navigator/Navigator"
-import ball from "../../../img/ball.png";
+import ball from "../../../img/logo.png";
 
 //redux
 import { useSelector, useDispatch } from "react-redux"
