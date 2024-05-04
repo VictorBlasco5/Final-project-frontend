@@ -1,17 +1,30 @@
 import "./Match.css";
 import { GetMatches, SignedUp } from "../../services/apiCalls";
 import { userData } from "../../app/slices/userSlice";
-import { useSelector } from "react-redux";
+import { updateDetail } from "../../app/slices/matchDetailSlice";
+import { useSelector, useDispatch } from "react-redux";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom"
 import add from "../../../img/add.png";
 
 export const Match = () => {
 
+    const dispatch = useDispatch()
     const reduxUser = useSelector(userData)
     const token = reduxUser.credentials.token || ({});
     const [matches, setMatches] = useState([])
     const navigate = useNavigate()
+
+    const handleMatch = async (match) => {
+        try {
+            dispatch(updateDetail({ detail: match }))
+            navigate("/match-detail")
+
+        } catch (error) {
+
+        }
+    };
+
     useEffect(() => {
 
         if (token) {
@@ -70,9 +83,12 @@ export const Match = () => {
                     <img className="add" src={add} alt="+" />
                 </button>
                 {matches.length > 0 ? (
-                    <div className="positionPostCard">
+                    <div className="positionMatchCard">
                         {matches.map(match => (
-                            <div className="card" key={match.id}>
+                            // <div key={match.id}>
+                                <button
+                                 className="card"
+                                onClick={() => handleMatch(match)}>
                                 <div className="margin">Jugadores: {match.number_players} Apuntados:{match.signedCount}</div>
                                 <div>{match.information.length > 35 ? match.information.substring(0, 35) + "..." : match.information}</div>
                                 <div className="margin">{formatDate(match.match_date)}</div>
@@ -80,7 +96,8 @@ export const Match = () => {
                                 <button className="buttonCard" onClick={() => signedMatch(match.id)}>
                                     Apuntarme
                                 </button>
-                            </div>
+                                </button>
+                            // </div>
                         ))}
                     </div>
                 ) : (

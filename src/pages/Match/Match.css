@@ -7,7 +7,7 @@
     overflow-y: auto;
 }
 
-.positionPostCard {
+.positionMatchCard {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
