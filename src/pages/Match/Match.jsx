@@ -72,32 +72,36 @@ export const Match = () => {
     }
 
     const formatDate = (dateString) => {
-        const options = { year: 'numeric', month: 'long', day: 'numeric', hour: 'numeric', minute: 'numeric', hour12: false };
+        const options = { month: 'long', day: 'numeric', hour: 'numeric', minute: 'numeric', hour12: false };
         return new Date(dateString).toLocaleDateString('es-US', options);
     };
 
     return (
         <>
             <div className="homeDesign">
-                <button className="buttonAdd" onClick={() => navigate("/new-match")}>
+                <button className="buttonNewMatch" onClick={() => navigate("/new-match")}>
                     <img className="add" src={add} alt="+" />
                 </button>
                 {matches.length > 0 ? (
                     <div className="positionMatchCard">
                         {matches.map(match => (
-                            // <div key={match.id}>
+                            <div className="card" key={match.id}>
                                 <button
-                                 className="card"
-                                onClick={() => handleMatch(match)}>
-                                <div className="margin">Jugadores: {match.number_players} Apuntados:{match.signedCount}</div>
-                                <div>{match.information.length > 35 ? match.information.substring(0, 35) + "..." : match.information}</div>
-                                <div className="margin">{formatDate(match.match_date)}</div>
-                                <div className="margin">{match.court.name}</div>
-                                <button className="buttonCard" onClick={() => signedMatch(match.id)}>
+                                    className="buttonMatchDetail"
+                                    onClick={() => handleMatch(match)}>
+                                    <div className="margin">{formatDate(match.match_date)}</div>
+                                    <div className="row">
+                                        <div className="margin">Jugadores: {match.number_players} </div>
+                                        <div className="space"></div>
+                                        <div className="margin">Apuntados:{match.signedCount}</div>
+                                    </div>
+                                    <div>{match.information.length > 35 ? match.information.substring(0, 35) + "..." : match.information}</div>
+                                    <div className="margin">{match.court.name}</div>
+                                </button>
+                                <button className="buttonAssistance" onClick={() => signedMatch(match.id)}>
                                     Apuntarme
                                 </button>
-                                </button>
-                            // </div>
+                            </div>
                         ))}
                     </div>
                 ) : (

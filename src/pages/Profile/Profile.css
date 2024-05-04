@@ -106,7 +106,7 @@
 
 }
 
-.cardProfile {
+.buttonCardProfile {
     height: 10em;
     width: 20em;
 
@@ -116,9 +116,11 @@
 
     background-color: rgb(241, 252, 225);
     margin: 1em;
-    border-radius: 0.5em;
-    border: 0;
-    color: black;
+    border: none;
+}
+
+.buttonCardProfile:focus {
+    outline: none;
 }
 
 .rowCardProfile {
@@ -129,5 +131,5 @@
 }
 
 .space {
-    width: 4em;
+    width: 3em;
 }

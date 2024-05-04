@@ -1,17 +1,18 @@
 import "./Profile.css"
 import { useNavigate } from "react-router-dom"
 import { userData } from "../../app/slices/userSlice"
-import { useSelector } from "react-redux"
+import { updateDetail } from "../../app/slices/matchDetailSlice";
+import { useSelector, useDispatch } from "react-redux"
 import { useState, useEffect } from "react"
 import { CInput } from "../../common/CInput/CInput";
 import { GetMatchesAssistance, GetProfile } from "../../services/apiCalls"
 import { CTextArea } from "../../common/CTextArea/CTextArea";
 
+
 export const Profile = () => {
 
     const navigate = useNavigate()
-
-    //conectar con redux lectura
+    const dispatch = useDispatch()
     const reduxUser = useSelector(userData)
     const token = reduxUser.credentials.token || ({});
     const [matches, setMatches] = useState([])
@@ -28,6 +29,16 @@ export const Profile = () => {
             ...prevState,
             [e.target.name]: e.target.value,
         }));
+    };
+
+    const handleMatch = async (match) => {
+        try {
+            dispatch(updateDetail({ detail: match }))
+            navigate("/match-detail")
+
+        } catch (error) {
+
+        }
     };
 
     useEffect(() => {
@@ -87,7 +98,7 @@ export const Profile = () => {
 
     const formatDate = (dateString) => {
         const options = { month: 'long', day: 'numeric', hour: 'numeric', minute: 'numeric', hour12: false };
-        return new Date(dateString).toLocaleDateString('es-US', options);
+        return new Date(dateString).toLocaleDateString('es-ES', options);
     };
 
 
@@ -133,7 +144,7 @@ export const Profile = () => {
                 {matches.length > 0 ? (
                     <div className="positionCardProfile">
                         {matches.map(match => (
-                            <div className="cardProfile" key={match.id}>
+                            <button className="buttonCardProfile" onClick={() => handleMatch(match)} key={match.id}>
                                 <div className="rowCardProfile">
                                     <div className="margin">Jugadores: {match.number_players}</div>
                                     <div className="space"></div>
@@ -142,7 +153,7 @@ export const Profile = () => {
                                 <div>{match.information.length > 35 ? match.information.substring(0, 35) + "..." : match.information}</div>
                                 <div className="margin">{formatDate(match.match_date)}</div>
                                 <div className="margin">{match.court.name}</div>
-                            </div>
+                            </button>
                         ))}
                     </div>
                 ) : (
