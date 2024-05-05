@@ -7,7 +7,7 @@
     overflow-y: auto;
 }
 
-.positionPostCard {
+.positionMatchCard {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
@@ -28,15 +28,32 @@
     border: 0;
 }
 
-.buttonCard {
+.buttonMatchDetail {
+    height: 15em;
+    width: 20em;
+
+    background-color: rgb(241, 252, 225);
+    border: none;
+}
+
+.buttonMatchDetail:focus {
+    outline: none;
+}
+
+.buttonAssistance {
     background-color: rgb(247, 206, 131);
+    border: none;
+}
+
+.buttonAssistance:focus {
+    outline: none;
 }
 
 .margin{
     margin: 0.5em;
 }
 
-.buttonAdd {
+.buttonNewMatch {
     height: 3em;
     width: 3em;
     background-color: transparent;
@@ -47,7 +64,7 @@
     margin: 1em 0em -4em 3em;
 }
 
-.buttonAdd:focus {
+.buttonNewMatch:focus {
     outline: none;
 }
 

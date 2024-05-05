@@ -1,17 +1,30 @@
 import "./Match.css";
 import { GetMatches, SignedUp } from "../../services/apiCalls";
 import { userData } from "../../app/slices/userSlice";
-import { useSelector } from "react-redux";
+import { updateDetail } from "../../app/slices/matchDetailSlice";
+import { useSelector, useDispatch } from "react-redux";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom"
 import add from "../../../img/add.png";
 
 export const Match = () => {
 
+    const dispatch = useDispatch()
     const reduxUser = useSelector(userData)
     const token = reduxUser.credentials.token || ({});
     const [matches, setMatches] = useState([])
     const navigate = useNavigate()
+
+    const handleMatch = async (match) => {
+        try {
+            dispatch(updateDetail({ detail: match }))
+            navigate("/match-detail")
+
+        } catch (error) {
+
+        }
+    };
+
     useEffect(() => {
 
         if (token) {
@@ -59,25 +72,33 @@ export const Match = () => {
     }
 
     const formatDate = (dateString) => {
-        const options = { year: 'numeric', month: 'long', day: 'numeric', hour: 'numeric', minute: 'numeric', hour12: false };
+        const options = { month: 'long', day: 'numeric', hour: 'numeric', minute: 'numeric', hour12: false };
         return new Date(dateString).toLocaleDateString('es-US', options);
     };
 
     return (
         <>
             <div className="homeDesign">
-                <button className="buttonAdd" onClick={() => navigate("/new-match")}>
+                <button className="buttonNewMatch" onClick={() => navigate("/new-match")}>
                     <img className="add" src={add} alt="+" />
                 </button>
                 {matches.length > 0 ? (
-                    <div className="positionPostCard">
+                    <div className="positionMatchCard">
                         {matches.map(match => (
                             <div className="card" key={match.id}>
-                                <div className="margin">Jugadores: {match.number_players} Apuntados:{match.signedCount}</div>
-                                <div>{match.information.length > 35 ? match.information.substring(0, 35) + "..." : match.information}</div>
-                                <div className="margin">{formatDate(match.match_date)}</div>
-                                <div className="margin">{match.court.name}</div>
-                                <button className="buttonCard" onClick={() => signedMatch(match.id)}>
+                                <button
+                                    className="buttonMatchDetail"
+                                    onClick={() => handleMatch(match)}>
+                                    <div className="margin">{formatDate(match.match_date)}</div>
+                                    <div className="row">
+                                        <div className="margin">Jugadores: {match.number_players} </div>
+                                        <div className="space"></div>
+                                        <div className="margin">Apuntados:{match.signedCount}</div>
+                                    </div>
+                                    <div>{match.information.length > 35 ? match.information.substring(0, 35) + "..." : match.information}</div>
+                                    <div className="margin">{match.court.name}</div>
+                                </button>
+                                <button className="buttonAssistance" onClick={() => signedMatch(match.id)}>
                                     Apuntarme
                                 </button>
                             </div>
