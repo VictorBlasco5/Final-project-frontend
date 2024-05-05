@@ -3,10 +3,88 @@
     width: 100vw;
 
     display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    align-items: center;
-    overflow-y: auto;
 
-    background-color: rgb(175, 226, 250);
+    background-color: transparent;
+}
+
+.leftHome {
+    height: 88vh;
+    width: 20vw;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.logoHome {
+    height: 25em;
+    width: 15em;
+}
+
+.textHome {
+    height: 44vh;
+    width: 80vw;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+
+    font-weight: bold;
+    font-size: 2em;
+}
+
+.downHome {
+    height: 44vh;
+    width: 80vw;
+
+    display: flex;
+    justify-content: flex-start;
+}
+
+.friends {
+    height: 44vh;
+    width: 26.6vw;
+
+    font-weight: bold;
+    color: black;
+}
+
+.logoFriends {
+    height: 8em;
+    width: 8em;
+
+    margin-top: 0.5em;
+    margin-bottom: 1em;
+}
+
+.numberOne {
+    height: 44vh;
+    width: 26.6vw;
+
+    font-weight: bold;
+    color: black;
+}
+
+.logoNumberOne {
+    height: 8em;
+    width: 8em;
+
+    margin-top: 0.5em;
+    margin-bottom: 1em;
+}
+
+.court {
+    height: 44vh;
+    width: 26.8vw;
+
+    font-weight: bold;
+    color: black;}
+
+.logoCourt {
+    height: 8em;
+    width: 8em;
+
+    margin-top: 0.5em;
+    margin-bottom: 1em;
 }
