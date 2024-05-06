@@ -1,8 +1,9 @@
 import "./NewMatch.css";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import { userData } from "../../app/slices/userSlice";
+import { updateDetail } from "../../app/slices/matchDetailSlice";
 import { CInput } from "../../common/CInput/CInput";
 import { validation } from "../../utils/functions";
 import { CreateMatch, DeleteMatch, GetCourts, GetMyMatchesCreated } from "../../services/apiCalls";
@@ -10,6 +11,7 @@ import { CTextArea } from "../../common/CTextArea/CTextArea";
 
 export const NewMatch = () => {
 
+    const dispatch = useDispatch()
     const reduxUser = useSelector(userData)
     const navigate = useNavigate()
     const token = reduxUser.credentials.token || ({});
@@ -38,6 +40,16 @@ export const NewMatch = () => {
     //         [e.target.name + "Error"]: error,
     //     }));
     // };
+
+    const handleMatch = async (match) => {
+        try {
+            dispatch(updateDetail({ detail: match }))
+            navigate("/match-detail")
+
+        } catch (error) {
+
+        }
+    };
 
     const inputHandler = (e) => {
         setMatches((prevState) => ({
@@ -86,8 +98,11 @@ export const NewMatch = () => {
     const getMyMatches = async () => {
         try {
             const fetched = await GetMyMatchesCreated(token)
-            console.log(fetched);
-            setMatches(fetched)
+            const signed = fetched.map(match => ({
+                ...match,
+                signedCount: match.signed_up?.length
+            }));
+            setMatches(signed)
         } catch (error) {
             console.log(error);
         }
@@ -185,10 +200,10 @@ export const NewMatch = () => {
                                         <div className="space"></div>
                                         <div className="margin">Apuntados:{match.signedCount}</div>
                                     </div>
-                                    <div>{match.information.length > 35 ? match.information.substring(0, 35) + "..." : match.information}</div>
+                                    <div className="margin">{match.information.length > 35 ? match.information.substring(0, 35) + "..." : match.information}</div>
                                     <div className="margin">{match.court.name}</div>
-                                    <button onClick={() => matchRemove(match.id)}>Eliminar</button>
                                 </button>
+                                <button className="buttonDeleteNewMatch" onClick={() => matchRemove(match.id)}>Eliminar</button>
                             </div>
                         ))}
                     </div>
