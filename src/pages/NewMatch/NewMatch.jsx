@@ -5,7 +5,7 @@ import { useSelector } from "react-redux";
 import { userData } from "../../app/slices/userSlice";
 import { CInput } from "../../common/CInput/CInput";
 import { validation } from "../../utils/functions";
-import { CreateMatch, GetCourts, GetMyMatchesCreated } from "../../services/apiCalls";
+import { CreateMatch, DeleteMatch, GetCourts, GetMyMatchesCreated } from "../../services/apiCalls";
 import { CTextArea } from "../../common/CTextArea/CTextArea";
 
 export const NewMatch = () => {
@@ -93,6 +93,17 @@ export const NewMatch = () => {
         }
     }
 
+    const matchRemove = async (matchId) => {
+        try {
+            await DeleteMatch(matchId, token)
+            const updatedMatches = await GetMyMatchesCreated(token);
+            setMatches(updatedMatches);
+
+        } catch (error) {
+            console.log(error)
+        }
+    }
+
     const formatDate = (dateString) => {
         const options = { month: 'long', day: 'numeric', hour: 'numeric', minute: 'numeric', hour12: false };
         return new Date(dateString).toLocaleDateString('es-US', options);
@@ -176,6 +187,7 @@ export const NewMatch = () => {
                                     </div>
                                     <div>{match.information.length > 35 ? match.information.substring(0, 35) + "..." : match.information}</div>
                                     <div className="margin">{match.court.name}</div>
+                                    <button onClick={() => matchRemove(match.id)}>Eliminar</button>
                                 </button>
                             </div>
                         ))}

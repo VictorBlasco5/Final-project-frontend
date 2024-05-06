@@ -10,7 +10,7 @@
 
 .createNewMatch {
     height: 88vh;
-    width: 35vw;
+    width: 30vw;
     background-color: lightseagreen;
     overflow-y: auto;
 
@@ -22,7 +22,7 @@
 
 .containerCards {
     height: 88vh;
-    width: 65vw;
+    width: 70vw;
 
     display: flex;
     align-items: flex-start;
@@ -36,7 +36,7 @@
     border-radius: 0.5em;
     background-color: wheat;
     margin: 1em;
-    margin-left: 4em;
+    margin-left: 0em;
 }
 
 .cardsButton {
