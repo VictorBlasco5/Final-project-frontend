@@ -1,12 +1,56 @@
-.newMatchDesign {
+.containerNewMatch {
     height: 88vh;
     width: 100vw;
+
+    display: flex;
+    flex-direction: row;
+
+    background-color: limegreen;
+}
+
+.createNewMatch {
+    height: 88vh;
+    width: 35vw;
     background-color: lightseagreen;
     overflow-y: auto;
 
     display: flex;
     align-items: center;
+    justify-content: center;
     flex-direction: column;
+}
+
+.containerCards {
+    height: 88vh;
+    width: 65vw;
+
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+    overflow-y: auto;
+
+    background-color:lightseagreen;
+}
+
+.cardNewMatch {
+    border-radius: 0.5em;
+    background-color: wheat;
+    margin: 1em;
+    margin-left: 4em;
+}
+
+.cardsButton {
+    border: none;
+}
+
+.cardsButton:focus {
+    outline: none;
+}
+
+.position {
+    display: flex;
+    flex-wrap: wrap;
+    margin: 1em;
 }
 
 .cInputNewMatch {
@@ -29,7 +73,7 @@
     color: black;
 }
 
-.buttonCreateMatch{
+.buttonCreateMatch {
     width: 9em;
     height: 2.5em;
     border-radius: 0.5em;
@@ -41,12 +85,11 @@
     cursor: pointer;
 }
 
-.buttonCreateMatch:hover{
+.buttonCreateMatch:hover {
     background-color: rgb(238, 25, 25);
     color: white;
 }
 
-.buttonCreateMatch:focus{
+.buttonCreateMatch:focus {
     outline: none;
 }
-
