@@ -30,8 +30,8 @@ export const Header = () => {
 
                 {
                     reduxUser?.credentials?.token
-                        ? (
-                            <div className="positionNavBar">
+                    ? (
+                        <div className="positionNavBar">
                                 {reduxUser?.credentials?.user?.roleName === "admin"
                                     ? (
                                         <div ><Navigator title={"Admin"} path={"/admin"} /></div>
@@ -40,20 +40,20 @@ export const Header = () => {
                                     )}
                                 {reduxUser?.credentials?.user?.roleName === "user"
                                     ? (
-                                        <div > <Navigator title={"Matches"} path={"/"} /></div>
+                                        <div > <Navigator title={"Partidos"} path={"/matches"} /></div>
                                     ) : (
                                         <div></div>
                                     )}
                                 <Navigator title={reduxUser?.credentials?.user?.name} path="/profile" />
                                 < div className="logOutDesign"
                                     onClick={() => dispatch(logout({ credentials: "" }))}>
-                                    Log out
+                                    Cerrar sesión
                                 </div>
                             </div>
                         ) : (
                             <div className="positionNavBar">
-                                <Navigator title={"Register"} path={"/register"} />
-                                <Navigator title={"Login"} path={"/login"} />
+                                <Navigator title={"Registro"} path={"/register"} />
+                                <Navigator title={"Iniciar sesión"} path={"/login"} />
                             </div>
                         )
                 }

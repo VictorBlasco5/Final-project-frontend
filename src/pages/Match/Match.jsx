@@ -78,7 +78,7 @@ export const Match = () => {
 
     return (
         <>
-            <div className="homeDesign">
+            <div className="matchDesign">
                 <button className="buttonNewMatch" onClick={() => navigate("/new-match")}>
                     <img className="add" src={add} alt="+" />
                 </button>

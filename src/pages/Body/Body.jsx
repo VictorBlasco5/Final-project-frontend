@@ -8,6 +8,7 @@ import { NewMatch } from "../NewMatch/NewMatch"
 import { Admin } from "../Admin/Admin"
 import { NewCourt } from "../NewCourt/NewCourt"
 import { MatchDetail } from "../MatchDetail/MatchDetail"
+import { Home } from "../Home/Home"
 
 
 export const Body = () => {
@@ -15,7 +16,8 @@ export const Body = () => {
     return (
         <Routes>
             <Route path="*" element={<Navigate to={"/"} replace/>} />
-            <Route path="/" element={<Match />} />
+            <Route path="/" element={<Home />} />
+            <Route path="/matches" element={<Match />} />
             <Route path="/register" element={<Register />} />
             <Route path="/login" element={<Login />} />
             <Route path="/profile" element={<Profile />} />
