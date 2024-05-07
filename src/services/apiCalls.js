@@ -284,6 +284,31 @@ export const AddFavorite = async (token, courtId) => {
     }
 }
 
+export const GetMyFavoriteCourts = async (token) => {
+
+    const options = {
+        method: "GET",
+        headers: {
+            "Content-Type": "application/json",
+            "Authorization": `Bearer ${token}`
+        },
+    };
+
+    try {
+        const response = await fetch(`${root}courts/fav`, options);
+
+        const data = await response.json();
+
+        if (!data.success) {
+            throw new Error(data.message);
+        }
+
+        return data;
+    } catch (error) {
+        return error;
+    }
+}
+
 export const CreateCourt = async (token, courtData) => {
     const options = {
         method: "POST",
