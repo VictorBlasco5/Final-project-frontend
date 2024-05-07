@@ -9,6 +9,8 @@ import { Admin } from "../Admin/Admin"
 import { NewCourt } from "../NewCourt/NewCourt"
 import { MatchDetail } from "../MatchDetail/MatchDetail"
 import { Home } from "../Home/Home"
+import { Court } from "../Court/Court"
+import { FavoriteCourt } from "../FavoriteCourt/FavoriteCourt"
 
 
 export const Body = () => {
@@ -26,6 +28,8 @@ export const Body = () => {
             <Route path="/admin" element={<Admin />} />
             <Route path="/new-court" element={<NewCourt />} />
             <Route path="/match-detail" element={<MatchDetail />} />
+            <Route path="/court" element={<Court />} />
+            <Route path="/favorite-court" element={<FavoriteCourt />} />
         </Routes>
     )
 }

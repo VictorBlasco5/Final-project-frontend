@@ -82,7 +82,7 @@ export const NewMatch = () => {
 
 
     useEffect(() => {
-        const fetchData = async () => {
+        const getCourts = async () => {
             try {
                 if (token) {
                     const fetched = await GetCourts(token);
@@ -93,7 +93,7 @@ export const NewMatch = () => {
             }
         };
 
-        fetchData();
+        getCourts();
     }, [token]);
 
     const newMatch = async () => {

@@ -1,6 +1,7 @@
 import "./Header.css"
 import { Navigator } from "../Navigator/Navigator"
 import logoPerson from "../../../img/logo.png";
+import star from "../../../img/star.png";
 import { useNavigate } from "react-router-dom"
 
 //redux
@@ -32,19 +33,25 @@ export const Header = () => {
                 reduxUser?.credentials?.token
                     ? (
                         <div className="positionNavBar">
+
                             {reduxUser?.credentials?.user?.roleName === "admin"
                                 ? (
-                                    <div ><Navigator title={"Admin"} path={"/admin"} /></div>
+                                    <div className="navigatorDesign"><Navigator title={"Admin"} path={"/admin"} /></div>
                                 ) : (
                                     <div></div>
                                 )}
                             {reduxUser?.credentials?.user?.roleName === "user"
                                 ? (
-                                    <div > <Navigator title={"Partidos"} path={"/matches"} /></div>
+                                    <div className="navigatorDesign">
+                                        <Navigator title={<img className="star" src={star} alt="Favortios" />} path={"/favorite-court"} />
+                                        <Navigator title={"Partidos"} path={"/matches"} />
+                                        <Navigator title={"Pistas"} path={"/court"} />
+                                    </div>
                                 ) : (
                                     <div></div>
                                 )}
                             <Navigator title={reduxUser?.credentials?.user?.name} path="/profile" />
+
                             < div className="logOutDesign"
                                 onClick={() => {
                                     dispatch(logout({ credentials: "" }));

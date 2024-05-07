@@ -26,11 +26,18 @@ margin-left: 1em;
     width: 3.5em;
 }
 
+.star {
+    height: 2em;
+    width: 2em;
+}
+
 .positionNavBar {
     display: flex;
 }
 
 .logOutDesign {
+    display: flex;
+    align-items: center;
     color: gray;
     font-weight: bold;
 

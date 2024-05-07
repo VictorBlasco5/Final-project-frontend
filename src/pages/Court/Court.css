@@ -1,0 +1,44 @@
+.CourtDesign {
+    height: 88vh;
+    width: 100vw;
+
+    background-color: mediumturquoise;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: f;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.courtCard {
+    height: 6em;
+    width: 35em;
+    background-color: tomato;
+    margin: 0.5em;
+
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+}
+
+.buttonFav {
+    height: 2em;
+    width: 2em;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.textCourt {
+    font-size: 1.3em;
+    font-weight: bold;
+}
+
+.starCourt {
+    height: 2em;
+    width: 2em;
+
+    cursor: pointer;
+}

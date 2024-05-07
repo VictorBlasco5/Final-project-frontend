@@ -154,8 +154,10 @@ export const Admin = () => {
                                             <td>{user.nickname}</td>
                                             <td>{user.email}</td>
                                             <td>{user.favorite_position}</td>
-                                            <td>{user.presentation.length > 80 ? user.presentation.substring(0, 80) + "..." : user.presentation}</td>
-                                            <td>{user.image.length > 50 ? user.image.substring(0, 50) + "..." : user.image}</td>
+                                            <td>{user.presentation}</td>
+                                            <td>{user.image}</td>
+                                            {/* <td>{user.presentation.length > 80 ? user.presentation.substring(0, 80) + "..." : user.presentation}</td> */}
+                                            {/* <td>{user.image.length > 50 ? user.image.substring(0, 50) + "..." : user.image}</td> */}
                                             <td>{user.role.name}</td>
                                             <td>
                                                 <button

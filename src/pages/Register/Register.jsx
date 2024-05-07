@@ -65,7 +65,7 @@ export const Register = () => {
             setMsgSuccessfully(fetched.message)
 
             setTimeout(() => {
-                navigate("/")
+                navigate("/login")
             }, 1200)
 
         } catch (error) {

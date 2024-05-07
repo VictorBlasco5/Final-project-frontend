@@ -1,15 +1,18 @@
 .navigatorDesign {
+    display: flex;
+    align-items: center;
+
     color: gray;
     font-weight: bold;
 
     transition: 0.2s;
 
-    margin: 1em;
+    margin: 0.5em;
 
 }
 
 .navigatorDesign:hover {
-    color:black;
+    color: black;
     cursor: pointer;
     transition: 0.2s;
 
