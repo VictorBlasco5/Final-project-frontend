@@ -6,8 +6,9 @@ import { userData } from "../../app/slices/userSlice";
 import { updateDetail } from "../../app/slices/matchDetailSlice";
 import { CInput } from "../../common/CInput/CInput";
 import { validation } from "../../utils/functions";
-import { CreateMatch, DeleteMatch, GetCourts, GetMyMatchesCreated } from "../../services/apiCalls";
+import { CreateMatch, DeleteMatch, GetCourts, GetMyMatchesCreated, UpdateMatch } from "../../services/apiCalls";
 import { CTextArea } from "../../common/CTextArea/CTextArea";
+import { CButton } from "../../common/CButton/CButton";
 
 export const NewMatch = () => {
 
@@ -22,9 +23,16 @@ export const NewMatch = () => {
         match_date: "",
         court_id: "",
     })
+    const [updateMatches, setUpdateMatches] = useState({
+        number_players: "",
+        information: "",
+        match_date: "",
+        court_id: "",
+    })
     const [msgError, setMsgError] = useState("");
     const [msgSuccessfully, setMsgSuccessfully] = useState("");
     const [courts, setCourts] = useState([{}])
+    const [change, setChange] = useState("disabled")
     // const [matchError, setMatchError] = useState({
     //     number_playersError: "",
     //     informationError: "",
@@ -57,6 +65,13 @@ export const NewMatch = () => {
             [e.target.name]: e.target.value,
         }))
     }
+
+    const inputHandlerUpdate = (e) => {
+        setUpdateMatches((prevState) => ({
+            ...prevState,
+            [e.target.name]: e.target.value,
+        }));
+    };
 
     useEffect(() => {
 
@@ -108,6 +123,19 @@ export const NewMatch = () => {
         }
     }
 
+    const updateMatch = async (matchId) => {
+        try {
+            const fetched = await UpdateMatch(reduxUser.credentials.token, matchId, updateMatches);
+            console.log(fetched, "fetched");
+            
+            setChange("disabled");
+            
+            getMyMatches();
+        } catch (error) {
+            console.log(error);
+        }
+    }
+
     const matchRemove = async (matchId) => {
         try {
             await DeleteMatch(matchId, token)
@@ -127,17 +155,18 @@ export const NewMatch = () => {
     return (
         <div className="containerNewMatch">
             <div className="createNewMatch">
-
-                <CInput
+                <select
                     className={`cInputNewMatch`}
-                    type="text"
                     name={"number_players"}
-                    placeholder={"Numero de jugadores"}
                     value={matches.number_players || ""}
-                    disabled={""}
-                    changeEmit={inputHandler}
-                // onBlurFunction={(e) => checkError(e)}
-                />
+                    onChange={inputHandler}
+                >
+                    <option value="">Nº de jugadores</option>
+                    <option value="4">4 jugadores</option>
+                    <option value="6">6 jugadores</option>
+                    <option value="8">8 jugadores</option>
+                    <option value="10">10 jugadores</option>
+                </select>
                 <CTextArea
                     className={`cInputNewMatchInfo`}
                     type="text"
@@ -162,7 +191,7 @@ export const NewMatch = () => {
                         ? (
                             <select className="cInputNewMatch" name="court_id" onChange={inputHandler} defaultValue={""} >
                                 <option value="" disabled>
-                                    Select court
+                                    Selecciona pista
                                 </option>
                                 {courts.map(
                                     court => {
@@ -186,24 +215,72 @@ export const NewMatch = () => {
                 <div className="successfully">{msgSuccessfully} </ div>
                 <div className="error">{msgError} </ div>
             </div>
+
+
+
             <div className="containerCards">
                 {matches.length > 0 ? (
                     <div className="position">
                         {matches.map(match => (
                             <div className="cardNewMatch" key={match.id}>
-                                <button
-                                    className="cardsButton"
-                                    onClick={() => handleMatch(match)}>
-                                    <div className="margin">{formatDate(match.match_date)}</div>
-                                    <div className="row">
-                                        <div className="margin">Jugadores: {match.number_players} </div>
-                                        <div className="space"></div>
-                                        <div className="margin">Apuntados:{match.signedCount}</div>
-                                    </div>
-                                    <div className="margin">{match.information.length > 35 ? match.information.substring(0, 35) + "..." : match.information}</div>
-                                    <div className="margin">{match.court.name}</div>
-                                </button>
-                                <button className="buttonDeleteNewMatch" onClick={() => matchRemove(match.id)}>Eliminar</button>
+                                {/* <button */}
+                                {/* className="cardsButton" */}
+                                {/* onClick={() => handleMatch(match)}> */}
+                                <CInput
+                                    className={`dateNewMatch`}
+                                    type={"text"}
+                                    placeholder={""}
+                                    name={"match_date"}
+                                    value={formatDate(match.match_date) || ""} // Cambiar de match.xxx a updateMatchItem.xxx
+                                    disabled={change}
+                                    changeEmit={(e) => inputHandlerUpdate(e)}
+                                />
+                                <CInput
+                                    className={`playersNewMatch`}
+                                    type={"text"}
+                                    placeholder={""}
+                                    name={"number_players"}
+                                    value={match.number_players || ""}
+                                    disabled={change}
+                                    changeEmit={(e) => inputHandlerUpdate(e)}
+                                />
+                                <CInput
+                                    className={`signedNewMatch`}
+                                    type={"text"}
+                                    placeholder={""}
+                                    name={"signedCount"}
+                                    value={match.signedCount || ""}
+                                    disabled={change}
+                                    changeEmit={(e) => inputHandlerUpdate(e)}
+                                />
+                                <CInput
+                                    className={`informationNewMatch`}
+                                    type={"text"}
+                                    placeholder={""}
+                                    name={"information"}
+                                    value={match.information.length > 35 ? match.information.substring(0, 35) + "..." : match.information || ""}
+                                    disabled={change}
+                                    changeEmit={(e) => inputHandlerUpdate(e)}
+                                />
+                                <CInput
+                                    className={`courtNewMatch`}
+                                    type={"text"}
+                                    placeholder={""}
+                                    name={"court"}
+                                    value={match.court_id || ""}
+                                    disabled={change}
+                                    changeEmit={(e) => inputHandlerUpdate(e)}
+                                />
+                                {/* </button> */}
+                                <div className="row">
+                                    <CButton
+                                        className={"buttonDeleteNewMatch"}
+                                        title={change === "" ? "Confirmar" : "Editar"}
+                                        functionEmit={change === "" ? () => updateMatch(match.id) : () => handleEditClick()} // Aquí actualizamos la función del botón "Editar"
+                                    />
+                                    {/* <button className="buttonDeleteNewMatch" onClick={() => updateMatch(match.id)}>Actualizar</button> */}
+                                    <button className="buttonDeleteNewMatch" onClick={() => matchRemove(match.id)}>Eliminar</button>
+                                </div>
                             </div>
                         ))}
                     </div>

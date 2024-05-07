@@ -62,6 +62,54 @@
     margin: 1em;
 }
 
+.dateNewMatch {
+    height: 2em;
+    width: 10em;
+
+    border: none;
+    /* background-color: wheat; */
+    color: black;
+    margin: 0.1em;
+}
+
+
+
+.playersNewMatch {
+    height: 2em;
+    width: 2em;
+
+    border: none;
+    margin: 0.1em;
+
+}
+
+.signedNewMatch {
+    height: 2em;
+    width: 2em;
+
+    border: none;
+    margin: 0.1em;
+
+}
+
+.informationNewMatch{
+    height: 2em;
+    width: 18em;
+
+    border: none;
+    margin: 0.1em;
+
+}
+
+.courtNewMatch {
+    height: 2em;
+    width: 18em;
+
+    border: none;
+    margin: 0.1em;
+
+}
+
 .buttonDeleteNewMatch {
     height: 1em;
     width: 5em;
@@ -74,6 +122,7 @@
     margin: 0.5em;
     border-radius: 0.2em;
     border: none;
+    cursor: pointer;
 }
 
 .buttonDeleteNewMatch:hover {

@@ -179,6 +179,33 @@ export const GetMyMatchesCreated = async (token) => {
     }
 }
 
+export const UpdateMatch = async (token, data, matchId) => {
+
+    const options = {
+        method: "PUT",
+        headers: {
+            "Content-Type": "application/json",
+            "Authorization": `Bearer ${token}`
+        },
+        body: JSON.stringify(data)
+    };
+
+    try {
+        const response = await fetch(`${root}matches/${matchId}`, options);
+
+        const data = await response.json();
+        console.log(data,"data")
+
+        if (!data.success) {
+            throw new Error(data.message);
+        }
+
+        return data;
+    } catch (error) {
+        return error;
+    }
+}
+
 export const DeleteMatch = async (matchId, token) => {
 
     const options = {
