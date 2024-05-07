@@ -9,11 +9,11 @@
     justify-content: space-between;
 }
 
-.ballNavBar {
+.logoNavBar {
 margin-left: 1em;
 }
 
-.ball {
+.logoPerson {
     color: black;
     font-weight: bold;
     display: flex;

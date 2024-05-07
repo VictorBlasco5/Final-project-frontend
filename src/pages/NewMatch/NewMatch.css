@@ -10,7 +10,7 @@
 
 .createNewMatch {
     height: 88vh;
-    width: 35vw;
+    width: 30vw;
     background-color: lightseagreen;
     overflow-y: auto;
 
@@ -22,7 +22,7 @@
 
 .containerCards {
     height: 88vh;
-    width: 65vw;
+    width: 70vw;
 
     display: flex;
     align-items: flex-start;
@@ -33,13 +33,21 @@
 }
 
 .cardNewMatch {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+
     border-radius: 0.5em;
     background-color: wheat;
     margin: 1em;
-    margin-left: 4em;
+    margin-left: 0em;
 }
 
 .cardsButton {
+    display: flex;
+    flex-direction: column;
+
+    background-color: wheat;
     border: none;
 }
 
@@ -50,12 +58,86 @@
 .position {
     display: flex;
     flex-wrap: wrap;
+
     margin: 1em;
 }
+
+.dateNewMatch {
+    height: 2em;
+    width: 10em;
+
+    border: none;
+    /* background-color: wheat; */
+    color: black;
+    margin: 0.1em;
+}
+
+
+
+.playersNewMatch {
+    height: 2em;
+    width: 2em;
+
+    border: none;
+    margin: 0.1em;
+
+}
+
+.signedNewMatch {
+    height: 2em;
+    width: 2em;
+
+    border: none;
+    margin: 0.1em;
+
+}
+
+.informationNewMatch{
+    height: 2em;
+    width: 18em;
+
+    border: none;
+    margin: 0.1em;
+
+}
+
+.courtNewMatch {
+    height: 2em;
+    width: 18em;
+
+    border: none;
+    margin: 0.1em;
+
+}
+
+.buttonDeleteNewMatch {
+    height: 1em;
+    width: 5em;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background-color: rgb(192, 191, 191);
+    margin: 0.5em;
+    border-radius: 0.2em;
+    border: none;
+    cursor: pointer;
+}
+
+.buttonDeleteNewMatch:hover {
+    background-color: rgb(238, 25, 25);
+    color: white;
+}
+
+.buttonDeleteNewMatch:focus {
+    outline: none;
+}  
 
 .cInputNewMatch {
     width: 13em;
     height: 2em;
+
     border-radius: 0.5em;
     margin-top: 2em;
     border: 0.1em solid black;
@@ -64,9 +146,9 @@
 .cInputNewMatchInfo {
     height: 5em;
     width: 20em;
+
     border-radius: 0.5em;
     border: 0.1em solid black;
-
     margin-top: 2em;
     resize: none;
     font-family: 'Roboto', sans-serif;
@@ -76,6 +158,7 @@
 .buttonCreateMatch {
     width: 9em;
     height: 2.5em;
+
     border-radius: 0.5em;
     margin-top: 2em;
     background-color: lightcoral;
