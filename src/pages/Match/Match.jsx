@@ -14,6 +14,7 @@ export const Match = () => {
     const token = reduxUser.credentials.token || ({});
     const [matches, setMatches] = useState([])
     const navigate = useNavigate()
+    const userId = reduxUser.credentials.user.userId || ({});
 
     const handleMatch = async (match) => {
         try {
@@ -106,7 +107,7 @@ export const Match = () => {
                                     <div className="margin">{match.court.name}</div>
                                 </button>
                                 <button className="buttonAssistance" onClick={() => signedMatch(match.id)}>
-                                    Apuntarme
+                                    {match.signed_up.includes(userId) ? "Borrarme" : "Apuntarme"}
                                 </button>
                             </div>
                         ))}
