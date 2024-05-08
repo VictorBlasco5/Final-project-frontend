@@ -33,6 +33,10 @@
     height: 15em;
     width: 20em;
 
+    display: flex;
+    justify-content: flex-start;
+    flex-direction: column;
+
     background-color: transparent;
     border: none;
 }
@@ -66,6 +70,10 @@
     margin: 0.5em;
 }
 
+.date {
+    font-weight: bold;
+}
+
 .buttonNewMatch {
     height: 3em;
     width: 3em;
@@ -89,7 +97,7 @@
 }
 
 .add:hover {
-    background-color: rgba(187, 181, 169, 0.589);
+    background-color: rgba(255, 255, 255, 0.5);
     border-radius: 0.5em;
 }
 

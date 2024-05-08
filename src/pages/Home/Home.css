@@ -27,11 +27,20 @@
 
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: flex-start;
     flex-direction: column;
 
     font-weight: bold;
     font-size: 2em;
+    color: black;
+}
+
+.title{
+    font-size: 3em;
+}
+
+.subtitle {
+    font-size: 0.9em;
 }
 
 .downHome {
@@ -45,6 +54,11 @@
 .friends {
     height: 44vh;
     width: 26.6vw;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
 
     font-weight: bold;
     color: black;
@@ -61,6 +75,11 @@
 .numberOne {
     height: 44vh;
     width: 26.6vw;
+   
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
 
     font-weight: bold;
     color: black;
@@ -78,8 +97,14 @@
     height: 44vh;
     width: 26.8vw;
 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    
     font-weight: bold;
-    color: black;}
+    color: black;
+}
 
 .logoCourt {
     height: 8em;
@@ -87,4 +112,9 @@
 
     margin-top: 0.5em;
     margin-bottom: 1em;
+}
+
+.textLogos {
+    height: 6em;
+    width: 15em;
 }

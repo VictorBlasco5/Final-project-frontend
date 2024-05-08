@@ -37,8 +37,8 @@ export const MatchDetail = () => {
             height: '88vh',
         }}>
             <div className="cardMatchDetail">
-                <div className="text"> {formatDate(detailRdx?.detail?.match_date)}</div>
-                <div className="row margin">
+                <div className="text date"> {formatDate(detailRdx?.detail?.match_date)}</div>
+                <div className="rowCard margin">
                     <div>Jugadores: {detailRdx?.detail?.number_players} </div>
                     <div className="space2"></div>
                     <div>Apuntados:{detailRdx?.detail?.signedCount}</div>

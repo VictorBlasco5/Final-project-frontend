@@ -4,15 +4,12 @@
 
     color: black;
     font-weight: bold;
-
     transition: 0.2s;
-
     margin: 0.5em;
-
 }
 
 .navigatorDesign:hover {
-    color: black;
+    color: gray;
     cursor: pointer;
     transition: 0.2s;
 

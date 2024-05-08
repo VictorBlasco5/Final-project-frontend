@@ -43,7 +43,7 @@ export const Header = () => {
                             {reduxUser?.credentials?.user?.roleName === "user"
                                 ? (
                                     <div className="navigatorDesign">
-                                        <Navigator title={<img className="star" src={star} alt="Favortios" />} path={"/favorite-court"} />
+                                        <Navigator title={<img className="starHeader" src={star} alt="Favortios" />} path={"/favorite-court"} />
                                         <Navigator title={"Partidos"} path={"/matches"} />
                                         <Navigator title={"Pistas"} path={"/court"} />
                                     </div>

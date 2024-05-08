@@ -152,13 +152,14 @@ export const Profile = () => {
                     <div className="positionCardProfile">
                         {matches.map(match => (
                             <button className="buttonCardProfile" onClick={() => handleMatch(match)} key={match.id}>
+                                <div className="margin date">{formatDate(match.match_date)}</div>
                                 <div className="rowCardProfile">
                                     <div className="margin">Jugadores: {match.number_players}</div>
                                     <div className="space"></div>
                                     <div className="margin"> Apuntados: {match.signedCount}</div>
                                 </div>
-                                <div>{match.information.length > 35 ? match.information.substring(0, 35) + "..." : match.information}</div>
-                                <div className="margin">{formatDate(match.match_date)}</div>
+                                <div className="margin">{match.information.length > 35 ? match.information.substring(0, 35) + "..." : match.information}</div>
+                                
                                 <div className="margin">{match.court.name}</div>
                             </button>
                         ))}

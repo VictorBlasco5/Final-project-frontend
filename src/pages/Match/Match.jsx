@@ -96,13 +96,13 @@ export const Match = () => {
                                 <button
                                     className="buttonMatchDetail"
                                     onClick={() => handleMatch(match)}>
-                                    <div className="margin">{formatDate(match.match_date)}</div>
+                                    <div className="margin date">{formatDate(match.match_date)}</div>
                                     <div className="rowCard">
                                         <div className="margin">Jugadores: {match.number_players} </div>
                                         <div className="space"></div>
-                                        <div className="margin">Apuntados:{match.signedCount}</div>
+                                        <div className="margin">Apuntados: {match.signedCount}</div>
                                     </div>
-                                    <div>{match.information.length > 35 ? match.information.substring(0, 35) + "..." : match.information}</div>
+                                    <div className="margin">{match.information.length > 35 ? match.information.substring(0, 35) + "..." : match.information}</div>
                                     <div className="margin">{match.court.name}</div>
                                 </button>
                                 <button className="buttonAssistance" onClick={() => signedMatch(match.id)}>
