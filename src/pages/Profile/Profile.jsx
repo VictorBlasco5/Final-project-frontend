@@ -104,7 +104,14 @@ export const Profile = () => {
 
     return (
         <>
-            <div className="profileDesign">
+            <div className="profileDesign"
+            style={{
+                backgroundImage: `url(${('../../../img/court-70.jpg')})`,
+                backgroundSize: 'cover',
+                backgroundPosition: 'center',
+                width: '100vw',
+                height: '88vh',
+            }}>
                 <div className="dataProfile">
                     <button className="buttonEditProfile" onClick={() => navigate("/profile-edit")}>Editar perfil</button>
                     <CInput

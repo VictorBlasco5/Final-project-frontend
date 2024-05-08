@@ -153,7 +153,14 @@ export const NewMatch = () => {
     };
 
     return (
-        <div className="containerNewMatch">
+        <div className="containerNewMatch"
+        style={{
+            backgroundImage: `url(${('../../../img/court-70.jpg')})`,
+            backgroundSize: 'cover',
+            backgroundPosition: 'center',
+            width: '100vw',
+            height: '88vh',
+        }}>
             <div className="createNewMatch">
                 <select
                     className={`cInputNewMatch`}

@@ -37,7 +37,14 @@ export const Court = () => {
     }
 
     return (
-        <div className="CourtDesign">
+        <div className="CourtDesign"
+        style={{
+            backgroundImage: `url(${('../../../img/court-70.jpg')})`,
+            backgroundSize: 'cover',
+            backgroundPosition: 'center',
+            width: '100vw',
+            height: '88vh',
+        }}>
             {courts.map((court) => (
                 <div className="courtCard" key={court.id}>
                     <button className="buttonFav" onClick={() => addFavoriteCourt(court.id)}>

@@ -20,7 +20,7 @@
     align-items: center;
     justify-content: center;
 
-    background-color: rgb(241, 252, 225);
+    background-color: rgba(187, 181, 169, 0.589);
     margin: 1em;
     border-radius: 0.5em;
     border: 0;
@@ -28,4 +28,5 @@
 
 .text {
     margin: 0.5em;
+    color: black;
 }

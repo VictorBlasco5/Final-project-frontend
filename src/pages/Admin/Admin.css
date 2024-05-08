@@ -2,8 +2,6 @@
     height: 88vh;
     width: 100vw;
 
-    background-color: rgb(222, 255, 254);
-
     display: flex;
     flex-direction: column;
     justify-content: flex-start;

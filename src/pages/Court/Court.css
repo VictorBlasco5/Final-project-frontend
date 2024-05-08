@@ -2,11 +2,8 @@
     height: 88vh;
     width: 100vw;
 
-    background-color: mediumturquoise;
-
     display: flex;
     flex-direction: column;
-    justify-content: f;
     align-items: center;
     flex-wrap: wrap;
 }
@@ -14,9 +11,10 @@
 .courtCard {
     height: 6em;
     width: 35em;
-    background-color: tomato;
+    background-color: rgba(255, 255, 255, 0.5);
     margin: 0.5em;
 
+    border-radius: 0.3em;
     display: flex;
     align-items: center;
     flex-direction: row;
@@ -29,6 +27,16 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    border: 0em;
+    background-color: transparent;
+}
+
+.buttonFav:hover {
+    border:0em;
+}
+
+.buttonFav:focus {
+    outline: none;
 }
 
 .textCourt {
@@ -41,4 +49,9 @@
     width: 2em;
 
     cursor: pointer;
+    background-color: transparent;
+}
+
+.starCourt:hover {
+    transform: scale(1.15);
 }

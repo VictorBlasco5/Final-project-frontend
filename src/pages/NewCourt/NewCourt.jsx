@@ -39,7 +39,14 @@ export const NewCourt = () => {
     }
 
     return (
-        <div className="newCourtDesign">
+        <div className="newCourtDesign"
+        style={{
+            backgroundImage: `url(${('../../../img/court-70.jpg')})`,
+            backgroundSize: 'cover',
+            backgroundPosition: 'center',
+            width: '100vw',
+            height: '88vh',
+        }}>
             <CInput
                 className={`cInputNewMatch`}
                 type="text"

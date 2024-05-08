@@ -8,6 +8,13 @@ import court from "../../../img/court.png";
 export const Home = () => {
     return (
         <div className="homeDesign"
+        style={{
+            backgroundImage: `url(${('../../../img/court-70.jpg')})`,
+            backgroundSize: 'cover',
+            backgroundPosition: 'center',
+            width: '100vw',
+            height: '88vh',
+        }}
         >
             <div className="leftHome">
                 <img className="logoHome" src={ball} alt="ball" />

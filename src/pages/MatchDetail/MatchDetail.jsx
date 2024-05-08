@@ -28,7 +28,14 @@ export const MatchDetail = () => {
     };
 
     return (
-        <div className="matchDetailDesign">
+        <div className="matchDetailDesign"
+        style={{
+            backgroundImage: `url(${('../../../img/court-70.jpg')})`,
+            backgroundSize: 'cover',
+            backgroundPosition: 'center',
+            width: '100vw',
+            height: '88vh',
+        }}>
             <div className="cardMatchDetail">
                 <div className="text"> {formatDate(detailRdx?.detail?.match_date)}</div>
                 <div className="row margin">

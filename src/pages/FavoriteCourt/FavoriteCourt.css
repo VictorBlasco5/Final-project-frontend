@@ -2,10 +2,30 @@
     height: 88vh;
     width: 100vw;
 
-    background-color: mediumturquoise;
-
     display: flex;
     flex-direction: column;
-    justify-content: center;
     align-items: center;
+    flex-wrap: wrap;
+}
+
+.buttonMatchesFC{
+    height: 2em;
+    width: 5em;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 1em;
+    border: 0em;
+    background-color: rgba(255, 255, 254, 0.589);
+}
+
+.buttonMatchesFC:hover {
+
+    border:0em;
+    background-color: rgb(255, 255, 255)
+}
+
+.buttonMatchesFC:focus {
+    outline:none;
 }

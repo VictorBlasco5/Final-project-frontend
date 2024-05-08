@@ -3,14 +3,21 @@ import { GetMyFavoriteCourts } from "../../services/apiCalls";
 import { useSelector } from "react-redux"
 import { useState, useEffect } from "react"
 import { userData } from "../../app/slices/userSlice"
+import { useNavigate } from "react-router-dom";
 
+import { useDispatch } from 'react-redux';
 
 export const FavoriteCourt = () => {
-
     const [courts, setCourts] = useState([])
     const reduxUser = useSelector(userData)
     const token = reduxUser.credentials.token || ({});
+    const navigate = useNavigate();
+    const dispatch = useDispatch()
 
+
+    const handleVerPartidos = (courtId) => {
+        navigate(`/matches-court`);
+    };
 
     useEffect(() => {
         const myFavoriteCourts = async () => {
@@ -26,9 +33,17 @@ export const FavoriteCourt = () => {
     }, [token]);
 
     return (
-        <div className="favoriteCourtDesign">
+        <div className="favoriteCourtDesign"
+        style={{
+            backgroundImage: `url(${('../../../img/court-70.jpg')})`,
+            backgroundSize: 'cover',
+            backgroundPosition: 'center',
+            width: '100vw',
+            height: '88vh',
+        }}>
             {courts.map((court) => (
                 <div className="courtCard" key={court.id}>
+                    <button className="buttonMatchesFC" onClick={() => handleVerPartidos(court.id)}>Partidos</button>
                     <div className="textCourt">{court.name}</div>
                     <div >{court.direction}</div>
                 </div>

@@ -1,5 +1,6 @@
 const root = "http://localhost:4000/api/"
 
+//AUTH
 export const loginService = async (user) => {
     const options = {
         method: "POST",
@@ -49,6 +50,7 @@ export const RegisterUser = async (user) => {
     }
 }
 
+//USERS
 export const GetProfile = async (token) => {
 
     const options = {
@@ -102,6 +104,57 @@ export const UpdateProfile = async (token, data) => {
     }
 }
 
+export const GetUsers = async (token) => {
+
+    const options = {
+        method: "GET",
+        headers: {
+            "Content-Type": "application/json",
+            "Authorization": `Bearer ${token}`
+        },
+    };
+
+    try {
+        const response = await fetch(`${root}users`, options);
+
+        const data = await response.json();
+
+        if (!data.success) {
+            throw new Error(data.message);
+        }
+
+        return data;
+    } catch (error) {
+        return error;
+    }
+}
+
+export const DeleteUsers = async (userId, token) => {
+
+    const options = {
+        method: "DELETE",
+        headers: {
+            "Content-Type": "application/json",
+            "Authorization": `Bearer ${token}`
+        },
+    };
+
+    try {
+        const response = await fetch(`${root}users/${userId}`, options);
+
+        const data = await response.json();
+
+        if (!data.success) {
+            throw new Error(data.message);
+        }
+
+        return data;
+    } catch (error) {
+        return error;
+    }
+}
+
+//MATCHES
 export const GetMatches = async (token) => {
 
     const options = {
@@ -232,6 +285,85 @@ export const DeleteMatch = async (matchId, token) => {
     }
 }
 
+export const SignedUp = async (token, matchId) => {
+
+    const options = {
+        method: "PUT",
+        headers: {
+            "Content-Type": "application/json",
+            "Authorization": `Bearer ${token}`
+        },
+    };
+
+    try {
+        const response = await fetch(`${root}matches/assistance/${matchId}`, options);
+
+        const data = await response.json();
+        console.log("datos");
+        console.log(data)
+
+        if (!data.success) {
+            throw new Error(data.message);
+        }
+
+        return data;
+    } catch (error) {
+        return error;
+    }
+}
+
+export const GetMatchesAssistance = async (token) => {
+
+    const options = {
+        method: "GET",
+        headers: {
+            "Content-Type": "application/json",
+            "Authorization": `Bearer ${token}`
+        },
+    };
+
+    try {
+        const response = await fetch(`${root}matches/assistance`, options);
+
+        const data = await response.json();
+
+        if (!data.success) {
+            throw new Error(data.message);
+        }
+
+        return data.data;
+    } catch (error) {
+        return error;
+    }
+}
+
+export const GetMatchesByCourt = async (token, courtId) => {
+    console.log(courtId,"courtId");
+    const options = {
+        method: "GET",
+        headers: {
+            "Content-Type": "application/json",
+            "Authorization": `Bearer ${token}`
+        },
+    };
+
+    try {
+        const response = await fetch(`${root}matches/courts/${courtId}`, options);
+
+        const data = await response.json();
+        console.log(data,"matches by court");
+
+        if (!data.success) {
+            throw new Error(data.message);
+        }
+
+        return data.data;
+    } catch (error) {
+        return error;
+    }
+}
+
+//COURTS
 export const GetCourts = async (token, courts) => {
 
     const options = {
@@ -258,7 +390,6 @@ export const GetCourts = async (token, courts) => {
 }
 
 export const AddFavorite = async (token, courtId) => {
-
     const options = {
         method: "PUT",
         headers: {
@@ -285,7 +416,6 @@ export const AddFavorite = async (token, courtId) => {
 }
 
 export const GetMyFavoriteCourts = async (token) => {
-
     const options = {
         method: "GET",
         headers: {
@@ -357,108 +487,6 @@ export const DeleteCourt = async (courtId, token) => {
         }
 
         return data;
-    } catch (error) {
-        return error;
-    }
-}
-
-export const GetUsers = async (token) => {
-
-    const options = {
-        method: "GET",
-        headers: {
-            "Content-Type": "application/json",
-            "Authorization": `Bearer ${token}`
-        },
-    };
-
-    try {
-        const response = await fetch(`${root}users`, options);
-
-        const data = await response.json();
-
-        if (!data.success) {
-            throw new Error(data.message);
-        }
-
-        return data;
-    } catch (error) {
-        return error;
-    }
-}
-
-export const DeleteUsers = async (userId, token) => {
-
-    const options = {
-        method: "DELETE",
-        headers: {
-            "Content-Type": "application/json",
-            "Authorization": `Bearer ${token}`
-        },
-    };
-
-    try {
-        const response = await fetch(`${root}users/${userId}`, options);
-
-        const data = await response.json();
-
-        if (!data.success) {
-            throw new Error(data.message);
-        }
-
-        return data;
-    } catch (error) {
-        return error;
-    }
-}
-
-export const SignedUp = async (token, matchId) => {
-
-    const options = {
-        method: "PUT",
-        headers: {
-            "Content-Type": "application/json",
-            "Authorization": `Bearer ${token}`
-        },
-    };
-
-    try {
-        const response = await fetch(`${root}matches/assistance/${matchId}`, options);
-
-        const data = await response.json();
-        console.log("datos");
-        console.log(data)
-
-        if (!data.success) {
-            throw new Error(data.message);
-        }
-
-        return data;
-    } catch (error) {
-        return error;
-    }
-}
-
-export const GetMatchesAssistance = async (token) => {
-
-    const options = {
-        method: "GET",
-        headers: {
-            "Content-Type": "application/json",
-            "Authorization": `Bearer ${token}`
-        },
-    };
-
-    try {
-        const response = await fetch(`${root}matches/assistance`, options);
-
-        const data = await response.json();
-
-        if (!data.success) {
-            throw new Error(data.message);
-        }
-
-        return data.data;
     } catch (error) {
         return error;
     }

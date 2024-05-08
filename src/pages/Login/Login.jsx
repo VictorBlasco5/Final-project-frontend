@@ -79,7 +79,14 @@ export const Login = () => {
     return (
 
         <>
-            <div className="loginDesign">
+            <div className="loginDesign"
+            style={{
+                backgroundImage: `url(${('../../../img/court-70.jpg')})`,
+                backgroundSize: 'cover',
+                backgroundPosition: 'center',
+                width: '100vw',
+                height: '88vh',
+            }}>
                 <CInput
                     className={`cInputDesign ${userError.emailError !== "" ? "inputDesignError" : ""}`}
                     type="email"

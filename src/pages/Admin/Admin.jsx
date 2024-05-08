@@ -122,7 +122,14 @@ export const Admin = () => {
     };
 
     return (
-        <div className="adminDesign">
+        <div className="adminDesign"
+        style={{
+            backgroundImage: `url(${('../../../img/court-70.jpg')})`,
+            backgroundSize: 'cover',
+            backgroundPosition: 'center',
+            width: '100vw',
+            height: '88vh',
+        }}>
             <div className="containTable">
                 <button className="buttonTableAdmin" onClick={handleShowUsers}>Users</button>
                 <button className="buttonTableAdmin" onClick={handleShowCourts}>Pistas</button>

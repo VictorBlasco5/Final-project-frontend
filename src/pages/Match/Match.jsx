@@ -78,7 +78,14 @@ export const Match = () => {
 
     return (
         <>
-            <div className="matchDesign">
+            <div className="matchDesign"
+                style={{
+                    backgroundImage: `url(${('../../../img/court-70.jpg')})`,
+                    backgroundSize: 'cover',
+                    backgroundPosition: 'center',
+                    width: '100vw',
+                    height: '88vh',
+                }}>
                 <button className="buttonNewMatch" onClick={() => navigate("/new-match")}>
                     <img className="add" src={add} alt="+" />
                 </button>
@@ -90,7 +97,7 @@ export const Match = () => {
                                     className="buttonMatchDetail"
                                     onClick={() => handleMatch(match)}>
                                     <div className="margin">{formatDate(match.match_date)}</div>
-                                    <div className="row">
+                                    <div className="rowCard">
                                         <div className="margin">Jugadores: {match.number_players} </div>
                                         <div className="space"></div>
                                         <div className="margin">Apuntados:{match.signedCount}</div>

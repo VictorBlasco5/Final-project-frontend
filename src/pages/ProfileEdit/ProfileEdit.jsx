@@ -79,7 +79,9 @@ export const ProfileEdit = () => {
             dispatch(updatedUser({ credentials: { ...reduxUser.credentials, user: { ...reduxUser.credentials.user, name: user.nickname } } }));
 
             setChange("disabled")
-
+            setTimeout(() => {
+                navigate("/profile");
+            }, 500);
         } catch (error) {
             console.log(error);
         }
@@ -88,7 +90,14 @@ export const ProfileEdit = () => {
 
     return (
         <>
-            <div className="profileEdit">
+            <div className="profileEdit"
+            style={{
+                backgroundImage: `url(${('../../../img/court-70.jpg')})`,
+                backgroundSize: 'cover',
+                backgroundPosition: 'center',
+                width: '100vw',
+                height: '88vh',
+            }}>
                 <div className="cont">
                     <div className="row">
                         <CButton
