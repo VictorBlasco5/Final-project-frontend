@@ -9,13 +9,13 @@
 }
 
 .courtCard {
-    height: 6em;
+    height: 7em;
     width: 35em;
 
     border-radius: 0.3em;
     display: flex;
     align-items: center;
-    flex-direction: row;
+    flex-direction: column;
 
     background-color: rgba(255, 255, 255, 0.5);
     margin: 0.5em;
@@ -56,4 +56,15 @@
 
 .starCourt:hover {
     transform: scale(1.15);
+}
+
+.rowCourt {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.maps {
+    margin-top: 0.5em;
+    color: black;
 }

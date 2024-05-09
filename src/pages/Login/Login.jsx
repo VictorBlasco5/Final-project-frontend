@@ -5,7 +5,8 @@ import { loginService } from "../../services/apiCalls";
 import { useNavigate } from "react-router-dom";
 import { decodeToken } from "react-jwt";
 import { validation } from "../../utils/functions";
-
+import logoPerson from "../../../img/logo.png";
+import logoPerson2 from "../../../img/me.png";
 
 //REDUX
 import { login } from "../../app/slices/userSlice";
@@ -51,7 +52,7 @@ export const Login = () => {
         try {
             for (let elemento in user) {
                 if (user[elemento] === "") {
-                    throw new Error("All fields must be completed");
+                    throw new Error("Todos los campos deben estar completos");
                 }
             }
 
@@ -80,38 +81,41 @@ export const Login = () => {
 
         <>
             <div className="loginDesign"
-            style={{
-                backgroundImage: `url(${('../../../img/court-70.jpg')})`,
-                backgroundSize: 'cover',
-                backgroundPosition: 'center',
-                width: '100vw',
-                height: '88vh',
-            }}>
-                <CInput
-                    className={`cInputDesign ${userError.emailError !== "" ? "inputDesignError" : ""}`}
-                    type="email"
-                    placeholder={"Email"}
-                    name="email"
-                    value={user.email || ""}
-                    changeEmit={imputHandler}
-                    onBlurFunction={(e) => checkError(e)}
-                />
-                <div className="error">{userError.emailError}</div>
-                <CInput
-                     className={`cInputDesign ${userError.passwordError !== "" ? "inputDesignError" : ""}`}
-                    placeholder={"Contraseña"}
-                    type="password"
-                    name="password"
-                    value={user.password || ""}
-                    changeEmit={imputHandler}
-                    onBlurFunction={(e) => checkError(e)}
-                />
-                 <div className="error">{userError.passwordError}</div>
+                style={{
+                    backgroundImage: `url(${('../../../img/court-70.jpg')})`,
+                    backgroundSize: 'cover',
+                    backgroundPosition: 'center',
+                    width: '100vw',
+                    height: '88vh',
+                }}>
+                <img className="logoLogin" src={logoPerson} alt="ball" />
+                <div className="colum">
+                    <CInput
+                        className={`cInputDesign ${userError.emailError !== "" ? "inputDesignError" : ""}`}
+                        type="email"
+                        placeholder={"Email"}
+                        name="email"
+                        value={user.email || ""}
+                        changeEmit={imputHandler}
+                        onBlurFunction={(e) => checkError(e)}
+                    />
+                    <div className="error">{userError.emailError}</div>
+                    <CInput
+                        className={`cInputDesign ${userError.passwordError !== "" ? "inputDesignError" : ""}`}
+                        placeholder={"Contraseña"}
+                        type="password"
+                        name="password"
+                        value={user.password || ""}
+                        changeEmit={imputHandler}
+                        onBlurFunction={(e) => checkError(e)}
+                    />
+                    <div className="error">{userError.passwordError}</div>
 
-                <button className="buttonLogin" onClick={loginMe}>Login</button>
-                <div className="error">{msgError} </ div>
-                <div className="successfully">{msgSuccessfully} </ div>
-
+                    <button className="buttonLogin" onClick={loginMe}>Iniciar sesión</button>
+                    <div className="error">{msgError} </ div>
+                    <div className="successfully">{msgSuccessfully} </ div>
+                </div>
+                <img className="logoPerson2" src={logoPerson2} alt="Logo" />
             </div>
 
         </>

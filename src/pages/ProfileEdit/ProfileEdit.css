@@ -3,9 +3,7 @@
     width: 30vw;
 
     display: flex;
-    flex-direction: column;
-    /* margin-left: 2em; */
-    
+    flex-direction: column;   
 }
 
 .profileEdit {
@@ -23,6 +21,7 @@
     display: flex;
     flex-direction: row;
     align-items: center;
+
     color: black;
     font-weight: bold;
     font-family: 'Roboto', sans-serif;
@@ -36,16 +35,18 @@
     align-items: center;
     justify-content: center;
 
-    background-color: transparent;
+    background-color: rgba(255, 255, 255, 0.5);
     cursor: pointer;
     border-radius: 0.5em;
-    border: 3.5px solid white;
+    /* border: 3.5px solid white; */
 }
 
 
 .buttonEditConfirm:hover {
-    background: linear-gradient(to bottom, transparent 0%, rgb(255, 255, 255) 100%);
+    /* background: linear-gradient(to bottom, transparent 0%, rgb(255, 255, 255) 100%); */
     color: black;
+    background-color: white;
+    border: none;
 }
 
 .space2 {
@@ -81,8 +82,8 @@
     margin: 1em;
     color: black;
     border-radius: 0.3em;
-    border-color: black;
     margin-left: 2em;
+    border: 1px solid black;
 }
 
 .email {
@@ -92,6 +93,10 @@
     margin: 1em;
     color: black;
     border-radius: 0.3em;
-    border-color: black;
+    border: 1px solid black;
     margin-left: 2em;
+}
+
+.inputMargin {
+    margin-bottom: -0.8em;
 }

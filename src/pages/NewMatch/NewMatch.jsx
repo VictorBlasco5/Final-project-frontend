@@ -274,7 +274,7 @@ export const NewMatch = () => {
                                     type={"text"}
                                     placeholder={""}
                                     name={"court"}
-                                    value={match.court_id || ""}
+                                    value={match.court.name || ""}
                                     disabled={change}
                                     changeEmit={(e) => inputHandlerUpdate(e)}
                                 />

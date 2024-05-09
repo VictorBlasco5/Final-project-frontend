@@ -4,20 +4,25 @@ import { useSelector } from "react-redux"
 import { useState, useEffect } from "react"
 import { userData } from "../../app/slices/userSlice"
 import { useNavigate } from "react-router-dom";
+import { selectCourt, selectCourtId } from "../../app/slices/courtSlice";
 
 import { useDispatch } from 'react-redux';
 
 export const FavoriteCourt = () => {
     const [courts, setCourts] = useState([])
     const reduxUser = useSelector(userData)
+    const courtId = useSelector((state) => selectCourtId(state))
     const token = reduxUser.credentials.token || ({});
     const navigate = useNavigate();
     const dispatch = useDispatch()
-
+  
 
     const handleVerPartidos = (courtId) => {
         navigate(`/matches-court`);
+        dispatch(selectCourt(courtId));
+        console.log(courtId, 'courtid');
     };
+
 
     useEffect(() => {
         const myFavoriteCourts = async () => {

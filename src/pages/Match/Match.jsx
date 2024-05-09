@@ -103,7 +103,7 @@ export const Match = () => {
                                         <div className="space"></div>
                                         <div className="margin">Apuntados: {match.signedCount}</div>
                                     </div>
-                                    <div className="margin">{match.information.length > 35 ? match.information.substring(0, 35) + "..." : match.information}</div>
+                                    <div className="margin">{match.information.length > 30 ? match.information.substring(0, 30) + "..." : match.information}</div>
                                     <div className="margin">{match.court.name}</div>
                                 </button>
                                 <button className="buttonAssistance" onClick={() => signedMatch(match.id)}>

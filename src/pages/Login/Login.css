@@ -2,11 +2,9 @@
     height: 88vh;
     width: 100vw;
 
-    background-color: mediumturquoise;
-
     display: flex;
-    flex-direction: column;
-    justify-content: center;
+    flex-direction: row;
+    justify-content: flex-start;
     align-items: center;
 }
 
@@ -19,5 +17,28 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    border: none;
+    background-color: rgba(255, 255, 255, 0.5);
+}
 
+.buttonLogin:hover {
+    background-color: white;
+}
+
+.buttonLogin:focus {
+    outline: none;
+}
+
+.logoLogin {
+    height: 25em;
+    width: 15em;
+    margin-right: 18em;
+    margin-left: 2.05em;
+}
+
+.logoPerson2 {
+    height: 27em;
+    width: 20em;
+    margin-left: 10em;
+    margin-bottom: 1em;
 }

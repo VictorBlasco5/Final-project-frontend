@@ -33,16 +33,19 @@
     align-items: center;
     justify-content: center;
 
-    background-color: transparent;
+    background-color: rgba(255, 255, 255, 0.5);
     cursor: pointer;
-    border: 3.5px solid white;
-    outline: none;
+    /* border: 3.5px solid white; */
+    border: none;
+    margin-bottom: 2em;
 }
 
 .buttonEditProfile:hover {
-    background: linear-gradient(to bottom, transparent 0%, rgb(255, 255, 255) 100%);
+    /* background: linear-gradient(to bottom, transparent 0%, rgb(255, 255, 255) 100%); */
     color: black;
-    border-color: white;
+    /* border-color: white; */
+    border: 0em;
+    background-color: white;
 }
 
 .buttonEditProfile:focus {
@@ -58,6 +61,7 @@
     text-align: center;
     border: none;
     font-size: 1.2em;
+    margin-bottom: 2em;
 }
 
 .image {

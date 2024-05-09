@@ -130,7 +130,7 @@ export const ProfileEdit = () => {
                             changeEmit={(e) => inputHandler(e)}>
                         </CTextArea>
                     </div>
-                    <div className="row">Nombre:
+                    <div className="row inputMargin">Nombre:
                         <CInput
                             className={"name"}
                             type={"text"}
@@ -141,7 +141,7 @@ export const ProfileEdit = () => {
                             changeEmit={(e) => inputHandler(e)}
                         />
                     </div>
-                    <div className="row">Email:
+                    <div className="row inputMargin">Email:
                         <CInput
                             className={`email`}
                             type={"text"}
@@ -152,7 +152,7 @@ export const ProfileEdit = () => {
                             changeEmit={(e) => inputHandler(e)}
                         />
                     </div>
-                    <div className="row">Nickname:
+                    <div className="row inputMargin">Nickname:
                         <CInput
                             className={`name`}
                             type={"text"}
@@ -163,7 +163,7 @@ export const ProfileEdit = () => {
                             changeEmit={(e) => inputHandler(e)}
                         />
                     </div>
-                    <div className="row">Posición favorita:
+                    <div className="row inputMargin">Posición favorita:
                         <CInput
                             className={`name`}
                             type={"text"}

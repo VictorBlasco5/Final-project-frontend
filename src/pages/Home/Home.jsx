@@ -1,6 +1,6 @@
 import "./Home.css";
-import ball from "../../../img/logo.png";
-import amigo from "../../../img/friends.png";
+import logoPerson from "../../../img/logo.png";
+import friend from "../../../img/friends.png";
 import number1 from "../../../img/n1.png";
 import court from "../../../img/court.png";
 
@@ -17,7 +17,7 @@ export const Home = () => {
             }}
         >
             <div className="leftHome">
-                <img className="logoHome" src={ball} alt="ball" />
+                <img className="logoHome" src={logoPerson} alt="ball" />
             </div>
             <div>
                 <div className="textHome">
@@ -26,7 +26,7 @@ export const Home = () => {
                 </div>
                 <div className="downHome">
                     <div className="friends">
-                        <img className="logoFriends" src={amigo} alt="Amigos" />
+                        <img className="logoFriends" src={friend} alt="Amigos" />
                         <div className="textLogos">Conecta con personas que comparten tu pasión y crea una comunidad emocionante.</div>
                     </div>
                     <div className="numberOne">

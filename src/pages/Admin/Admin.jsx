@@ -233,6 +233,7 @@ export const Admin = () => {
                                         <th>Id</th>
                                         <th>Nombre</th>
                                         <th>Dirección</th>
+                                        <th>URL google maps</th>
                                         <th>Fecha creación</th>
                                         <th>Fecha actualización</th>
                                         <th>
@@ -251,6 +252,7 @@ export const Admin = () => {
                                             <td>{court.id}</td>
                                             <td>{court.name}</td>
                                             <td>{court.direction}</td>
+                                            <td>{court.URL_maps}</td>
                                             <td>{formatDate(court.created_at)}</td>
                                             <td>{formatDate(court.updated_at)}</td>
                                             <td>

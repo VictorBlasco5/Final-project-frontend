@@ -1,0 +1,7 @@
+.matchCourtDesign {
+    height: 88vh;
+    width: 100vw;
+
+    display: flex;
+    justify-content: center;
+}

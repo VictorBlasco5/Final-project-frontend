@@ -29,13 +29,13 @@ export const MatchDetail = () => {
 
     return (
         <div className="matchDetailDesign"
-        style={{
-            backgroundImage: `url(${('../../../img/court-70.jpg')})`,
-            backgroundSize: 'cover',
-            backgroundPosition: 'center',
-            width: '100vw',
-            height: '88vh',
-        }}>
+            style={{
+                backgroundImage: `url(${('../../../img/court-70.jpg')})`,
+                backgroundSize: 'cover',
+                backgroundPosition: 'center',
+                width: '100vw',
+                height: '88vh',
+            }}>
             <div className="cardMatchDetail">
                 <div className="text date"> {formatDate(detailRdx?.detail?.match_date)}</div>
                 <div className="rowCard margin">
@@ -47,6 +47,11 @@ export const MatchDetail = () => {
                 <div className="margin"></div>
                 <div className="text">{detailRdx?.detail?.court?.name}</div>
                 <div className="text">{detailRdx?.detail?.court?.direction}</div>
+                <div className="text">
+                    {<a className="maps" href={detailRdx.detail.court.URL_maps} target="_blank">
+                        {detailRdx.detail.court.URL_maps}
+                    </a>}
+                </div>
             </div>
         </div>
     )

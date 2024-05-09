@@ -38,20 +38,25 @@ export const Court = () => {
 
     return (
         <div className="CourtDesign"
-        style={{
-            backgroundImage: `url(${('../../../img/court-70.jpg')})`,
-            backgroundSize: 'cover',
-            backgroundPosition: 'center',
-            width: '100vw',
-            height: '88vh',
-        }}>
+            style={{
+                backgroundImage: `url(${('../../../img/court-70.jpg')})`,
+                backgroundSize: 'cover',
+                backgroundPosition: 'center',
+                width: '100vw',
+                height: '88vh',
+            }}>
             {courts.map((court) => (
                 <div className="courtCard" key={court.id}>
-                    <button className="buttonFav" onClick={() => addFavoriteCourt(court.id)}>
-                        <img className="starCourt" src={star} alt="Favortios" />
-                    </button>
-                    <div className="textCourt">{court.name}</div>
-                    <div >{court.direction}</div>
+                    <div className="rowCourt">
+                        <button className="buttonFav" onClick={() => addFavoriteCourt(court.id)}>
+                            <img className="starCourt" src={star} alt="Favortios" />
+                        </button>
+                        <div className="textCourt">{court.name}</div>
+                        <div >{court.direction}</div>
+                    </div>
+                    {<a className="maps" href={court.URL_maps} target="_blank">
+                        {court.URL_maps}
+                    </a>}
                 </div>
             ))}
         </div>

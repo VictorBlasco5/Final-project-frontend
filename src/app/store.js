@@ -7,11 +7,13 @@ import storage from "redux-persist/lib/storage";
 
 import userSlice from "./slices/userSlice";
 import detailSlice from "./slices/matchDetailSlice";
+import courtSlice from "./slices/courtSlice";
 
 
 const reducers = combineReducers({
     user: userSlice,
-    detail: detailSlice
+    detail: detailSlice,
+    court: courtSlice,
 });
 
 const persistConfig = {
