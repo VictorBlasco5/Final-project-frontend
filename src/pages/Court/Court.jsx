@@ -52,11 +52,15 @@ export const Court = () => {
                             <img className="starCourt" src={star} alt="Favortios" />
                         </button>
                         <div className="textCourt">{court.name}</div>
-                        <div >{court.direction}</div>
                     </div>
-                    {<a className="maps" href={court.URL_maps} target="_blank">
-                        {court.URL_maps}
-                    </a>}
+
+                    <div className="directionMaps">
+                        <div >{court.direction}</div>
+                        <div className="divSpace"></div>
+                        {<a className="maps" href={court.URL_maps} target="_blank">
+                            {court.URL_maps}
+                        </a>}
+                    </div>
                 </div>
             ))}
         </div>

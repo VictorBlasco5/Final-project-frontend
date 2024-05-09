@@ -107,7 +107,7 @@ export const Match = () => {
                                     <div className="margin">{match.court.name}</div>
                                 </button>
                                 <button className="buttonAssistance" onClick={() => signedMatch(match.id)}>
-                                    {match.signed_up.includes(userId) ? "Borrarme" : "Apuntarme"}
+                                    {match.signed_up?.includes(userId) ? "Borrarme" : "Apuntarme"}
                                 </button>
                             </div>
                         ))}

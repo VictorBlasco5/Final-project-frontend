@@ -9,13 +9,13 @@
 }
 
 .courtCard {
-    height: 7em;
+    height: 7.5em;
     width: 35em;
 
     border-radius: 0.3em;
     display: flex;
     align-items: center;
-    flex-direction: column;
+    flex-direction: row;
 
     background-color: rgba(255, 255, 255, 0.5);
     margin: 0.5em;
@@ -64,7 +64,17 @@
     align-items: center;
 }
 
-.maps {
-    margin-top: 0.5em;
+.directionMaps {
+    height: 7em;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    margin:2em;
     color: black;
+}
+
+.divSpace {
+    height: 0.5em;
 }
