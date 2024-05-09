@@ -4,6 +4,7 @@ import { useState, useEffect } from "react"
 import { AddFavorite, GetCourts } from "../../services/apiCalls";
 import { userData } from "../../app/slices/userSlice"
 import star from "../../../img/star.png";
+import logoMaps from "../../../img/maps.png";
 
 export const Court = () => {
 
@@ -25,7 +26,6 @@ export const Court = () => {
         };
         getCourts();
     }, [token]);
-
 
     const addFavoriteCourt = async (courtId) => {
         try {
@@ -53,13 +53,12 @@ export const Court = () => {
                         </button>
                         <div className="textCourt">{court.name}</div>
                     </div>
-
                     <div className="directionMaps">
                         <div >{court.direction}</div>
                         <div className="divSpace"></div>
-                        {<a className="maps" href={court.URL_maps} target="_blank">
-                            {court.URL_maps}
-                        </a>}
+                        <a href={court.URL_maps} target="_blank" rel="noopener noreferrer"> {/* "noopener noreferrer", previene ataques de ventanas emergentes */}
+                            <img className="logoMaps" src={logoMaps} alt="Logo" />
+                        </a>
                     </div>
                 </div>
             ))}

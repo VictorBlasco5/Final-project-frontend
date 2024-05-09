@@ -1,11 +1,10 @@
 import "./MatchDetail.css";
-
-
 import { detailData } from "../../app/slices/matchDetailSlice";
 import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux"
 import { userData } from "../../app/slices/userSlice";
+import logoMaps from "../../../img/maps.png";
 
 export const MatchDetail = () => {
 
@@ -21,6 +20,9 @@ export const MatchDetail = () => {
         }
     }, [detailRdx]);
 
+    const handleMapsButton = () => {
+        window.open(detailRdx.detail.court.URL_maps, "_blank");
+    };
 
     const formatDate = (dateString) => {
         const options = { year: 'numeric', month: 'long', day: 'numeric', hour: 'numeric', minute: 'numeric', hour12: false };
@@ -46,11 +48,11 @@ export const MatchDetail = () => {
                 <div className="text">{detailRdx?.detail?.information}</div>
                 <div className="margin"></div>
                 <div className="text">{detailRdx?.detail?.court?.name}</div>
-                <div className="text">{detailRdx?.detail?.court?.direction}</div>
-                <div className="text">
-                    {<a className="maps" href={detailRdx.detail.court.URL_maps} target="_blank">
-                        {detailRdx.detail.court.URL_maps}
-                    </a>}
+                <div className="rowCard">
+                    <button className="buttonMaps" onClick={handleMapsButton}>
+                        <img className="logoMaps" src={logoMaps} alt="Logo" />
+                    </button>
+                    <div className="direction">{detailRdx?.detail?.court?.direction}</div>
                 </div>
             </div>
         </div>

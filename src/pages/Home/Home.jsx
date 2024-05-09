@@ -17,7 +17,7 @@ export const Home = () => {
             }}
         >
             <div className="leftHome">
-                <img className="logoHome" src={logoPerson} alt="ball" />
+                <img className="logoHome" src={logoPerson} alt="Logo" />
             </div>
             <div>
                 <div className="textHome">

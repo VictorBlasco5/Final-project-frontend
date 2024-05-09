@@ -12,7 +12,7 @@
 }
 
 .cardMatchDetail {
-    height: 20em;
+    height: 18em;
     width: 35em;
 
     display: flex;
@@ -24,9 +24,38 @@
     margin: 1em;
     border-radius: 0.5em;
     border: 0;
+    padding: 1em;
 }
 
 .text {
     margin: 0.5em;
     color: black;
+}
+
+.logoMaps {
+    height: 2em;
+    width: 2em;
+}
+
+.buttonMaps {
+    height: 2em;
+    width: 2em;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: transparent;
+    border: none;
+}
+
+.buttonMaps:hover {
+    scale: 1.1;
+}
+
+.buttonMaps:focus {
+    outline: none;
+}
+
+.direction {
+    margin-left: 0.5em;
 }
