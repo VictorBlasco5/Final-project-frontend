@@ -5,10 +5,9 @@ import { useSelector, useDispatch } from "react-redux";
 import { userData } from "../../app/slices/userSlice";
 import { updateDetail } from "../../app/slices/matchDetailSlice";
 import { CInput } from "../../common/CInput/CInput";
-import { validation } from "../../utils/functions";
-import { CreateMatch, DeleteMatch, GetCourts, GetMyMatchesCreated, UpdateMatch } from "../../services/apiCalls";
+// import { validation } from "../../utils/functions";
+import { CreateMatch, GetCourts } from "../../services/apiCalls";
 import { CTextArea } from "../../common/CTextArea/CTextArea";
-import { CButton } from "../../common/CButton/CButton";
 
 export const NewMatch = () => {
 
@@ -17,22 +16,24 @@ export const NewMatch = () => {
     const navigate = useNavigate()
     const token = reduxUser.credentials.token || ({});
 
+    const [msgError, setMsgError] = useState("");
+    const [msgSuccessfully, setMsgSuccessfully] = useState("");
+    const [courts, setCourts] = useState([{}])
+
     const [matches, setMatches] = useState({
         number_players: "",
         information: "",
         match_date: "",
         court_id: "",
     })
-    const [updateMatches, setUpdateMatches] = useState({
-        number_players: "",
-        information: "",
-        match_date: "",
-        court_id: "",
-    })
-    const [msgError, setMsgError] = useState("");
-    const [msgSuccessfully, setMsgSuccessfully] = useState("");
-    const [courts, setCourts] = useState([{}])
-    const [change, setChange] = useState("disabled")
+    // const [updateMatches, setUpdateMatches] = useState({
+    //     number_players: "",
+    //     information: "",
+    //     match_date: "",
+    //     court_id: "",
+    // })
+
+    // const [change, setChange] = useState("disabled")
     // const [matchError, setMatchError] = useState({
     //     number_playersError: "",
     //     informationError: "",
@@ -59,6 +60,13 @@ export const NewMatch = () => {
         }
     };
 
+    const buttonHandler = () => {
+        newMatch();
+        setTimeout(() => {
+            navigate('/matches') 
+        }, 750);
+    }
+
     const inputHandler = (e) => {
         setMatches((prevState) => ({
             ...prevState,
@@ -66,19 +74,19 @@ export const NewMatch = () => {
         }))
     }
 
-    const inputHandlerUpdate = (e) => {
-        setUpdateMatches((prevState) => ({
-            ...prevState,
-            [e.target.name]: e.target.value,
-        }));
-    };
+    // const inputHandlerUpdate = (e) => {
+    //     setUpdateMatches((prevState) => ({
+    //         ...prevState,
+    //         [e.target.name]: e.target.value,
+    //     }));
+    // };
 
-    useEffect(() => {
+    // useEffect(() => {
 
-        if (token) {
-            getMyMatches()
-        }
-    }, [token])
+    //     if (token) {
+    //         getMyMatches()
+    //     }
+    // }, [token])
 
 
     useEffect(() => {
@@ -101,7 +109,7 @@ export const NewMatch = () => {
             const fetched = await CreateMatch(token, matches)
             if (fetched && fetched.success) {
                 setMsgSuccessfully("Match created")
-                getMyMatches()
+                
             }
 
         } catch (error) {
@@ -110,47 +118,47 @@ export const NewMatch = () => {
         }
     }
 
-    const getMyMatches = async () => {
-        try {
-            const fetched = await GetMyMatchesCreated(token)
-            const signed = fetched.map(match => ({
-                ...match,
-                signedCount: match.signed_up?.length
-            }));
-            setMatches(signed)
-        } catch (error) {
-            console.log(error);
-        }
-    }
+    // const getMyMatches = async () => {
+    //     try {
+    //         const fetched = await GetMyMatchesCreated(token)
+    //         const signed = fetched.map(match => ({
+    //             ...match,
+    //             signedCount: match.signed_up?.length
+    //         }));
+    //         setMatches(signed)
+    //     } catch (error) {
+    //         console.log(error);
+    //     }
+    // }
 
-    const updateMatch = async (matchId) => {
-        try {
-            const fetched = await UpdateMatch(reduxUser.credentials.token, matchId, updateMatches);
-            console.log(fetched, "fetched");
+    // const updateMatch = async (matchId) => {
+    //     try {
+    //         const fetched = await UpdateMatch(reduxUser.credentials.token, matchId, updateMatches);
+    //         console.log(fetched, "fetched");
             
-            setChange("disabled");
+    //         setChange("disabled");
             
-            getMyMatches();
-        } catch (error) {
-            console.log(error);
-        }
-    }
+    //         getMyMatches();
+    //     } catch (error) {
+    //         console.log(error);
+    //     }
+    // }
 
-    const matchRemove = async (matchId) => {
-        try {
-            await DeleteMatch(matchId, token)
-            const updatedMatches = await GetMyMatchesCreated(token);
-            setMatches(updatedMatches);
+    // const matchRemove = async (matchId) => {
+    //     try {
+    //         await DeleteMatch(matchId, token)
+    //         const updatedMatches = await GetMyMatchesCreated(token);
+    //         setMatches(updatedMatches);
 
-        } catch (error) {
-            console.log(error)
-        }
-    }
+    //     } catch (error) {
+    //         console.log(error)
+    //     }
+    // }
 
-    const formatDate = (dateString) => {
-        const options = { month: 'long', day: 'numeric', hour: 'numeric', minute: 'numeric', hour12: false };
-        return new Date(dateString).toLocaleDateString('es-US', options);
-    };
+    // const formatDate = (dateString) => {
+    //     const options = { month: 'long', day: 'numeric', hour: 'numeric', minute: 'numeric', hour12: false };
+    //     return new Date(dateString).toLocaleDateString('es-US', options);
+    // };
 
     return (
         <div className="containerNewMatch"
@@ -161,7 +169,7 @@ export const NewMatch = () => {
             width: '100vw',
             height: '88vh',
         }}>
-            <div className="createNewMatch">
+            {/* <div className="createNewMatch"> */}
                 <select
                     className={`cInputNewMatch`}
                     name={"number_players"}
@@ -217,22 +225,20 @@ export const NewMatch = () => {
 
                 <button
                     className="buttonCreateMatch"
-                    onClick={() => newMatch()}
+                    onClick={() => buttonHandler()}
                 >Crear partido</button>
                 <div className="successfully">{msgSuccessfully} </ div>
                 <div className="error">{msgError} </ div>
-            </div>
+            {/* </div> */}
 
 
-
+{/* 
             <div className="containerCards">
                 {matches.length > 0 ? (
                     <div className="position">
                         {matches.map(match => (
                             <div className="cardNewMatch" key={match.id}>
-                                {/* <button */}
-                                {/* className="cardsButton" */}
-                                {/* onClick={() => handleMatch(match)}> */}
+                               
                                 <CInput
                                     className={`dateNewMatch`}
                                     type={"text"}
@@ -278,14 +284,14 @@ export const NewMatch = () => {
                                     disabled={change}
                                     changeEmit={(e) => inputHandlerUpdate(e)}
                                 />
-                                {/* </button> */}
+                                
                                 <div className="row">
                                     <CButton
                                         className={"buttonDeleteNewMatch"}
                                         title={change === "" ? "Confirmar" : "Editar"}
                                         functionEmit={change === "" ? () => updateMatch(match.id) : () => handleEditClick()} // Aquí actualizamos la función del botón "Editar"
                                     />
-                                    {/* <button className="buttonDeleteNewMatch" onClick={() => updateMatch(match.id)}>Actualizar</button> */}
+                                   
                                     <button className="buttonDeleteNewMatch" onClick={() => matchRemove(match.id)}>Eliminar</button>
                                 </div>
                             </div>
@@ -294,7 +300,7 @@ export const NewMatch = () => {
                 ) : (
                     <div></div>
                 )}
-            </div>
+            </div> */}
         </div>
     )
 }
