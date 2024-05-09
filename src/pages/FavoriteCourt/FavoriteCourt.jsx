@@ -11,16 +11,16 @@ import { useDispatch } from 'react-redux';
 export const FavoriteCourt = () => {
     const [courts, setCourts] = useState([])
     const reduxUser = useSelector(userData)
-    const courtId = useSelector((state) => selectCourtId(state))
+    // const courtId = useSelector((state) => selectCourtId(state))
     const token = reduxUser.credentials.token || ({});
     const navigate = useNavigate();
     const dispatch = useDispatch()
+    // console.log(courtId, "HOLAAAAAAAAA");
   
 
     const handleVerPartidos = (courtId) => {
         navigate(`/matches-court`);
-        dispatch(selectCourt(courtId));
-        console.log(courtId, 'courtid');
+        dispatch(selectCourt({ court: courtId }));
     };
 
 

@@ -97,14 +97,14 @@ export const Match = () => {
                                 <button
                                     className="buttonMatchDetail"
                                     onClick={() => handleMatch(match)}>
-                                    <div className="margin date">{formatDate(match.match_date)}</div>
+                                    <div className="textMatch date">{formatDate(match.match_date)}</div>
                                     <div className="rowCard">
-                                        <div className="margin">Jugadores: {match.number_players} </div>
+                                        <div className="textMatch">Jugadores: {match.number_players} </div>
                                         <div className="space"></div>
-                                        <div className="margin">Apuntados: {match.signedCount}</div>
+                                        <div className="textMatch">Apuntados: {match.signedCount}</div>
                                     </div>
-                                    <div className="margin">{match.information.length > 30 ? match.information.substring(0, 30) + "..." : match.information}</div>
-                                    <div className="margin">{match.court.name}</div>
+                                    <div className="textMatch">{match.information.length > 30 ? match.information.substring(0, 30) + "..." : match.information}</div>
+                                    <div className="textMatch">{match.court.name}</div>
                                 </button>
                                 <button className="buttonAssistance" onClick={() => signedMatch(match.id)}>
                                     {match.signed_up?.includes(userId) ? "Borrarme" : "Apuntarme"}

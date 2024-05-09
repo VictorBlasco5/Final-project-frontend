@@ -5,3 +5,22 @@
     display: flex;
     justify-content: center;
 }
+
+.cardMatchCourt {
+    height: 10em;
+    width: 20em;
+
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    flex-direction: column;
+
+    background-color:  rgba(255, 255, 255, 0.5);
+    margin: 0.5em;
+    border-radius: 0.5em;
+}
+
+.textMatchCourt {
+    margin: 0.5em;
+    
+}
