@@ -41,35 +41,20 @@ export const Match = () => {
                 ...match,
                 signedCount: match.signed_up?.length
             }));
-
             signed.sort((a, b) => {
-            //     const dateA = new Date(a.match_date);
-            //     const dateB = new Date(b.match_date);
-
-            //     if (dateA < currentDate && dateB < currentDate || dateA >= currentDate && dateB >= currentDate) {
-            //         return dateA - dateB;
-            //     }
-            //     else if (dateA < currentDate) {
-            //         return 1;
-            //     }
-            //     else if (dateB < currentDate) {
-            //         return -1;
-            //     }
-            // });
-
             const dateA = new Date(a.match_date);
             const dateB = new Date(b.match_date);
-        
-            // Comprobamos si a y b son partidos pasados
+
+            // Compruebo si a y b son partidos pasados
             const isAPastMatch = dateA < currentDate;
             const isBPastMatch = dateB < currentDate;
-        
-            // Si ambos son partidos pasados, los ordenamos de más reciente a más antiguo
+
+            // Si ambos son partidos pasados, los ordeno de más reciente a más antiguo
             if (isAPastMatch && isBPastMatch) {
                 return dateB - dateA;
             }
         
-            // Si solo uno de ellos es un partido pasado, lo ponemos al final
+            // Si solo uno de ellos es del pasado, lo pongo al final
             if (isAPastMatch) {
                 return 1;
             }
@@ -77,7 +62,7 @@ export const Match = () => {
                 return -1;
             }
         
-            // Si ninguno es un partido pasado, los ordenamos normalmente
+            // Si ninguno está pasado, los ordeno normal
             return dateA - dateB;
         });
         
