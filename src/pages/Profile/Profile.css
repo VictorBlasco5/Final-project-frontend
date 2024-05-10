@@ -35,15 +35,12 @@
 
     background-color: rgba(255, 255, 255, 0.5);
     cursor: pointer;
-    /* border: 3.5px solid white; */
     border: none;
     margin-bottom: 2em;
 }
 
 .buttonEditProfile:hover {
-    /* background: linear-gradient(to bottom, transparent 0%, rgb(255, 255, 255) 100%); */
     color: black;
-    /* border-color: white; */
     border: 0em;
     background-color: white;
 }
@@ -107,16 +104,29 @@
 
 }
 
+.cardProfile {
+    height: 10.5em;
+    width: 20em;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+
+    background-color:rgba(255, 255, 255, 0.5);
+    margin: 1em;
+    border-radius: 0.5em;
+}
+
 .buttonCardProfile {
-    height: 10em;
+    height: 9em;
     width: 20em;
 
     display: flex;
     flex-direction: column;
     align-items: flex-start;
 
-    background-color: rgba(255, 255, 255, 0.5);
-    margin: 1em;
+    background-color:transparent;
     border: none;
 }
 
@@ -133,4 +143,30 @@
 
 .space {
     width: 3em;
+}
+
+.textProfile {
+    margin:0.3em;
+}
+
+.buttonDeleteProfile {
+    height: 1em;
+    width: 5em;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 0.3em;
+    margin-bottom: 0.5em;
+    border: none;
+    background-color:  rgba(255, 255, 254, 0.589);
+}
+
+.buttonDeleteProfile:hover {
+    background-color: rgba(255, 0, 0, 0.616);
+}
+
+.buttonDeleteProfile:focus {
+    outline: none;
 }
