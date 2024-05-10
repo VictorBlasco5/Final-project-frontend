@@ -27,6 +27,10 @@
     border: 0;
 }
 
+.passedMatch {
+    background-color: rgba(66, 66, 66, 0.377);
+}
+
 .buttonMatchDetail {
     height: 15em;
     width: 20em;

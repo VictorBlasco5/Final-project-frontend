@@ -43,19 +43,45 @@ export const Match = () => {
             }));
 
             signed.sort((a, b) => {
-                const dateA = new Date(a.match_date);
-                const dateB = new Date(b.match_date);
+            //     const dateA = new Date(a.match_date);
+            //     const dateB = new Date(b.match_date);
 
-                if (dateA < currentDate && dateB < currentDate || dateA >= currentDate && dateB >= currentDate) {
-                    return dateA - dateB;
-                }
-                else if (dateA < currentDate) {
-                    return 1;
-                }
-                else if (dateB < currentDate) {
-                    return -1;
-                }
-            });
+            //     if (dateA < currentDate && dateB < currentDate || dateA >= currentDate && dateB >= currentDate) {
+            //         return dateA - dateB;
+            //     }
+            //     else if (dateA < currentDate) {
+            //         return 1;
+            //     }
+            //     else if (dateB < currentDate) {
+            //         return -1;
+            //     }
+            // });
+
+            const dateA = new Date(a.match_date);
+            const dateB = new Date(b.match_date);
+        
+            // Comprobamos si a y b son partidos pasados
+            const isAPastMatch = dateA < currentDate;
+            const isBPastMatch = dateB < currentDate;
+        
+            // Si ambos son partidos pasados, los ordenamos de más reciente a más antiguo
+            if (isAPastMatch && isBPastMatch) {
+                return dateB - dateA;
+            }
+        
+            // Si solo uno de ellos es un partido pasado, lo ponemos al final
+            if (isAPastMatch) {
+                return 1;
+            }
+            if (isBPastMatch) {
+                return -1;
+            }
+        
+            // Si ninguno es un partido pasado, los ordenamos normalmente
+            return dateA - dateB;
+        });
+        
+        setMatches(signed);
 
             setMatches(signed)
         } catch (error) {
@@ -93,7 +119,7 @@ export const Match = () => {
                 {matches.length > 0 ? (
                     <div className="positionMatchCard">
                         {matches.map(match => (
-                            <div className="card" key={match.id}>
+                            <div className={`card ${new Date(match.match_date) < new Date() ? 'passedMatch' : ''}`} key={match.id}> {/*partidos que han pasado les cambio el color*/}
                                 <button
                                     className="buttonMatchDetail"
                                     onClick={() => handleMatch(match)}>
@@ -106,7 +132,7 @@ export const Match = () => {
                                     <div className="textMatch">{match.information.length > 30 ? match.information.substring(0, 30) + "..." : match.information}</div>
                                     <div className="textMatch">{match.court.name}</div>
                                 </button>
-                                <button className="buttonAssistance" onClick={() => signedMatch(match.id)}>
+                                <button className="buttonAssistance" onClick={() => signedMatch(match.id)} disabled={new Date(match.match_date) < new Date()}> {/*partidos que han pasado deshabilito botón*/}
                                     {match.signed_up?.includes(userId) ? "Borrarme" : "Apuntarme"}
                                 </button>
                             </div>
