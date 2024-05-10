@@ -3,7 +3,8 @@
     width: 30vw;
 
     display: flex;
-    flex-direction: column;   
+    flex-direction: column;
+    overflow-y: auto;
 }
 
 .profileEdit {
@@ -107,12 +108,17 @@
 
 .positionFav {
     height: 2em;
-
+    width: 5em;
     margin: 1em;
     color: black;
     border-radius: 0.3em;
     margin-left: 3.5em;
     border: 1px solid black;
+}
+
+.positionFav:focus {
+    outline: none;
+
 }
 
 .inputMargin {

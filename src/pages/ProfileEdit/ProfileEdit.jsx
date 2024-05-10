@@ -8,14 +8,11 @@ import { GetProfile, UpdateProfile } from "../../services/apiCalls"
 import { CButton } from "../../common/CButton/CButton"
 import { CTextArea } from "../../common/CTextArea/CTextArea"
 
-
-
 export const ProfileEdit = () => {
-
     const navigate = useNavigate()
     const dispatch = useDispatch();
     const reduxUser = useSelector(userData)
-    const [change, setChange] = useState("disabled")
+    const [change, setChange] = useState(false)
     const [loadedData, setLoadedData] = useState(false)
     const [user, setUser] = useState({
         nickname: "",
@@ -25,11 +22,19 @@ export const ProfileEdit = () => {
         name: "",
         email: "",
     })
+    const favoritePositions = ["Base", "Alero", "Pivot"];
 
     const inputHandler = (e) => {
         setUser((prevState) => ({
             ...prevState,
             [e.target.name]: e.target.value,
+        }));
+    };
+
+    const positionHandler = (e) => {
+        setUser((prevState) => ({
+            ...prevState,
+            favorite_position: e.target.value,
         }));
     };
 
@@ -40,14 +45,10 @@ export const ProfileEdit = () => {
     }, [reduxUser])
 
     useEffect(() => {
-
         const getUserProfile = async () => {
             try {
-
                 const fetched = await GetProfile(reduxUser.credentials.token)
-
                 setLoadedData(true)
-
                 setUser({
                     nickname: fetched.data.nickname,
                     favorite_position: fetched.data.favorite_position,
@@ -56,7 +57,6 @@ export const ProfileEdit = () => {
                     name: fetched.data.name,
                     email: fetched.data.email,
                 })
-
             } catch (error) {
                 console.log(error)
             }
@@ -65,7 +65,6 @@ export const ProfileEdit = () => {
         if (!loadedData) {
             getUserProfile()
         }
-
     }, [user])
 
     const updateData = async () => {
@@ -77,7 +76,7 @@ export const ProfileEdit = () => {
             }));
             dispatch(updatedUser({ credentials: { ...reduxUser.credentials, user: { ...reduxUser.credentials.user, name: user.nickname } } }));
 
-            setChange("disabled")
+            setChange(false);
             setTimeout(() => {
                 navigate("/profile");
             }, 500);
@@ -90,90 +89,94 @@ export const ProfileEdit = () => {
     return (
         <>
             <div className="profileEdit"
-            style={{
-                backgroundImage: `url(${('../../../img/court-70.jpg')})`,
-                backgroundSize: 'cover',
-                backgroundPosition: 'center',
-                width: '100vw',
-                height: '88vh',
-            }}>
+                style={{
+                    backgroundImage: `url(${('../../../img/court-70.jpg')})`,
+                    backgroundSize: 'cover',
+                    backgroundPosition: 'center',
+                    width: '100vw',
+                    height: '88vh',
+                }}>
                 <div className="cont">
                     <div className="row">
                         <CButton
-                            className={"buttonEditConfirm"}
-                            title={change === "" ? "Confirmar" : "Editar"}
-                            functionEmit={change === "" ? updateData : () => setChange("")}
+                            className="buttonEditConfirm"
+                            title={change ? "Confirmar" : "Editar"}
+                            functionEmit={change ? updateData : () => setChange(true)}
                         />
                         <div className="space2"></div>
                         <img className="image" src={user.image} alt="image" />
                     </div>
                     <div className="row">URL foto:
                         <CTextArea
-                            className={`urlImage`}
-                            type={"text"}
-                            placeholder={""}
-                            name={"image"}
+                            className="urlImage"
+                            type="text"
+                            placeholder=""
+                            name="image"
                             value={user.image || ""}
-                            disabled={change}
-                            changeEmit={(e) => inputHandler(e)}
+                            disabled={!change}
+                            changeEmit={inputHandler}
                         />
                     </div>
                     <div className="row">Presentación:
                         <CTextArea
-                            className={`presentation`}
-                            type={"text"}
-                            placeholder={""}
-                            name={"presentation"}
+                            className="presentation"
+                            type="text"
+                            placeholder=""
+                            name="presentation"
                             value={user.presentation || ""}
-                            disabled={change}
-                            changeEmit={(e) => inputHandler(e)}>
-                        </CTextArea>
+                            disabled={!change}
+                            changeEmit={inputHandler}
+                        />
                     </div>
                     <div className="row inputMargin">Nombre:
                         <CInput
-                            className={"name"}
-                            type={"text"}
-                            placeholder={""}
-                            name={"name"}
+                            className="name"
+                            type="text"
+                            placeholder=""
+                            name="name"
                             value={user.name || ""}
-                            disabled={change}
-                            changeEmit={(e) => inputHandler(e)}
+                            disabled={!change}
+                            changeEmit={inputHandler}
                         />
                     </div>
                     <div className="row inputMargin">Email:
                         <CInput
-                            className={`email`}
-                            type={"text"}
-                            placeholder={""}
-                            name={"email"}
+                            className="email"
+                            type="text"
+                            placeholder=""
+                            name="email"
                             value={user.email || ""}
-                            disabled={"disabled"}
-                            changeEmit={(e) => inputHandler(e)}
+                            disabled={true}
+                            changeEmit={inputHandler}
                         />
                     </div>
                     <div className="row inputMargin">Nickname:
                         <CInput
-                            className={`nickname`}
-                            type={"text"}
-                            placeholder={""}
-                            name={"nickname"}
+                            className="nickname"
+                            type="text"
+                            placeholder=""
+                            name="nickname"
                             value={user.nickname || ""}
-                            disabled={change}
-                            changeEmit={(e) => inputHandler(e)}
+                            disabled={!change}
+                            changeEmit={inputHandler}
                         />
                     </div>
                     <div className="row inputMargin">Posición:
-                        <CInput
-                            className={`positionFav`}
-                            type={"text"}
-                            placeholder={""}
-                            name={"favorite_position"}
-                            value={user.favorite_position || ""}
-                            disabled={change}
-                            changeEmit={(e) => inputHandler(e)}
-                        />
+                        <select
+                            className="positionFav"
+                            name="favorite_position"
+                            value={user.favorite_position}
+                            disabled={!change}
+                            onChange={positionHandler}
+                        >
+                            {favoritePositions.map((position, index) => (
+                                <option key={index} value={position}>
+                                    {position}
+                                </option>
+                            ))}
+                        </select>
                     </div>
-                </div >
+                </div>
             </div>
         </>
     )
