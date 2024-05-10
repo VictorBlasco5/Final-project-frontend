@@ -91,8 +91,6 @@ export const UpdateProfile = async (token, data) => {
         const response = await fetch(`${root}users/profile`, options);
 
         const data = await response.json();
-        console.log("datos");
-        console.log(data)
 
         if (!data.success) {
             throw new Error(data.message);
@@ -194,8 +192,6 @@ export const CreateMatch = async (token, matchData) => {
         const response = await fetch(`${root}matches`, options);
 
         const data = await response.json();
-        console.log("datos");
-        console.log(data)
 
         if (!data.success) {
             throw new Error(data.message);
@@ -247,7 +243,6 @@ export const UpdateMatch = async (token, data, matchId) => {
         const response = await fetch(`${root}matches/${matchId}`, options);
 
         const data = await response.json();
-        console.log(data,"data")
 
         if (!data.success) {
             throw new Error(data.message);
@@ -299,8 +294,6 @@ export const SignedUp = async (token, matchId) => {
         const response = await fetch(`${root}matches/assistance/${matchId}`, options);
 
         const data = await response.json();
-        console.log("datos");
-        console.log(data)
 
         if (!data.success) {
             throw new Error(data.message);
@@ -338,7 +331,6 @@ export const GetMatchesAssistance = async (token) => {
 }
 
 export const GetMatchesByCourt = async (token, courtId) => {
-    console.log(courtId,"courtId");
     const options = {
         method: "GET",
         headers: {
@@ -351,7 +343,6 @@ export const GetMatchesByCourt = async (token, courtId) => {
         const response = await fetch(`${root}matches/courts/${courtId}`, options);
 
         const data = await response.json();
-        console.log(data,"matches by court");
 
         if (!data.success) {
             throw new Error(data.message);
@@ -402,8 +393,6 @@ export const AddFavorite = async (token, courtId) => {
         const response = await fetch(`${root}courts/fav/${courtId}`, options);
 
         const data = await response.json();
-        console.log("datos");
-        console.log(data)
 
         if (!data.success) {
             throw new Error(data.message);

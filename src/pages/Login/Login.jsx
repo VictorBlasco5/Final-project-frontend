@@ -57,7 +57,6 @@ export const Login = () => {
             }
 
             const fetched = await loginService(user)
-            console.log(fetched);
 
             if (fetched.token) {
                 const decoded = decodeToken(fetched.token)

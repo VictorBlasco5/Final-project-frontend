@@ -3,7 +3,10 @@
     width: 100vw;
 
     display: flex;
-    justify-content: center;
+    justify-content: flex-start;
+    align-items: flex-start;
+    overflow-y: auto;
+    flex-wrap: wrap;
 }
 
 .cardMatchCourt {
@@ -17,6 +20,7 @@
 
     background-color:  rgba(255, 255, 255, 0.5);
     margin: 0.5em;
+    margin-left: 2em;
     border-radius: 0.5em;
 }
 

@@ -11,7 +11,6 @@ export const MatchCourt = () => {
     const reduxCourt = useSelector(selectCourtId)
     const token = reduxUser.credentials.token || ({});
     const courtId = reduxCourt.court || ({});
-    console.log(reduxCourt.court, "YEPA");
 
     useEffect(() => {
         if (token) {
@@ -22,7 +21,6 @@ export const MatchCourt = () => {
     const getMatchesCourt = async () => {
         try {
             const fetched = await GetMatchesByCourt(token, courtId)
-            console.log(fetched, "HOLA");
             setMatches(fetched)
         } catch (error) {
             console.log(error)
@@ -48,11 +46,11 @@ export const MatchCourt = () => {
                 <div className="cardMatchCourt" key={match.id}>
                     <div className="textMatchCourt date">{formatDate(match.match_date)}</div>
                     <div className='row'>
-                        <div className="textMatchCourt">Jugadores: {match.signed_up.length}</div>
+                        <div className="textMatchCourt">Jugadores: {match.signed_up?.length}</div>
                         <div className="space"></div>
                         <div className="textMatchCourt">Apuntados: {match.number_players}</div>
                     </div>
-                    <div className="textMatchCourt">{match.information}</div>
+                    <div className="textMatch">{match.information.length > 30 ? match.information.substring(0, 30) + "..." : match.information}</div>
                 </div>
             ))}
         </div>

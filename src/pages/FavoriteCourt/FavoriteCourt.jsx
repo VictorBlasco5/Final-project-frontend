@@ -11,11 +11,9 @@ import { useDispatch } from 'react-redux';
 export const FavoriteCourt = () => {
     const [courts, setCourts] = useState([])
     const reduxUser = useSelector(userData)
-    // const courtId = useSelector((state) => selectCourtId(state))
     const token = reduxUser.credentials.token || ({});
     const navigate = useNavigate();
     const dispatch = useDispatch()
-    // console.log(courtId, "HOLAAAAAAAAA");
   
 
     const handleVerPartidos = (courtId) => {
@@ -28,7 +26,6 @@ export const FavoriteCourt = () => {
         const myFavoriteCourts = async () => {
             try {
                 const fetched = await GetMyFavoriteCourts(token)
-                console.log(fetched);
                 setCourts(fetched.data);
             } catch (error) {
                 console.log(error)
@@ -46,11 +43,11 @@ export const FavoriteCourt = () => {
             width: '100vw',
             height: '88vh',
         }}>
-            {courts.map((court) => (
-                <div className="courtCard" key={court.id}>
-                    <button className="buttonMatchesFC" onClick={() => handleVerPartidos(court.id)}>Partidos</button>
-                    <div className="textCourt">{court.name}</div>
-                    <div >{court.direction}</div>
+            {courts.map((favorite) => (
+                <div className="courtCard" key={favorite.id}>
+                    <button className="buttonMatchesFC" onClick={() => handleVerPartidos(favorite.court.id)}>Partidos</button>
+                    <div className="textCourt">{favorite.name}</div>
+                    <div >{favorite.direction}</div>
                 </div>
             ))}
         </div>

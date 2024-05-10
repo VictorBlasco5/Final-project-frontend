@@ -19,7 +19,6 @@ export const Header = () => {
     const navigate = useNavigate()
 
     useEffect(() => {
-        // console.log(reduxUser, "credenciales auth");
     }, [reduxUser])
 
     return (

@@ -60,7 +60,6 @@ export const Register = () => {
             setMsgError("")
 
             const fetched = await RegisterUser(user);
-            console.log(fetched);
 
             setMsgSuccessfully(fetched.message)
 

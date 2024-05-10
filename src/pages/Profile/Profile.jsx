@@ -60,7 +60,6 @@ export const Profile = () => {
             try {
 
                 const fetched = await GetProfile(reduxUser.credentials.token)
-                console.log(fetched, "datos");
 
                 setLoadedData(true)
 
@@ -159,7 +158,6 @@ export const Profile = () => {
                                     <div className="margin"> Apuntados: {match.signedCount}</div>
                                 </div>
                                 <div className="margin">{match.information.length > 30 ? match.information.substring(0, 30) + "..." : match.information}</div>
-                                
                                 <div className="margin">{match.court.name}</div>
                             </button>
                         ))}

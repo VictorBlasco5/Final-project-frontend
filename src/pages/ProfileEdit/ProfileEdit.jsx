@@ -45,7 +45,6 @@ export const ProfileEdit = () => {
             try {
 
                 const fetched = await GetProfile(reduxUser.credentials.token)
-                console.log(fetched, "datos");
 
                 setLoadedData(true)
 
@@ -154,7 +153,7 @@ export const ProfileEdit = () => {
                     </div>
                     <div className="row inputMargin">Nickname:
                         <CInput
-                            className={`name`}
+                            className={`nickname`}
                             type={"text"}
                             placeholder={""}
                             name={"nickname"}
@@ -163,9 +162,9 @@ export const ProfileEdit = () => {
                             changeEmit={(e) => inputHandler(e)}
                         />
                     </div>
-                    <div className="row inputMargin">Posición favorita:
+                    <div className="row inputMargin">Posición:
                         <CInput
-                            className={`name`}
+                            className={`positionFav`}
                             type={"text"}
                             placeholder={""}
                             name={"favorite_position"}

@@ -75,6 +75,17 @@
     color: black;
 }
 
-.divSpace {
-    height: 0.5em;
+.logoMapsCourt {
+    height: 1.5em;
+}
+
+.logoMapsCourt:hover {
+    transform: scale(1.15);
+}
+
+.maps {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-left: 1em;
 }
