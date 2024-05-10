@@ -4,7 +4,7 @@ import { useSelector } from "react-redux"
 import { useState, useEffect } from "react"
 import { userData } from "../../app/slices/userSlice"
 import { useNavigate } from "react-router-dom";
-import { selectCourt, selectCourtId } from "../../app/slices/courtSlice";
+import { selectCourt } from "../../app/slices/courtSlice";
 
 import { useDispatch } from 'react-redux';
 
@@ -44,7 +44,7 @@ export const FavoriteCourt = () => {
             height: '88vh',
         }}>
             {courts.map((favorite) => (
-                <div className="courtCard" key={favorite.id}>
+                <div className="courtCardFavorite" key={favorite.id}>
                     <button className="buttonMatchesFC" onClick={() => handleVerPartidos(favorite.court.id)}>Partidos</button>
                     <div className="textCourt">{favorite.name}</div>
                     <div >{favorite.direction}</div>

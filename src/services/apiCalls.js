@@ -480,3 +480,28 @@ export const DeleteCourt = async (courtId, token) => {
         return error;
     }
 }
+
+export const UpdateCourt = async (token, data, courtId) => {
+    const options = {
+        method: "PUT",
+        headers: {
+            "Content-Type": "application/json",
+            "Authorization": `Bearer ${token}`
+        },
+        body: JSON.stringify(data)
+    };
+
+    try {
+        const response = await fetch(`${root}courts/${courtId}`, options);
+
+        const data = await response.json();
+
+        if (!data.success) {
+            throw new Error(data.message);
+        }
+
+        return data;
+    } catch (error) {
+        return error;
+    }
+}

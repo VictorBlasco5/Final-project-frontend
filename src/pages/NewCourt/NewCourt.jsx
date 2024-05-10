@@ -28,7 +28,7 @@ export const NewCourt = () => {
             if (fetched && fetched.success) {
                 setMsgSuccessfully("Court created")
                 setTimeout(() => {
-                    navigate("/admin")
+                    navigate("/court-admin")
                 }, 1000)
             }
 
@@ -51,7 +51,7 @@ export const NewCourt = () => {
                 className={`cInputNewMatch`}
                 type="text"
                 name={"name"}
-                placeholder={"Name"}
+                placeholder={"Nombre"}
                 value={courts.name || ""}
                 disabled={""}
                 changeEmit={inputHandler}
@@ -67,12 +67,20 @@ export const NewCourt = () => {
                 changeEmit={inputHandler}
             // onBlurFunction={(e) => checkError(e)}
             />
-
+            <CInput
+                className={`cInputNewMatch`}
+                type="text"
+                name={"URL_maps"}
+                placeholder={"URL maps"}
+                value={courts.URL_maps || ""}
+                disabled={""}
+                changeEmit={inputHandler}
+            // onBlurFunction={(e) => checkError(e)}
+            />
             <button
                 className="buttonCreateMatch"
                 onClick={() => newCourt()}
             >Crear pista</button>
-
         </div>
     )
 }

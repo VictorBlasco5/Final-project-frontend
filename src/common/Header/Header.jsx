@@ -11,10 +11,7 @@ import { useEffect } from "react"
 
 export const Header = () => {
 
-    //instancia conexion lectura
     const reduxUser = useSelector(userData)
-
-    //intancia conexion escritura
     const dispatch = useDispatch()
     const navigate = useNavigate()
 
@@ -23,19 +20,19 @@ export const Header = () => {
 
     return (
         <div className="headerDesign">
-
             <div className="logoNavBar">
                 <div className="logoPerson"><img className="icon" src={logoPerson} alt="Logo" /></div>
             </div>
-
             {
                 reduxUser?.credentials?.token
                     ? (
                         <div className="positionNavBar">
-
                             {reduxUser?.credentials?.user?.roleName === "admin"
                                 ? (
-                                    <div className="navigatorDesign"><Navigator title={"Admin"} path={"/admin"} /></div>
+                                    <div className="navigatorDesign">
+                                        <Navigator title={"Admin"} path={"/admin"} />
+                                        <Navigator title={"Pistas"} path={"/court-admin"} />
+                                    </div>
                                 ) : (
                                     <div></div>
                                 )}

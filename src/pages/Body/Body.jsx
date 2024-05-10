@@ -12,6 +12,7 @@ import { Home } from "../Home/Home"
 import { Court } from "../Court/Court"
 import { FavoriteCourt } from "../FavoriteCourt/FavoriteCourt"
 import { MatchCourt } from "../MatchCourt/MatchCourt"
+import { CourtAdmin } from "../CourtAdmin/CourtAdmin"
 
 
 export const Body = () => {
@@ -32,6 +33,7 @@ export const Body = () => {
             <Route path="/court" element={<Court />} />
             <Route path="/favorite-court" element={<FavoriteCourt />} />
             <Route path="/matches-court" element={<MatchCourt />} />
+            <Route path="/court-admin" element={<CourtAdmin />} />
         </Routes>
     )
 }
