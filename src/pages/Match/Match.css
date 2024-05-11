@@ -68,6 +68,11 @@
     outline: none;
 }
 
+.buttonPassed {
+    background-color: rgba(66, 66, 66, 0.377);
+    pointer-events: none;
+}
+
 .textMatch{
     margin: 0.5em;
 }

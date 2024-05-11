@@ -24,6 +24,11 @@
     border-radius: 0.5em;
 }
 
+.passedMatchCourt {
+    background-color: rgba(66, 66, 66, 0.377);
+}
+
+
 .textMatchCourt {
     margin: 0.5em;
     

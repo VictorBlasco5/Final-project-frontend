@@ -53,7 +53,7 @@ export const Court = () => {
                     </div>
                     <div className="directionMaps">
                         <div className="rowCard">
-                        <div >{court.direction}</div>
+                        <div className="textDirection">{court.direction}</div>
                         <a className="maps" href={court.URL_maps} target="_blank" rel="noopener noreferrer"> {/* "noopener noreferrer", previene ataques de ventanas emergentes */}
                             <img className="logoMapsCourt" src={logoMaps} alt="Logo" />
                         </a>

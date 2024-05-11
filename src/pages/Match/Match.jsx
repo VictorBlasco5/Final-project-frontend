@@ -42,31 +42,31 @@ export const Match = () => {
                 signedCount: match.signed_up?.length
             }));
             signed.sort((a, b) => {
-            const dateA = new Date(a.match_date);
-            const dateB = new Date(b.match_date);
+                const dateA = new Date(a.match_date);
+                const dateB = new Date(b.match_date);
 
-            // Compruebo si a y b son partidos pasados
-            const isAPastMatch = dateA < currentDate;
-            const isBPastMatch = dateB < currentDate;
+                // Compruebo si a y b son partidos pasados
+                const isAPastMatch = dateA < currentDate;
+                const isBPastMatch = dateB < currentDate;
 
-            // Si ambos son partidos pasados, los ordeno de más reciente a más antiguo
-            if (isAPastMatch && isBPastMatch) {
-                return dateB - dateA;
-            }
-        
-            // Si solo uno de ellos es del pasado, lo pongo al final
-            if (isAPastMatch) {
-                return 1;
-            }
-            if (isBPastMatch) {
-                return -1;
-            }
-        
-            // Si ninguno está pasado, los ordeno normal
-            return dateA - dateB;
-        });
-        
-        setMatches(signed);
+                // Si ambos son partidos pasados, los ordeno de más reciente a más antiguo
+                if (isAPastMatch && isBPastMatch) {
+                    return dateB - dateA;
+                }
+
+                // Si solo uno de ellos es del pasado, lo pongo al final
+                if (isAPastMatch) {
+                    return 1;
+                }
+                if (isBPastMatch) {
+                    return -1;
+                }
+
+                // Si ninguno está pasado, los ordeno normal
+                return dateA - dateB;
+            });
+
+            setMatches(signed);
 
             setMatches(signed)
         } catch (error) {
@@ -117,7 +117,12 @@ export const Match = () => {
                                     <div className="textMatch">{match.information.length > 30 ? match.information.substring(0, 30) + "..." : match.information}</div>
                                     <div className="textMatch">{match.court.name}</div>
                                 </button>
-                                <button className="buttonAssistance" onClick={() => signedMatch(match.id)} disabled={new Date(match.match_date) < new Date()}> {/*partidos que han pasado deshabilito botón*/}
+                                {/*partidos que han pasado deshabilito botón*/}
+                                <button
+                                    className={`buttonAssistance ${new Date(match.match_date) < new Date() ? 'buttonPassed' : ''}`}
+                                    onClick={() => signedMatch(match.id)}
+                                    disabled={new Date(match.match_date) < new Date()}
+                                >
                                     {match.signed_up?.includes(userId) ? "Borrarme" : "Apuntarme"}
                                 </button>
                             </div>

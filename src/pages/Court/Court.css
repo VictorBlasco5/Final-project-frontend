@@ -3,14 +3,15 @@
     width: 100vw;
 
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     align-items: center;
     flex-wrap: wrap;
+    overflow-y: auto;
 }
 
 .courtCard {
     height: 7.5em;
-    width: 35em;
+    width: 37em;
 
     border-radius: 0.3em;
     display: flex;
@@ -20,6 +21,7 @@
     background-color: rgba(255, 255, 255, 0.5);
     margin: 0.5em;
     color: black;
+    margin-left: 4em;
 }
 
 .buttonFav {
@@ -42,14 +44,22 @@
 }
 
 .textCourt {
+    width: 8em;
+
     font-size: 1.3em;
     font-weight: bold;
+    margin-left: 1em;
+}
+
+.textDirection {
+    width: 18em;
 }
 
 .starCourt {
-    height: 2em;
-    width: 2em;
+    height: 2.5em;
+    width: 2.5em;
 
+    margin-left: 1em;
     cursor: pointer;
     background-color: transparent;
 }
@@ -71,7 +81,7 @@
     flex-direction: column;
     justify-content: center;
 
-    margin:2em;
+    margin:1em;
     color: black;
 }
 

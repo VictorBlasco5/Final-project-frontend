@@ -43,13 +43,15 @@ export const FavoriteCourt = () => {
             width: '100vw',
             height: '88vh',
         }}>
+            <div className="positionFavCard">
             {courts.map((favorite) => (
                 <div className="courtCardFavorite" key={favorite.id}>
                     <button className="buttonMatchesFC" onClick={() => handleVerPartidos(favorite.court.id)}>Partidos</button>
-                    <div className="textCourt">{favorite.name}</div>
+                    <div className="textCourtFavorite">{favorite.name}</div>
                     <div >{favorite.direction}</div>
                 </div>
             ))}
+            </div>
         </div>
     )
 }

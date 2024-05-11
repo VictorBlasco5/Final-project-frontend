@@ -21,7 +21,31 @@ export const MatchCourt = () => {
     const getMatchesCourt = async () => {
         try {
             const fetched = await GetMatchesByCourt(token, courtId)
-            setMatches(fetched)
+
+            const currentDate = new Date();
+            const signed = fetched.map(match => ({
+                ...match,
+                signedCount: match.signed_up?.length
+            }));
+            signed.sort((a, b) => {
+                const dateA = new Date(a.match_date);
+                const dateB = new Date(b.match_date);
+
+                const isAPastMatch = dateA < currentDate;
+                const isBPastMatch = dateB < currentDate;
+
+                if (isAPastMatch && isBPastMatch) {
+                    return dateB - dateA;
+                }
+                if (isAPastMatch) {
+                    return 1;
+                }
+                if (isBPastMatch) {
+                    return -1;
+                }
+                return dateA - dateB;
+            });
+            setMatches(signed)
         } catch (error) {
             console.log(error)
         }
@@ -43,12 +67,12 @@ export const MatchCourt = () => {
                 height: '88vh',
             }}>
             {matches.map((match) => (
-                <div className="cardMatchCourt" key={match.id}>
+                    <div className={`cardMatchCourt ${new Date(match.match_date) < new Date() ? 'passedMatchCourt' : ''}`} key={match.id}> {/*partidos que han pasado les cambio el color*/}
                     <div className="textMatchCourt date">{formatDate(match.match_date)}</div>
                     <div className='row'>
-                        <div className="textMatchCourt">Jugadores: {match.signed_up?.length}</div>
+                        <div className="textMatchCourt">Jugadores: {match.number_players}</div>
                         <div className="space"></div>
-                        <div className="textMatchCourt">Apuntados: {match.number_players}</div>
+                        <div className="textMatchCourt">Apuntados: {match.signed_up?.length}</div>
                     </div>
                     <div className="textMatch">{match.information.length > 30 ? match.information.substring(0, 30) + "..." : match.information}</div>
                 </div>

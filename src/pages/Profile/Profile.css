@@ -164,7 +164,7 @@
 }
 
 .buttonDeleteProfile:hover {
-    background-color: rgba(255, 0, 0, 0.616);
+    background-color: lightcoral;
 }
 
 .buttonDeleteProfile:focus {
