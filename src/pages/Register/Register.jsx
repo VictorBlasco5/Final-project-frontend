@@ -85,7 +85,7 @@ export const Register = () => {
                     height: '88vh',
                 }}>
                 <img className="logoLogin" src={logoPerson} alt="Logo" />
-                <div className="colum">
+                <div className="inputsLogin">
                     <CInput
                         className={`cInputDesign ${userError.nameError !== "" ? "inputDesignError" : ""}`}
                         placeholder={"Nombre"}

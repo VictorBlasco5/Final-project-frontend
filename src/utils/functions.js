@@ -1,6 +1,5 @@
 export const validation = (type, value) => {
 
-
     switch (type) {
         case "first_name":
         case "firstName":
@@ -55,8 +54,6 @@ export const validation = (type, value) => {
 
         case "direction":
 
-        const directionRegex = /^(?:0[1-9]|[1-4]\d|5[0-2])\d{3}$/
-
         if (value.length < 3) {
             return "Debe contener al menos 3 caracteres"
         }
@@ -64,14 +61,39 @@ export const validation = (type, value) => {
         if (value.length > 255) {
             return "La dirección es demasiado larga"
         }
-
-        
         
         return "";
       
+        case "information":
+
+            if (value.length < 1) {
+                return "La información es necesaria"
+            }
+
+            if (value.length > 255) {
+                return "La información es demasiado larga"
+            }
+
+            return "";
+
+        case "number_players":
+                
+                if (value === "") {
+                    return "El número de jugadores es necesario"
+                }
+    
+                return "";
+
+        case "match_date":
+
+        const match_date = new Date(value);
+        if (match_date < new Date()) {
+            return "La fecha no puede ser anterior a la actual"
+        }
+
+        return "";
 
         default:
             console.log("error");
     }
-
 }

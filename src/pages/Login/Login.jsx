@@ -88,7 +88,7 @@ export const Login = () => {
                     height: '88vh',
                 }}>
                 <img className="logoLogin" src={logoPerson} alt="ball" />
-                <div className="colum">
+                <div className="inputsLogin">
                     <CInput
                         className={`cInputDesign ${userError.emailError !== "" ? "inputDesignError" : ""}`}
                         type="email"

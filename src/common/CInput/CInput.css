@@ -13,7 +13,7 @@
 }
 
 .inputDesignError {
-    border: 0.2em solid red;
+    border-color: red;
 }
 
 .input {

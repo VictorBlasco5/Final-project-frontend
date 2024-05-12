@@ -1,55 +1,52 @@
 import "./NewMatch.css";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { useSelector, useDispatch } from "react-redux";
+import { useSelector } from "react-redux";
 import { userData } from "../../app/slices/userSlice";
-import { updateDetail } from "../../app/slices/matchDetailSlice";
 import { CInput } from "../../common/CInput/CInput";
 import { CreateMatch, GetCourts } from "../../services/apiCalls";
 import { CTextArea } from "../../common/CTextArea/CTextArea";
+import { validation } from "../../utils/functions";
 
 export const NewMatch = () => {
 
-    const dispatch = useDispatch()
     const reduxUser = useSelector(userData)
     const navigate = useNavigate()
     const token = reduxUser.credentials.token || ({});
-
     const [msgError, setMsgError] = useState("");
     const [msgSuccessfully, setMsgSuccessfully] = useState("");
     const [courts, setCourts] = useState([{}])
-
     const [matches, setMatches] = useState({
         number_players: "",
         information: "",
         match_date: "",
         court_id: "",
     })
-
-    const handleMatch = async (match) => {
-        try {
-            dispatch(updateDetail({ detail: match }))
-            navigate("/match-detail")
-
-        } catch (error) {
-
-        }
-    };
+    const [matchError, setMatchError] = useState({
+        number_playersError: "",
+        informationError: "",
+        match_dateError: "",
+        court_idError: "",
+    })
 
     const buttonHandler = () => {
         newMatch();
     }
-
-    useEffect(() => {
-        if (msgSuccessfully === "Match created") {
-        }
-    }, [msgSuccessfully]);
 
     const inputHandler = (e) => {
         setMatches((prevState) => ({
             ...prevState,
             [e.target.name]: e.target.value,
         }))
+    }
+
+    const checkError = (e) => {
+        const error = validation(e.target.name, e.target.value);
+
+        setMatchError((prevState) => ({
+            ...prevState,
+            [e.target.name + "Error"]: error,
+        }));
     }
 
     useEffect(() => {
@@ -69,17 +66,22 @@ export const NewMatch = () => {
 
     const newMatch = async () => {
         try {
+            if (!matches.number_players || !matches.information || !matches.match_date || !matches.court_id) {
+                throw new Error("Todos los campos deben estar completos");
+            }
+            setMsgError("");
+
             const fetched = await CreateMatch(token, matches)
             console.log(fetched,"partido creado");
             if (fetched && fetched.success) {
-                setMsgSuccessfully("Match created")
+                setMsgSuccessfully("Partido creado")
                 setTimeout(() => {
                     navigate('/matches');
                 }, 750);
             }
 
         } catch (error) {
-            setMsgError("It's not possible to create the match");
+            setMsgError(error.message);
             console.log(error);
         }
     }
@@ -107,23 +109,27 @@ export const NewMatch = () => {
                 <option value="10">10 jugadores</option>
             </select>
             <CTextArea
-                className={`cInputNewMatchInfo`}
+                className={`cInputNewMatchInfo ${matchError.informationError !== "" ? "inputDesignError" : ""}`}
                 type="text"
                 name={"information"}
                 value={matches.information || ""}
                 placeholder={"Información..."}
                 disabled={""}
                 changeEmit={inputHandler}
+                onBlurFunction={(e) => checkError(e)}
             />
+            <div className="error">{matchError.informationError}</div>
             <CInput
-                className={`cInputNewMatch`}
+                className={`cInputNewMatch ${matchError.match_dateError !== "" ? "inputDesignError" : ""}`}
                 type={"datetime-local"}
                 placeholder={""}
                 name={"match_date"}
                 value={matches.match_date || ""}
                 disabled={""}
                 changeEmit={inputHandler}
+                onBlurFunction={(e) => checkError(e)}
             />
+            <div className="error">{matchError.match_dateError}</div>
             {
                 courts.length > 0
                     ? (

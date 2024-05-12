@@ -9,6 +9,15 @@
     user-select: none;
 }
 
+.inputsLogin {
+    height: 30em;
+    width: 20em;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
 .buttonLogin {
     height: 2.7em;
     width: 10em;

@@ -150,7 +150,7 @@ export const Profile = () => {
                         disabled={"disabled"}
                         changeEmit={(e) => inputHandler(e)}
                     />
-                    <div className="colum">
+                    <div className="column">
                         <img draggable="false" className="image" src={user.image} alt="image" />
                         <CInput
                             className={`nicknameProfile`}
