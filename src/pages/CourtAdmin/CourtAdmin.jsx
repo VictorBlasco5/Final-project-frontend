@@ -55,57 +55,60 @@ export const CourtAdmin = () => {
                 width: '100vw',
                 height: '88vh',
             }}>
-
-            <button className="buttonNewMatch" onClick={() => navigate("/new-court")}>
-                <img draggable="false" className="add" src={add} alt="+" />
-            </button>
-            <div className="positionCourtCard">
-                {courts.map((court, index) => (
-                    <div className="courtCardAdmin" key={court.id}>
-                        <CInput
-                            className={"courtName"}
-                            type={"text"}
-                            placeholder={""}
-                            value={court.name || ""}
-                            disabled={change !== index} // Habilito edición solo si coincide el índice 
-                            changeEmit={(e) => inputHandler(index, 'name', e.target.value)}
-                        />
-
-                        <CTextArea
-                            className={"courtDirection"}
-                            type={"text"}
-                            placeholder={""}
-                            name={"direction"}
-                            value={court.direction || ""}
-                            disabled={change !== index}
-                            changeEmit={(e) => inputHandler(index, 'direction', e.target.value)}
-                        />
-
-                        <CInput
-                            className={"courtName"}
-                            type={"text"}
-                            placeholder={""}
-                            name={"URL_maps"}
-                            value={court.URL_maps || ""}
-                            disabled={change !== index}
-                            changeEmit={(e) => inputHandler(index, 'URL_maps', e.target.value)}
-                        />
-                        <div className='positionButtonEdit'>
-                            <CButton
-                                className={"buttonEdit"}
-                                title={"Editar"}
-                                functionEmit={() => setChange(index)}
+            <div className='leftMatchDesign'>
+                <button className="buttonNewMatch" onClick={() => navigate("/new-court")}>
+                    <img draggable="false" className="add" src={add} alt="+" />
+                </button>
+            </div>
+            <div className='rightMatchDesign'>
+                <div className="positionCourtCard">
+                    {courts.map((court, index) => (
+                        <div className="courtCardAdmin" key={court.id}>
+                            <CInput
+                                className={"courtName"}
+                                type={"text"}
+                                placeholder={""}
+                                value={court.name || ""}
+                                disabled={change !== index} // Habilito edición solo si coincide el índice 
+                                changeEmit={(e) => inputHandler(index, 'name', e.target.value)}
                             />
-                            {change === index && (
+
+                            <CTextArea
+                                className={"courtDirection"}
+                                type={"text"}
+                                placeholder={""}
+                                name={"direction"}
+                                value={court.direction || ""}
+                                disabled={change !== index}
+                                changeEmit={(e) => inputHandler(index, 'direction', e.target.value)}
+                            />
+
+                            <CInput
+                                className={"courtName"}
+                                type={"text"}
+                                placeholder={""}
+                                name={"URL_maps"}
+                                value={court.URL_maps || ""}
+                                disabled={change !== index}
+                                changeEmit={(e) => inputHandler(index, 'URL_maps', e.target.value)}
+                            />
+                            <div className='positionButtonEdit'>
                                 <CButton
                                     className={"buttonEdit"}
-                                    title={"Confirmar"}
-                                    functionEmit={() => updateCourtAdmin(court, court.id)}
+                                    title={"Editar"}
+                                    functionEmit={() => setChange(index)}
                                 />
-                            )}
+                                {change === index && (
+                                    <CButton
+                                        className={"buttonEdit"}
+                                        title={"Confirmar"}
+                                        functionEmit={() => updateCourtAdmin(court, court.id)}
+                                    />
+                                )}
+                            </div>
                         </div>
-                    </div>
-                ))}
+                    ))}
+                </div>
             </div>
         </div>
     );

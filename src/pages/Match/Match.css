@@ -2,8 +2,23 @@
     height: 88vh;
     width: 100vw;
 
-    overflow-y: auto;
+    display: flex;
+    flex-direction: row;
+
     user-select: none;
+}
+
+.leftMatchDesign {
+    height: 88vh;
+    width: 11vw;
+}
+
+.rightMatchDesign {
+    height: 88vh;
+    width: 89vw;
+
+    display: flex;
+    overflow-y: auto;
 }
 
 .positionMatchCard {
@@ -11,7 +26,6 @@
     flex-direction: row;
     flex-wrap: wrap;
     justify-content: flex-start;
-    margin-left: 10em;
 }
 
 .card {

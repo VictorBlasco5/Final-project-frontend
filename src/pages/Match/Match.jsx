@@ -98,39 +98,46 @@ export const Match = () => {
                     width: '100vw',
                     height: '88vh',
                 }}>
-                <button className="buttonNewMatch" onClick={() => navigate("/new-match")}>
-                    <img draggable="false" className="add" src={add} alt="+" />
-                </button>
-                {matches.length > 0 ? (
-                    <div className="positionMatchCard">
-                        {matches.map(match => (
-                            <div className={`card ${new Date(match.match_date) < new Date() ? 'passedMatch' : ''}`} key={match.id}> {/*partidos que han pasado les cambio el color*/}
-                                <button
-                                    className="buttonMatchDetail"
-                                    onClick={() => handleMatch(match)}>
-                                    <div className="textMatch date">{formatDate(match.match_date)}</div>
-                                    <div className="rowCard">
-                                        <div className="textMatch">Jugadores: {match.number_players} </div>
-                                        <div className="space"></div>
-                                        <div className="textMatch">Apuntados: {match.signedCount}</div>
-                                    </div>
-                                    <div className="textMatch">{match.information.length > 30 ? match.information.substring(0, 30) + "..." : match.information}</div>
-                                    <div className="textMatch">{match.court.name}</div>
-                                </button>
-                                {/*partidos que han pasado deshabilito botón*/}
-                                <button
-                                    className={`buttonAssistance ${new Date(match.match_date) < new Date() ? 'buttonPassed' : ''}`}
-                                    onClick={() => signedMatch(match.id)}
-                                    disabled={new Date(match.match_date) < new Date()}
-                                >
-                                    {match.signed_up?.includes(userId) ? "Borrarme" : "Apuntarme"}
-                                </button>
-                            </div>
-                        ))}
-                    </div>
-                ) : (
-                    <div></div>
-                )}
+
+                <div className="leftMatchDesign">
+                    <button className="buttonNewMatch" onClick={() => navigate("/new-match")}>
+                        <img draggable="false" className="add" src={add} alt="+" />
+                    </button>
+                </div>
+                <div className="rightMatchDesign">
+
+
+                    {matches.length > 0 ? (
+                        <div className="positionMatchCard">
+                            {matches.map(match => (
+                                <div className={`card ${new Date(match.match_date) < new Date() ? 'passedMatch' : ''}`} key={match.id}> {/*partidos que han pasado les cambio el color*/}
+                                    <button
+                                        className="buttonMatchDetail"
+                                        onClick={() => handleMatch(match)}>
+                                        <div className="textMatch date">{formatDate(match.match_date)}</div>
+                                        <div className="rowCard">
+                                            <div className="textMatch">Jugadores: {match.number_players} </div>
+                                            <div className="space"></div>
+                                            <div className="textMatch">Apuntados: {match.signedCount}</div>
+                                        </div>
+                                        <div className="textMatch">{match.information.length > 30 ? match.information.substring(0, 30) + "..." : match.information}</div>
+                                        <div className="textMatch">{match.court.name}</div>
+                                    </button>
+                                    {/*partidos que han pasado deshabilito botón*/}
+                                    <button
+                                        className={`buttonAssistance ${new Date(match.match_date) < new Date() ? 'buttonPassed' : ''}`}
+                                        onClick={() => signedMatch(match.id)}
+                                        disabled={new Date(match.match_date) < new Date()}
+                                    >
+                                        {match.signed_up?.includes(userId) ? "Borrarme" : "Apuntarme"}
+                                    </button>
+                                </div>
+                            ))}
+                        </div>
+                    ) : (
+                        <div></div>
+                    )}
+                </div>
             </div>
         </>
     )
