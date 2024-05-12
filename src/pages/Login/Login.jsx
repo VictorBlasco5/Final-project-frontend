@@ -55,6 +55,7 @@ export const Login = () => {
                     throw new Error("Todos los campos deben estar completos");
                 }
             }
+            setMsgError("");
 
             const fetched = await loginService(user)
 
@@ -66,10 +67,12 @@ export const Login = () => {
                     user: decoded,
                 }
 
-                setMsgSuccessfully(`Wellcome ${decoded.name}`)
+                setMsgSuccessfully(`Bienvenido ${decoded.name}`)
 
                 dispatch(login({ credentials: auth }))
-                navigate("/")
+                setTimeout(() => {
+                    navigate("/");
+                }, 750);
             }
         } catch (error) {
             setMsgError(error.message);

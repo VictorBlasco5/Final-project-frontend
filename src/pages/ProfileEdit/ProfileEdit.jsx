@@ -79,7 +79,7 @@ export const ProfileEdit = () => {
             setChange(false);
             setTimeout(() => {
                 navigate("/profile");
-            }, 500);
+            }, 750);
         } catch (error) {
             console.log(error);
         }

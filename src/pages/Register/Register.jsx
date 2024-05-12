@@ -61,11 +61,11 @@ export const Register = () => {
 
             const fetched = await RegisterUser(user);
 
-            setMsgSuccessfully(fetched.message)
+            setMsgSuccessfully("Usuario registrado")
 
             setTimeout(() => {
                 navigate("/login")
-            }, 1200)
+            }, 750)
 
         } catch (error) {
             setMsgError(error.message);
