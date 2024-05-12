@@ -47,16 +47,16 @@ export const Court = () => {
                 <div className="courtCard" key={court.id}>
                     <div className="rowCourt">
                         <button className="buttonFav" onClick={() => addFavoriteCourt(court.id)}>
-                            <img className="starCourt" src={star} alt="Favortios" />
+                            <img draggable="false" className="starCourt" src={star} alt="Favortios" />
                         </button>
                         <div className="textCourt">{court.name}</div>
                     </div>
                     <div className="directionMaps">
                         <div className="rowCard">
-                        <div className="textDirection">{court.direction}</div>
-                        <a className="maps" href={court.URL_maps} target="_blank" rel="noopener noreferrer"> {/* "noopener noreferrer", previene ataques de ventanas emergentes */}
-                            <img className="logoMapsCourt" src={logoMaps} alt="Logo" />
-                        </a>
+                            <div className="textDirection">{court.direction}</div>
+                            <a draggable="false" className="maps" href={court.URL_maps} target="_blank" >
+                                <img draggable="false" className="logoMapsCourt" src={logoMaps} alt="Logo" />
+                            </a>
                         </div>
                     </div>
                 </div>

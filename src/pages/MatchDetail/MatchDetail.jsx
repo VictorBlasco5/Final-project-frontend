@@ -50,7 +50,7 @@ export const MatchDetail = () => {
                 <div className="text">{detailRdx?.detail?.court?.name}</div>
                 <div className="rowCard">
                     <button className="buttonMaps" onClick={handleMapsButton}>
-                        <img className="logoMaps" src={logoMaps} alt="Logo" />
+                        <img draggable="false" className="logoMaps" src={logoMaps} alt="Logo" />
                     </button>
                     <div className="direction">{detailRdx?.detail?.court?.direction}</div>
                 </div>

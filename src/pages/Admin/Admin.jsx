@@ -130,8 +130,8 @@ export const Admin = () => {
             width: '100vw',
             height: '88vh',
         }}>
-            <div className="containTable">
-                <button className="buttonTableAdmin" onClick={handleShowUsers}>Users</button>
+            <div draggable="false" className="containTable">
+                <button  className="buttonTableAdmin" onClick={handleShowUsers}>Users</button>
                 <button className="buttonTableAdmin" onClick={handleShowCourts}>Pistas</button>
                 <button className="buttonTableAdmin" onClick={handleShowMatches}>Partidos</button>
             </div>
@@ -163,14 +163,12 @@ export const Admin = () => {
                                             <td>{user.favorite_position}</td>
                                             <td>{user.presentation}</td>
                                             <td>{user.image}</td>
-                                            {/* <td>{user.presentation.length > 80 ? user.presentation.substring(0, 80) + "..." : user.presentation}</td> */}
-                                            {/* <td>{user.image.length > 50 ? user.image.substring(0, 50) + "..." : user.image}</td> */}
                                             <td>{user.role.name}</td>
                                             <td>
                                                 <button
                                                     className="buttonDeleteAdmin"
                                                     onClick={() => userRemove(user.id)}>
-                                                    <img className="deleteUser" src={deleteUser} alt="Eliminar" />
+                                                    <img draggable="false" className="logoDelete" src={deleteUser} alt="Eliminar" />
                                                 </button>
                                             </td>
                                         </tr>
@@ -212,7 +210,7 @@ export const Admin = () => {
                                                 <button
                                                     className="buttonDeleteAdmin"
                                                     onClick={() => matchRemove(match.id)}>
-                                                    <img className="deleteUser" src={deleteMatch} alt="Eliminar" />
+                                                    <img draggable="false" className="logoDelete" src={deleteMatch} alt="Eliminar" />
                                                 </button>
                                             </td>
                                         </tr>
@@ -241,7 +239,7 @@ export const Admin = () => {
                                                 className="buttonDeleteAdmin"
                                                 onClick={() => navigate("/new-court")}
                                             >
-                                                <img className="deleteUser" src={add} alt="Nueva pista" />
+                                                <img draggable="false" className="logoDelete" src={add} alt="Nueva pista" />
                                             </button>
                                         </th>
                                     </tr>
@@ -259,7 +257,7 @@ export const Admin = () => {
                                                 <button
                                                     className="buttonDeleteAdmin"
                                                     onClick={() => courtRemove(court.id)}>
-                                                    <img className="deleteUser" src={deleteMatch} alt="Eliminar" />
+                                                    <img draggable="false" className="logoDelete" src={deleteMatch} alt="Eliminar" />
                                                 </button>
                                             </td>
                                         </tr>

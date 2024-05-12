@@ -99,7 +99,7 @@ export const Match = () => {
                     height: '88vh',
                 }}>
                 <button className="buttonNewMatch" onClick={() => navigate("/new-match")}>
-                    <img className="add" src={add} alt="+" />
+                    <img draggable="false" className="add" src={add} alt="+" />
                 </button>
                 {matches.length > 0 ? (
                     <div className="positionMatchCard">

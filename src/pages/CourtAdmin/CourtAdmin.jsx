@@ -57,7 +57,7 @@ export const CourtAdmin = () => {
             }}>
 
             <button className="buttonNewMatch" onClick={() => navigate("/new-court")}>
-                <img className="add" src={add} alt="+" />
+                <img draggable="false" className="add" src={add} alt="+" />
             </button>
             <div className="positionCourtCard">
                 {courts.map((court, index) => (

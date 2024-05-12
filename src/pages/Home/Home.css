@@ -5,6 +5,7 @@
     display: flex;
 
     background-color: transparent;
+    user-select: none;
 }
 
 .leftHome {
@@ -20,6 +21,7 @@
 .logoHome {
     height: 25em;
     width: 15em;
+    pointer-events: none;
 }
 
 .textHome {
@@ -71,6 +73,7 @@
 
     margin-top: 0.5em;
     margin-bottom: 1em;
+    pointer-events: none;
 }
 
 .numberOne {
@@ -92,6 +95,7 @@
 
     margin-top: 0.5em;
     margin-bottom: 1em;
+    pointer-events: none;
 }
 
 .court {
@@ -113,6 +117,7 @@
 
     margin-top: 0.5em;
     margin-bottom: 1em;
+    pointer-events: none;
 }
 
 .textLogos {

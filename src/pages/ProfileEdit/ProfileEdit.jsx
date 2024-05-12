@@ -88,7 +88,7 @@ export const ProfileEdit = () => {
 
     return (
         <>
-            <div className="profileEdit"
+            <div className="containerProfileEdit"
                 style={{
                     backgroundImage: `url(${('../../../img/court-70.jpg')})`,
                     backgroundSize: 'cover',
@@ -96,7 +96,7 @@ export const ProfileEdit = () => {
                     width: '100vw',
                     height: '88vh',
                 }}>
-                <div className="cont">
+                <div className="profileEdit">
                     <div className="row">
                         <CButton
                             className="buttonEditConfirm"
@@ -104,7 +104,7 @@ export const ProfileEdit = () => {
                             functionEmit={change ? updateData : () => setChange(true)}
                         />
                         <div className="space2"></div>
-                        <img className="image" src={user.image} alt="image" />
+                        <img draggable="false" className="image" src={user.image} alt="image" />
                     </div>
                     <div className="row">URL foto:
                         <CTextArea

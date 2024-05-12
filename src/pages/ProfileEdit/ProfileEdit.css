@@ -1,13 +1,4 @@
-.cont {
-    height: 88vh;
-    width: 30vw;
-
-    display: flex;
-    flex-direction: column;
-    overflow-y: auto;
-}
-
-.profileEdit {
+.containerProfileEdit {
     height: 88vh;
     width: 100vw;
 
@@ -16,6 +7,17 @@
     align-items: center;
     justify-content: flex-start;
     overflow-y: auto;
+    user-select: none;
+}
+
+.profileEdit {
+    height: 88vh;
+    width: 30vw;
+
+    display: flex;
+    flex-direction: column;
+    overflow-y: auto;
+    user-select: none;
 }
 
 .row {
@@ -62,6 +64,7 @@
     color: black;
     font-family: 'Roboto', sans-serif;
     resize: none;
+    
 }
 
 .presentation {

@@ -16,7 +16,7 @@
     background: linear-gradient(to bottom, transparent 95%, rgb(0, 0, 0) 80%);
     margin-left: 2em;
     margin-right: 2em;
-    
+    user-select: none;
 }
 
 .table {
@@ -29,6 +29,7 @@
 
 .header{
     background-color: #f2f2f2;
+    user-select: none;
 }
 
 .table td {
@@ -62,18 +63,19 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    user-select: none;
 }
 
 .buttonDeleteAdmin:focus {
     outline: none;
 }
 
-.deleteUser {
+.logoDelete {
     height: 2em;
     width: 2em;
 }
 
-.deleteUser:hover {
+.logoDelete:hover {
     
     transform: scale(1.15);
 }

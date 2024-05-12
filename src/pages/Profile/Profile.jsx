@@ -139,11 +139,10 @@ export const Profile = () => {
                     width: '100vw',
                     height: '88vh',
                 }}>
-                <div className="dataProfile">
+                <div className="dataProfile" >
                     <button className="buttonEditProfile" onClick={() => navigate("/profile-edit")}>Editar perfil</button>
                     <CInput
                         className={"positionProfile"}
-                        style={{ textAlign: 'center' }}
                         type={"text"}
                         placeholder={""}
                         name={"favorite_position"}
@@ -152,10 +151,9 @@ export const Profile = () => {
                         changeEmit={(e) => inputHandler(e)}
                     />
                     <div className="colum">
-                        <img className="image" src={user.image} alt="image" />
+                        <img draggable="false" className="image" src={user.image} alt="image" />
                         <CInput
                             className={`nicknameProfile`}
-                            style={{ textAlign: 'center' }}
                             type={"text"}
                             placeholder={""}
                             name={"nickname"}

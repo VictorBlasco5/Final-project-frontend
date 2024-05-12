@@ -21,7 +21,7 @@ export const Header = () => {
     return (
         <div className="headerDesign">
             <div className="logoNavBar">
-                <div className="logoPerson"><img className="icon" src={logoPerson} alt="Logo" /></div>
+                <div className="logoPerson"><img draggable="false" className="icon" src={logoPerson} alt="Logo" /></div>
             </div>
             {
                 reduxUser?.credentials?.token
@@ -39,7 +39,7 @@ export const Header = () => {
                             {reduxUser?.credentials?.user?.roleName === "user"
                                 ? (
                                     <div className="navigatorDesign">
-                                        <Navigator title={<img className="starHeader" src={star} alt="Favortios" />} path={"/favorite-court"} />
+                                        <Navigator title={<img draggable="false" className="starHeader" src={star} alt="Favortios" />} path={"/favorite-court"} />
                                         <Navigator title={"Partidos"} path={"/matches"} />
                                         <Navigator title={"Pistas"} path={"/court"} />
                                     </div>

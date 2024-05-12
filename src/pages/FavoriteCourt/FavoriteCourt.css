@@ -3,6 +3,7 @@
     width: 100vw;
 
     overflow-y: auto;
+    user-select: none;
 }
 
 .positionFavCard {
