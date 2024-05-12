@@ -162,16 +162,14 @@
 
     border-radius: 0.5em;
     margin-top: 2em;
-    background-color: lightcoral;
-    color: white;
-    font-family: 'Roboto', sans-serif;
+    background-color:  rgba(255, 254, 254, 0.589);
+    color: black;
     border: none;
     cursor: pointer;
 }
 
 .buttonCreateMatch:hover {
-    background-color: rgb(238, 25, 25);
-    color: white;
+    background-color:rgba(192, 121, 28, 0.664);
 }
 
 .buttonCreateMatch:focus {

@@ -47,7 +47,7 @@
 }
 
 .buttonTableAdmin:hover {
-    color: gray;
+    font-weight: bold;
 }
 
 .buttonTableAdmin:focus {

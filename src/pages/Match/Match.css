@@ -24,7 +24,7 @@
 
     background-color: rgba(255, 255, 255, 0.5);
     margin: 1em;
-    border-radius: 0.5em;
+    border-radius: 0.3em;
     border: 0;
 }
 
@@ -56,13 +56,13 @@
     align-items: center;
     justify-content: center;
 
-    background-color: rgba(255, 255, 254, 0.589);
+    background-color: rgba(255, 254, 254, 0.589);
     border: none;
     margin-bottom: 0.5em;
 }
 
 .buttonAssistance:hover {
-    background-color: rgb(255, 255, 255)
+    background-color: rgba(192, 121, 28, 0.664)
 }
 
 .buttonAssistance:focus {
@@ -105,7 +105,7 @@
 }
 
 .add:hover {
-    background-color: rgba(255, 255, 255, 0.5);
+    background-color: rgba(192, 121, 28, 0.664);
     border-radius: 0.5em;
 }
 

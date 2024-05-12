@@ -39,12 +39,13 @@
     cursor: pointer;
     border: none;
     margin-bottom: 2em;
+    border-radius: 0.3em;
 }
 
 .buttonEditProfile:hover {
     color: black;
     border: 0em;
-    background-color: white;
+    background-color: rgba(192, 121, 28, 0.664);
 }
 
 .buttonEditProfile:focus {
@@ -109,7 +110,7 @@
 }
 
 .cardProfile {
-    height: 10.5em;
+    height: 11em;
     width: 20em;
 
     display: flex;
@@ -119,7 +120,7 @@
 
     background-color:rgba(255, 255, 255, 0.5);
     margin: 1em;
-    border-radius: 0.5em;
+    border-radius: 0.3em;
 }
 
 .buttonCardProfile {
@@ -154,7 +155,7 @@
 }
 
 .buttonDeleteProfile {
-    height: 1em;
+    height: 1.5em;
     width: 5em;
 
     display: flex;

@@ -72,5 +72,17 @@
 
 .buttonEdit:hover {
     color: black;
-    background-color: lightcoral;
+    background-color: rgba(192, 121, 28, 0.664);
+}
+
+.add {
+    height: 3em;
+    width: 3em;
+    background-color: transparent;
+    border-radius: 0.5em;
+}
+
+.add:hover {
+    background-color: rgba(192, 121, 28, 0.664);
+    border-radius: 0.5em;
 }

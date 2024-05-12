@@ -66,17 +66,19 @@ export const MatchCourt = () => {
                 width: '100vw',
                 height: '88vh',
             }}>
-            {matches.map((match) => (
+            <div className='positionFavCard'>
+                {matches.map((match) => (
                     <div className={`cardMatchCourt ${new Date(match.match_date) < new Date() ? 'passedMatchCourt' : ''}`} key={match.id}> {/*partidos que han pasado les cambio el color*/}
-                    <div className="textMatchCourt date">{formatDate(match.match_date)}</div>
-                    <div className='row'>
-                        <div className="textMatchCourt">Jugadores: {match.number_players}</div>
-                        <div className="space"></div>
-                        <div className="textMatchCourt">Apuntados: {match.signed_up?.length}</div>
+                        <div className="textMatchCourt date">{formatDate(match.match_date)}</div>
+                        <div className='row'>
+                            <div className="textMatchCourt">Jugadores: {match.number_players}</div>
+                            <div className="space"></div>
+                            <div className="textMatchCourt">Apuntados: {match.signed_up?.length}</div>
+                        </div>
+                        <div className="textMatch">{match.information.length > 30 ? match.information.substring(0, 30) + "..." : match.information}</div>
                     </div>
-                    <div className="textMatch">{match.information.length > 30 ? match.information.substring(0, 30) + "..." : match.information}</div>
-                </div>
-            ))}
+                ))}
+            </div>
         </div>
     )
 }
