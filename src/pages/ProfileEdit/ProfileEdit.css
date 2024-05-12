@@ -1,0 +1,129 @@
+.containerProfileEdit {
+    height: 88vh;
+    width: 100vw;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    overflow-y: auto;
+    user-select: none;
+}
+
+.profileEdit {
+    height: 88vh;
+    width: 30vw;
+
+    display: flex;
+    flex-direction: column;
+    overflow-y: auto;
+    user-select: none;
+}
+
+.row {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+
+    color: black;
+    font-weight: bold;
+    font-family: 'Roboto', sans-serif;
+}
+
+.buttonEditConfirm {
+    height: 2em;
+    width: 6em;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background-color: rgba(255, 255, 255, 0.5);
+    cursor: pointer;
+    border-radius: 0.3em;
+}
+
+
+.buttonEditConfirm:hover {
+    color: black;
+    background-color:rgba(192, 121, 28, 0.664);
+    border: none;
+}
+
+.space2 {
+    width: 6em;
+}
+
+.urlImage {
+    height: 6em;
+    width: 30em;
+    border-radius: 0.5em;
+    border-color: black;
+    margin-left: 5em;
+    margin-bottom: 1em;
+    color: black;
+    font-family: 'Roboto', sans-serif;
+    resize: none;
+    
+}
+
+.presentation {
+    height: 5em;
+    width: 20em;
+    border-radius: 0.5em;
+    border-color: black;
+    margin-left: 1em;
+    resize: none;
+    font-family: 'Roboto', sans-serif;
+    color: black;
+}
+
+.name {
+    height: 2em;
+
+    margin: 1em;
+    color: black;
+    border-radius: 0.3em;
+    margin-left: 4em;
+    border: 1px solid black;
+}
+
+.email {
+    height: 2em;
+    width: 15em;
+
+    margin: 1em;
+    color: black;
+    border-radius: 0.3em;
+    border: 1px solid black;
+    margin-left: 5.3em;
+}
+
+.nickname {
+    height: 2em;
+
+    margin: 1em;
+    color: black;
+    border-radius: 0.3em;
+    margin-left: 2.8em;
+    border: 1px solid black;
+}
+
+.positionFav {
+    height: 2em;
+    width: 5em;
+    margin: 1em;
+    color: black;
+    border-radius: 0.3em;
+    margin-left: 3.5em;
+    border: 1px solid black;
+}
+
+.positionFav:focus {
+    outline: none;
+
+}
+
+.inputMargin {
+    margin-bottom: -0.8em;
+}

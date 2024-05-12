@@ -1,0 +1,58 @@
+.favoriteCourtDesign {
+    height: 88vh;
+    width: 100vw;
+
+    overflow-y: auto;
+    user-select: none;
+}
+
+.positionFavCard {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    
+}
+
+.buttonMatchesFC{
+    height: 2em;
+    width: 5em;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 0.3em;
+    margin: 1em;
+    border: 0em;
+    background-color: rgba(255, 255, 254, 0.589);
+}
+
+.buttonMatchesFC:hover {
+
+    border:0em;
+    background-color:rgba(192, 121, 28, 0.664)
+}
+
+.buttonMatchesFC:focus {
+    outline:none;
+}
+
+.courtCardFavorite {
+    height: 4em;
+    width: 35em;
+
+    border-radius: 0.3em;
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+
+    background-color: rgba(255, 255, 255, 0.5);
+    margin: 0.5em;
+    color: black;
+    margin-left: 4.5em;
+}
+
+.textCourtFavorite {
+    font-size: 1.3em;
+    font-weight: bold;
+}

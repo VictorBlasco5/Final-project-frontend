@@ -1,0 +1,177 @@
+.profileDesign {
+    height: 88vh;
+    width: 100vw;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    overflow-y: auto;
+
+    user-select: none;
+}
+
+.dataProfile {
+    width: 90%;
+
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+
+    border-bottom: 0.2em solid black;
+}
+
+.column {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.buttonEditProfile {
+    height: 2em;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background-color: rgba(255, 255, 255, 0.5);
+    cursor: pointer;
+    border: none;
+    margin-bottom: 2em;
+    border-radius: 0.3em;
+}
+
+.buttonEditProfile:hover {
+    color: black;
+    border: 0em;
+    background-color: rgba(192, 121, 28, 0.664);
+}
+
+.buttonEditProfile:focus {
+    outline: none;
+}
+
+.positionProfile {
+    height: 2em;
+    width: 10em;
+
+    color: black;
+    background-color: transparent;
+    text-align: center;
+    border: none;
+    font-size: 1.2em;
+    margin-bottom: 2em;
+    pointer-events: none
+}
+
+.image {
+    height: 7em;
+    width: 7em;
+
+    border-radius: 50%;
+    margin-bottom: 1em;
+    margin-top: 1em;
+}
+
+.nicknameProfile {
+    height: 2em;
+    width: 10em;
+
+    text-align: center;
+    color: black;
+    background-color: transparent;
+    border: none;
+    font-size: 1.2em;
+    font-weight: bold;
+    pointer-events: none;
+}
+
+.presentationProfile {
+    height: 5em;
+    width: 20em;
+
+    border: none;
+    margin-left: 1em;
+    resize: none;
+    background-color: transparent;
+    color: black;
+    font-family: 'Roboto', sans-serif;
+    font-size: 1em;
+    pointer-events: none;
+}
+
+.positionCardProfile {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    margin-left: 9em;
+    margin-right: 9em;
+}
+
+.cardProfile {
+    height: 11em;
+    width: 20em;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+
+    background-color:rgba(255, 255, 255, 0.5);
+    margin: 1em;
+    border-radius: 0.3em;
+}
+
+.buttonCardProfile {
+    height: 9em;
+    width: 20em;
+
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+
+    background-color:transparent;
+    border: none;
+}
+
+.buttonCardProfile:focus {
+    outline: none;
+}
+
+.rowCardProfile {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    color: black;
+}
+
+.space {
+    width: 3em;
+}
+
+.textProfile {
+    margin:0.3em;
+}
+
+.buttonDeleteProfile {
+    height: 1.5em;
+    width: 5em;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 0.3em;
+    margin-bottom: 0.5em;
+    border: none;
+    background-color:  rgba(255, 255, 254, 0.589);
+}
+
+.buttonDeleteProfile:hover {
+    background-color: lightcoral;
+}
+
+.buttonDeleteProfile:focus {
+    outline: none;
+}

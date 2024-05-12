@@ -1,0 +1,129 @@
+.matchDesign {
+    height: 88vh;
+    width: 100vw;
+
+    display: flex;
+    flex-direction: row;
+
+    user-select: none;
+}
+
+.leftMatchDesign {
+    height: 88vh;
+    width: 11vw;
+}
+
+.rightMatchDesign {
+    height: 88vh;
+    width: 89vw;
+
+    display: flex;
+    overflow-y: auto;
+}
+
+.positionMatchCard {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+}
+
+.card {
+    height: 13em;
+    width: 20em;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    background-color: rgba(255, 255, 255, 0.5);
+    margin: 1em;
+    border-radius: 0.3em;
+    border: 0;
+}
+
+.passedMatch {
+    background-color: rgba(66, 66, 66, 0.377);
+}
+
+.buttonMatchDetail {
+    height: 15em;
+    width: 20em;
+
+    display: flex;
+    justify-content: flex-start;
+    flex-direction: column;
+
+    background-color: transparent;
+    border: none;
+}
+
+.buttonMatchDetail:focus {
+    outline: none;
+}
+
+.buttonAssistance {
+    height: 2em;
+    width: 7em;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background-color: rgba(255, 254, 254, 0.589);
+    border: none;
+    margin-bottom: 0.5em;
+}
+
+.buttonAssistance:hover {
+    background-color: rgba(192, 121, 28, 0.664)
+}
+
+.buttonAssistance:focus {
+    outline: none;
+}
+
+.buttonPassed {
+    background-color: rgba(66, 66, 66, 0.377);
+    pointer-events: none;
+}
+
+.textMatch{
+    margin: 0.5em;
+}
+
+.date {
+    font-weight: bold;
+}
+
+.buttonNewMatch {
+    height: 3em;
+    width: 3em;
+    background-color: transparent;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 1em 0em -4em 4em;
+}
+
+.buttonNewMatch:focus {
+    outline: none;
+}
+
+.add {
+    height: 3em;
+    width: 3em;
+    background-color: transparent;
+    border-radius: 0.5em;
+}
+
+.add:hover {
+    background-color: rgba(192, 121, 28, 0.664);
+    border-radius: 0.5em;
+}
+
+.rowCard {
+    display: flex;
+    flex-direction: row;
+}

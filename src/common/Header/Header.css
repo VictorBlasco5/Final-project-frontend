@@ -1,0 +1,57 @@
+.headerDesign {
+    height: 12vh;
+    width: 100vw;
+    
+    background-color:  rgba(245, 235, 216, 0.589);
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    user-select: none;
+}
+
+.logoNavBar {
+margin-left: 1em;
+}
+
+.logoPerson {
+    color: black;
+    font-weight: bold;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.icon {
+    height: 3.5em;
+    width: 3.5em;
+}
+
+.starHeader {
+    height: 2em;
+    width: 2em;
+}
+
+.starHeader:hover {
+    transform: scale(1.15);
+}
+
+.positionNavBar {
+    display: flex;
+}
+
+.logOutDesign {
+    display: flex;
+    align-items: center;
+
+    color: black;
+    font-weight: bold;
+    margin: 1em;
+    transition: 0.3s;
+}
+
+.logOutDesign:hover {
+    transition: 0.3s;
+    color: gray;
+    cursor: pointer;
+}

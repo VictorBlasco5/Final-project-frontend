@@ -1,0 +1,102 @@
+.CourtDesign {
+    height: 88vh;
+    width: 100vw;
+
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    flex-wrap: wrap;
+    overflow-y: auto;
+    user-select: none;
+}
+
+.courtCard {
+    height: 7.5em;
+    width: 37em;
+
+    border-radius: 0.3em;
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+
+    background-color: rgba(255, 255, 255, 0.5);
+    margin: 0.5em;
+    color: black;
+    margin-left: 4em;
+}
+
+.buttonFav {
+    height: 2em;
+    width: 2em;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 0em;
+    background-color: transparent;
+}
+
+.buttonFav:hover {
+    border:0em;
+}
+
+.buttonFav:focus {
+    outline: none;
+}
+
+.textCourt {
+    width: 8em;
+
+    font-size: 1.3em;
+    font-weight: bold;
+    margin-left: 1em;
+}
+
+.textDirection {
+    width: 18em;
+}
+
+.starCourt {
+    height: 2.5em;
+    width: 2.5em;
+
+    margin-left: 1em;
+    cursor: pointer;
+    background-color: transparent;
+}
+
+.starCourt:hover {
+    transform: scale(1.15);
+}
+
+.rowCourt {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.directionMaps {
+    height: 7em;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    margin:1em;
+    color: black;
+}
+
+.logoMapsCourt {
+    height: 1.5em;
+}
+
+.logoMapsCourt:hover {
+    transform: scale(1.15);
+}
+
+.maps {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-left: 1em;
+}

@@ -1,0 +1,126 @@
+.homeDesign {
+    height: 88vh;
+    width: 100vw;
+
+    display: flex;
+
+    background-color: transparent;
+    user-select: none;
+}
+
+.leftHome {
+    height: 88vh;
+    width: 20vw;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: 2em;
+}
+
+.logoHome {
+    height: 25em;
+    width: 15em;
+    pointer-events: none;
+}
+
+.textHome {
+    height: 44vh;
+    width: 80vw;
+
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    flex-direction: column;
+
+    font-weight: bold;
+    font-size: 2em;
+    color: black;
+}
+
+.title{
+    font-size: 3em;
+}
+
+.subtitle {
+    font-size: 0.9em;
+}
+
+.downHome {
+    height: 44vh;
+    width: 80vw;
+
+    display: flex;
+    justify-content: flex-start;
+}
+
+.friends {
+    height: 44vh;
+    width: 26.6vw;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+
+    font-weight: bold;
+    color: black;
+}
+
+.logoFriends {
+    height: 8em;
+    width: 8em;
+
+    margin-top: 0.5em;
+    margin-bottom: 1em;
+    pointer-events: none;
+}
+
+.numberOne {
+    height: 44vh;
+    width: 26.6vw;
+   
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+
+    font-weight: bold;
+    color: black;
+}
+
+.logoNumberOne {
+    height: 8em;
+    width: 8em;
+
+    margin-top: 0.5em;
+    margin-bottom: 1em;
+    pointer-events: none;
+}
+
+.court {
+    height: 44vh;
+    width: 26.8vw;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    
+    font-weight: bold;
+    color: black;
+}
+
+.logoCourt {
+    height: 8em;
+    width: 8em;
+
+    margin-top: 0.5em;
+    margin-bottom: 1em;
+    pointer-events: none;
+}
+
+.textLogos {
+    height: 6em;
+    width: 15em;
+}

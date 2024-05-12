@@ -1,0 +1,101 @@
+.courtAdminDesign {
+    height: 88vh;
+    width: 100vw;
+
+    display: flex;
+    flex-direction: row;
+
+    user-select: none;
+}
+
+.leftMatchDesign {
+    height: 88vh;
+    width: 11vw;
+}
+
+.rightMatchDesign {
+    height: 88vh;
+    width: 89vw;
+
+    display: flex;
+    overflow-y: auto;
+}
+
+.positionCourtCard {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+}
+
+.courtCardAdmin {
+    height: 13em;
+    width: 22em;
+
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+
+    background-color: rgba(255, 255, 255, 0.5);
+    margin: 0.5em;
+    border-radius: 0.5em;
+    margin-top: 1em;
+}
+
+.courtName {
+    height: 2em;
+    width: 24em;
+    margin: 0.5em;
+    margin-left: 1em;
+    color: black;
+    border-radius: 0.3em;
+    border: 1px solid black;
+}
+
+.courtDirection {
+    height: 4em;
+    width: 24em;
+    margin: 0.5em;
+    margin-left: 1em;
+    color: black;
+    border-radius: 0.3em;
+    border: 1px solid black;
+    resize: none;
+    font-family: 'Roboto', sans-serif;
+}
+
+.positionButtonEdit {
+
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    margin-left: 0.5em;
+}
+
+.buttonEdit {
+    height: 1.5em;
+    width: 5em;
+    background-color:  rgba(255, 255, 255, 0.5);
+    border-radius: 0.3em;
+    cursor: pointer;
+    margin-right: 0.5em;
+    margin-left: 0.3em;
+}
+
+.buttonEdit:hover {
+    color: black;
+    background-color: rgba(192, 121, 28, 0.664);
+}
+
+.add {
+    height: 3em;
+    width: 3em;
+    background-color: transparent;
+    border-radius: 0.5em;
+}
+
+.add:hover {
+    background-color: rgba(192, 121, 28, 0.664);
+    border-radius: 0.5em;
+}

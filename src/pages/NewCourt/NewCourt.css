@@ -1,0 +1,14 @@
+.newCourtDesign {
+    height: 88vh;
+    width: 100vw;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    user-select: none;
+}
+
+.inputDesignError {
+    border-color: red;
+}

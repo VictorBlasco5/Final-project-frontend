@@ -1,0 +1,37 @@
+.matchCourtDesign {
+    height: 88vh;
+    width: 100vw;
+
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    overflow-y: auto;
+    flex-wrap: wrap;
+
+    user-select: none;
+}
+
+.cardMatchCourt {
+    height: 10em;
+    width: 19em;
+
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    flex-direction: column;
+
+    background-color:  rgba(255, 255, 255, 0.5);
+    margin: 0.5em;
+    margin-left: 1.6em;
+    border-radius: 0.5em;
+}
+
+.passedMatchCourt {
+    background-color: rgba(66, 66, 66, 0.377);
+}
+
+
+.textMatchCourt {
+    margin: 0.5em;
+    
+}

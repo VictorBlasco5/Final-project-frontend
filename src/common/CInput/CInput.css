@@ -1,0 +1,31 @@
+.cInputDesign {
+    height: 3em;
+    width: 15em;
+
+    border: 0.1em solid black;
+    border-radius: 0.5em;
+    margin: 1em;
+
+    display: flex;
+    flex-direction: column;
+    color: black;
+    background-color:white
+}
+
+.inputDesignError {
+    border-color: red;
+}
+
+.input {
+    height: 2em;
+    width: 15em;
+
+    border: 0.2em solid black;
+    border-radius: 0.5em;
+    margin: 1em;
+
+    display: flex;
+    flex-direction: column;
+    color: black;
+    background-color:white
+}
