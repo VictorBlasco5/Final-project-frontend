@@ -75,7 +75,7 @@ export const MatchCourt = () => {
                             <div className="space"></div>
                             <div className="textMatchCourt">Apuntados: {match.signed_up?.length}</div>
                         </div>
-                        <div className="textMatch">{match.information.length > 30 ? match.information.substring(0, 30) + "..." : match.information}</div>
+                        <div className="textMatch">{match.information.length > 35 ? match.information.substring(0, 35) + "..." : match.information}</div>
                     </div>
                 ))}
             </div>
