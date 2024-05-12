@@ -14,26 +14,37 @@ import { FavoriteCourt } from "../FavoriteCourt/FavoriteCourt"
 import { MatchCourt } from "../MatchCourt/MatchCourt"
 import { CourtAdmin } from "../CourtAdmin/CourtAdmin"
 
+import { userData } from "../../app/slices/userSlice"
+import { useSelector } from "react-redux"
+
 
 export const Body = () => {
+    const reduxUser = useSelector(userData)
 
     return (
         <Routes>
-            <Route path="*" element={<Navigate to={"/"} replace/>} />
+            <Route path="*" element={<Navigate to={"/"} replace />} />
             <Route path="/" element={<Home />} />
-            <Route path="/matches" element={<Match />} />
             <Route path="/register" element={<Register />} />
             <Route path="/login" element={<Login />} />
             <Route path="/profile" element={<Profile />} />
             <Route path="/profile-edit" element={<ProfileEdit />} />
-            <Route path="/new-match" element={<NewMatch />} />
-            <Route path="/admin" element={<Admin />} />
-            <Route path="/new-court" element={<NewCourt />} />
-            <Route path="/match-detail" element={<MatchDetail />} />
-            <Route path="/court" element={<Court />} />
-            <Route path="/favorite-court" element={<FavoriteCourt />} />
-            <Route path="/matches-court" element={<MatchCourt />} />
-            <Route path="/court-admin" element={<CourtAdmin />} />
+            {reduxUser?.credentials?.user?.roleName === "admin" ? (
+                <>
+                    <Route path="/admin" element={<Admin />} />
+                    <Route path="/court-admin" element={<CourtAdmin />} />
+                    <Route path="/new-court" element={<NewCourt />} />
+                </>
+            ) : (
+                <>
+                    <Route path="/matches" element={<Match />} />
+                    <Route path="/new-match" element={<NewMatch />} />
+                    <Route path="/match-detail" element={<MatchDetail />} />
+                    <Route path="/court" element={<Court />} />
+                    <Route path="/favorite-court" element={<FavoriteCourt />} />
+                    <Route path="/matches-court" element={<MatchCourt />} />
+                </>
+            )}
         </Routes>
     )
 }
