@@ -123,11 +123,11 @@ export const Match = () => {
                                         <div className="textMatch">{match.information.length > 30 ? match.information.substring(0, 30) + "..." : match.information}</div>
                                         <div className="textMatch">{match.court.name}</div>
                                     </button>
-                                    {/*partidos que han pasado deshabilito botón*/}
+                                    {/*partidos que han pasado y completos, deshabilito botón*/}
                                     <button
-                                        className={`buttonAssistance ${new Date(match.match_date) < new Date() ? 'buttonPassed' : ''}`}
+                                        className={`buttonAssistance ${new Date(match.match_date) < new Date() ? 'buttonPassed' : match.signed_up?.includes(userId) ? 'buttonSigned' : match.signedCount >= match.number_players ? 'buttonFull' : ''}`}
                                         onClick={() => signedMatch(match.id)}
-                                        disabled={new Date(match.match_date) < new Date()}
+                                        disabled={new Date(match.match_date) < new Date() || (match.signedCount >= match.number_players && !match.signed_up.includes(userId))}
                                     >
                                         {match.signed_up?.includes(userId) ? "Borrarme" : "Apuntarme"}
                                     </button>

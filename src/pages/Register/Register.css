@@ -9,6 +9,7 @@
     align-items: center;
     justify-content: flex-start;
     user-select: none;
+    overflow-y: auto;
 }
 
 .error {

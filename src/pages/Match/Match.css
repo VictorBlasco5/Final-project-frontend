@@ -127,3 +127,12 @@
     display: flex;
     flex-direction: row;
 }
+
+.buttonFull {
+    background-color: rgba(66, 66, 66, 0.377);
+    pointer-events: none;
+}
+
+.buttonFull:hover {
+    background-color: rgba(66, 66, 66, 0.377);
+}
