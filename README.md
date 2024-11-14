@@ -245,7 +245,6 @@ Contraseña: Aa12345
 
 - Poder apuntarse a los partidos desde las diferentes vistas.
 - Buscador en la vista de los partidos y en las tablas del admin.
-- Paginación en las vistas partidos, admin y perfil.
 - Mejorar la forma de introducir imágenes en el perfil.
 
 

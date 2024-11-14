@@ -7,6 +7,7 @@ import { selectCourtId } from '../../app/slices/courtSlice';
 
 export const MatchCourt = () => {
     const [matches, setMatches] = useState([])
+    const [courtName, setCourtName] = useState('');
     const reduxUser = useSelector(userData)
     const reduxCourt = useSelector(selectCourtId)
     const token = reduxUser.credentials.token || ({});
@@ -21,7 +22,9 @@ export const MatchCourt = () => {
     const getMatchesCourt = async () => {
         try {
             const fetched = await GetMatchesByCourt(token, courtId)
-
+            if (fetched.length > 0) {
+                setCourtName(fetched[0].court.name);
+            }
             const currentDate = new Date();
             const signed = fetched.map(match => ({
                 ...match,
@@ -66,8 +69,18 @@ export const MatchCourt = () => {
                 width: '100vw',
                 height: '88vh',
             }}>
+            <div className='titleCourt'>
+
+                {courtName && (
+                    <div >
+                        <h2>{courtName}</h2>
+                    </div>
+                )}
+            </div>
             <div className='positionFavCard'>
+
                 {matches.map((match) => (
+
                     <div className={`cardMatchCourt ${new Date(match.match_date) < new Date() ? 'passedMatchCourt' : ''}`} key={match.id}> {/*partidos que han pasado les cambio el color*/}
                         <div className="textMatchCourt date">{formatDate(match.match_date)}</div>
                         <div className='row'>

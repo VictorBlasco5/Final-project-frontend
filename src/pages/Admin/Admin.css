@@ -21,24 +21,24 @@
 
 .table {
     width: 74%;
-    margin:1em;
+    margin: 1em;
     background-color: rgb(228, 228, 228);
     overflow-y: auto;
     font-size: small;
 }
 
-.header{
+.header {
     background-color: #f2f2f2;
     user-select: none;
 }
 
 .table td {
-  padding: 3px;
-  text-align: left;
+    padding: 3px;
+    text-align: left;
 }
 
 .table tr:nth-child(even) {
-  background-color: #f2f2f2;
+    background-color: #f2f2f2;
 }
 
 .buttonTableAdmin {
@@ -76,6 +76,69 @@
 }
 
 .logoDelete:hover {
-    
     transform: scale(1.15);
+}
+
+.pagination {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+
+.buttonAnterior {
+    height: 2em;
+    width: 2.5em;
+    border: none;
+    margin-top: 0.05em;
+    margin-bottom: 0.2em;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.buttonAnterior:disabled {
+    background-color: #d3d3d3;
+    opacity: 0.6;
+    cursor: default;
+}
+
+.buttonAnterior:focus {
+    outline: none;
+}
+
+.buttonSiguiente {
+    height: 2em;
+    width: 2.5em;
+    margin-top: 0.05em;
+    margin-bottom: 0.2em;
+    border: none;
+    
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.buttonSiguiente:disabled {
+    background-color: #d3d3d3;
+    opacity: 0.6;
+    cursor: default;
+}
+
+.buttonSiguiente:focus {
+    outline: none;
+}
+
+.logoArrow {
+    height: 1.5em;
+    width: 1.5em;
+}
+
+.numberPage {
+    font-weight: bold;
+}
+
+.spacePaginate {
+    width: 1em;
 }

@@ -6,6 +6,8 @@ import { DeleteCourt, DeleteMatch, DeleteUsers, GetCourts, GetMatches, GetUsers 
 import deleteUser from "../../../img/userRemove.png";
 import deleteMatch from "../../../img/delete.png";
 import add from "../../../img/add.png";
+import arrowRight from "../../../img/arrowRight.png";
+import arrowLeft from "../../../img/arrowLeft.png";
 import { useNavigate } from "react-router-dom"
 
 export const Admin = () => {
@@ -19,6 +21,15 @@ export const Admin = () => {
     const [showMatches, setShowMatches] = useState(false);
     const [showCourts, setShowCourts] = useState(false);
     const navigate = useNavigate()
+
+    const [currentPageUsers, setCurrentPageUsers] = useState(1);
+    const [currentPageMatches, setCurrentPageMatches] = useState(1);
+    const [currentPageCourts, setCurrentPageCourts] = useState(1);
+    const itemsPerPage = 8;
+    const totalPagesUsers = Math.ceil(users.length / itemsPerPage);
+    const totalPagesMatches = Math.ceil(matches.length / itemsPerPage);
+    const totalPagesCourts = Math.ceil(courts.length / itemsPerPage);
+
 
     const handleShowUsers = () => {
         setShowUsers(true);
@@ -121,22 +132,28 @@ export const Admin = () => {
         return new Date(dateString).toLocaleDateString('es-ES', options);
     };
 
+    // Paginación
+    const paginate = (items, pageNumber) => {
+        const startIndex = (pageNumber - 1) * itemsPerPage;
+        return items.slice(startIndex, startIndex + itemsPerPage);
+    };
+
     return (
         <div className="adminDesign"
-        style={{
-            backgroundImage: `url(${('../../../img/court-70.jpg')})`,
-            backgroundSize: 'cover',
-            backgroundPosition: 'center',
-            width: '100vw',
-            height: '88vh',
-        }}>
+            style={{
+                backgroundImage: `url(${('../../../img/court-70.jpg')})`,
+                backgroundSize: 'cover',
+                backgroundPosition: 'center',
+                width: '100vw',
+                height: '88vh',
+            }}>
             <div draggable="false" className="containTable">
-                <button  className="buttonTableAdmin" onClick={handleShowUsers}>Users</button>
+                <button className="buttonTableAdmin" onClick={handleShowUsers}>Users</button>
                 <button className="buttonTableAdmin" onClick={handleShowCourts}>Pistas</button>
                 <button className="buttonTableAdmin" onClick={handleShowMatches}>Partidos</button>
             </div>
             <div className="adminDesign">
-                {showUsers ? (
+                {showUsers && (
                     <div className="table">
                         {users.length > 0 ? (
                             <table>
@@ -154,7 +171,7 @@ export const Admin = () => {
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    {users.map(user => (
+                                    {paginate(users, currentPageUsers).map(user => (
                                         <tr key={user.id}>
                                             <td>{user.id}</td>
                                             <td>{user.name}</td>
@@ -178,11 +195,32 @@ export const Admin = () => {
                         ) : (
                             <div>CARGANDO</div>
                         )}
+                        <div className="pagination">
+                            <button
+                                className="buttonAnterior"
+                                onClick={() => setCurrentPageUsers(prev => Math.max(prev - 1, 1))}
+                                disabled={currentPageUsers === 1} // Deshabilita en la primera página
+                            >
+                                <img draggable="false" className="logoArrow" src={arrowLeft} alt="Anterior" />
+                            </button>
+                            <div className="spacePaginate"></div>
+                            <span className="numberPage">{currentPageUsers}</span>
+                            <div className="spacePaginate"></div>
+                            <button
+                                className="buttonSiguiente"
+                                onClick={() => setCurrentPageUsers(prev => prev + 1)}
+                                disabled={currentPageUsers >= totalPagesUsers} // Deshabilita en la última página
+                            >
+                                <img draggable="false" className="logoArrow" src={arrowRight} alt="Siguiente" />
+                            </button>
+                        </div>
+
                     </div>
-                ) : null}
-                {showMatches ? (
+                )}
+
+                {showMatches && (
                     <div className="table">
-                        {matches && matches.length > 0 ? (
+                        {matches.length > 0 ? (
                             <table>
                                 <thead>
                                     <tr className="header">
@@ -197,7 +235,7 @@ export const Admin = () => {
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    {matches.map(match => (
+                                    {paginate(matches, currentPageMatches).map(match => (
                                         <tr key={match.id}>
                                             <td>{match.id}</td>
                                             <td>{match.number_players}</td>
@@ -220,11 +258,32 @@ export const Admin = () => {
                         ) : (
                             <div>LOADING</div>
                         )}
+                        <div className="pagination">
+                            <button
+                                className="buttonAnterior"
+                                onClick={() => setCurrentPageMatches(prev => Math.max(prev - 1, 1))}
+                                disabled={currentPageMatches === 1} // Deshabilita en la primera página
+                            >
+                                <img draggable="false" className="logoArrow" src={arrowLeft} alt="Anterior" />
+                            </button>
+                            <div className="spacePaginate"></div>
+                            <span className="numberPage">{currentPageMatches}</span>
+                            <div className="spacePaginate"></div>
+                            <button
+                                className="buttonSiguiente"
+                                onClick={() => setCurrentPageMatches(prev => prev + 1)}
+                                disabled={currentPageMatches >= totalPagesMatches} // Deshabilita en la última página
+                            >
+                                <img draggable="false" className="logoArrow" src={arrowRight} alt="Siguiente" />
+                            </button>
+                        </div>
+
                     </div>
-                ) : null}
-                {showCourts ? (
+                )}
+
+                {showCourts && (
                     <div className="table">
-                        {courts && courts.length > 0 ? (
+                        {courts.length > 0 ? (
                             <table>
                                 <thead>
                                     <tr className="header">
@@ -245,7 +304,7 @@ export const Admin = () => {
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    {courts.map(court => (
+                                    {paginate(courts, currentPageCourts).map(court => (
                                         <tr key={court.id}>
                                             <td>{court.id}</td>
                                             <td>{court.name}</td>
@@ -267,8 +326,28 @@ export const Admin = () => {
                         ) : (
                             <div>LOADING</div>
                         )}
+                        <div className="pagination">
+                            <button
+                                className="buttonAnterior"
+                                onClick={() => setCurrentPageCourts(prev => Math.max(prev - 1, 1))}
+                                disabled={currentPageCourts === 1} // Deshabilita en la primera página
+                            >
+                                <img draggable="false" className="logoArrow" src={arrowLeft} alt="Anterior" />
+                            </button>
+                            <div className="spacePaginate"></div>
+                            <span className="numberPage">{currentPageCourts}</span>
+                            <div className="spacePaginate"></div>
+                            <button
+                                className="buttonSiguiente"
+                                onClick={() => setCurrentPageCourts(prev => prev + 1)}
+                                disabled={currentPageCourts >= totalPagesCourts} // Deshabilita en la última página
+                            >
+                                <img draggable="false" className="logoArrow" src={arrowRight} alt="Siguiente" />
+                            </button>
+                        </div>
+
                     </div>
-                ) : null}
+                )}
             </div>
         </div>
     )
