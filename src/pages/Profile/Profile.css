@@ -175,3 +175,47 @@
 .buttonDeleteProfile:focus {
     outline: none;
 }
+
+.buttonAnterior {
+    height: 2em;
+    width: 2.5em;
+    border: none;
+    margin-top: 0.05em;
+    margin-bottom: 0.2em;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.buttonAnterior:disabled {
+    background-color: #d3d3d3;
+    opacity: 0.6;
+    cursor: default;
+}
+
+.buttonAnterior:focus {
+    outline: none;
+}
+
+.buttonSiguiente {
+    height:2em;
+    width: 2.5em;
+    margin-top: 0.05em;
+    margin-bottom: 0.2em;
+    border: none;
+    
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.buttonSiguiente:disabled {
+    background-color: #d3d3d3;
+    opacity: 0.6;
+    cursor: default;
+}
+
+.buttonSiguiente:focus {
+    outline: none;
+}

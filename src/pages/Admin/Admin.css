@@ -21,6 +21,11 @@
 
 .table {
     width: 74%;
+    height: 92%;
+    display: flex; 
+    flex-direction: column;
+    justify-content: space-between;
+    
     margin: 1em;
     background-color: rgb(228, 228, 228);
     overflow-y: auto;
@@ -84,6 +89,7 @@
     flex-direction: row;
     align-items: center;
     justify-content: center;
+    margin-bottom: 0.2em;
 }
 
 .buttonAnterior {

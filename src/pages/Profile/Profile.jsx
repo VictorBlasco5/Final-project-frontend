@@ -7,7 +7,8 @@ import { useState, useEffect } from "react"
 import { CInput } from "../../common/CInput/CInput";
 import { DeleteMatch, GetMatchesAssistance, GetProfile } from "../../services/apiCalls"
 import { CTextArea } from "../../common/CTextArea/CTextArea";
-
+import arrowRight from "../../../img/arrowRight.png";
+import arrowLeft from "../../../img/arrowLeft.png";
 
 export const Profile = () => {
 
@@ -18,6 +19,8 @@ export const Profile = () => {
     const userId = reduxUser.credentials.user.userId || ({});
     const [matches, setMatches] = useState([])
     const [loadedData, setLoadedData] = useState(false)
+    const [currentPage, setCurrentPage] = useState(1);
+    const itemsPerPage = 6;
     const [user, setUser] = useState({
         nickname: "",
         favorite_position: "",
@@ -129,6 +132,23 @@ export const Profile = () => {
     };
 
 
+    const indexOfLastItem = currentPage * itemsPerPage;
+    const indexOfFirstItem = indexOfLastItem - itemsPerPage;
+    const currentMatches = matches.slice(indexOfFirstItem, indexOfLastItem);
+
+
+    const nextPage = () => {
+        if (currentPage < Math.ceil(matches.length / itemsPerPage)) {
+            setCurrentPage(currentPage + 1);
+        }
+    };
+
+    const prevPage = () => {
+        if (currentPage > 1) {
+            setCurrentPage(currentPage - 1);
+        }
+    };
+
     return (
         <>
             <div className="profileDesign"
@@ -174,24 +194,37 @@ export const Profile = () => {
                 </div>
 
                 {matches.length > 0 ? (
-                    <div className="positionCardProfile">
-                        {matches.map(match => (
-                            <div className="cardProfile">
-                                <button className="buttonCardProfile" onClick={() => handleMatch(match)} key={match.id}>
-                                    <div className="textProfile date">{formatDate(match.match_date)}</div>
-                                    <div className="rowCardProfile">
-                                        <div className="textProfile">Jugadores: {match.number_players}</div>
-                                        <div className="space"></div>
-                                        <div className="textProfile"> Apuntados: {match.signedCount}</div>
-                                    </div>
-                                    <div className="textProfile">{match.information.length > 30 ? match.information.substring(0, 30) + "..." : match.information}</div>
-                                    <div className="textProfile">{match.court.name}</div>
-                                </button>
-                                {match.user.id === userId && (
-                                    <button className="buttonDeleteProfile" onClick={() => matchRemove(match.id)}>Eliminar</button>
-                                )}
-                            </div>
-                        ))}
+                    <div>
+                        <div className="positionCardProfile">
+                            {currentMatches.map(match => (
+                                <div className="cardProfile" key={match.id}>
+                                    <button className="buttonCardProfile" onClick={() => handleMatch(match)}>
+                                        <div className="textProfile date">{formatDate(match.match_date)}</div>
+                                        <div className="rowCardProfile">
+                                            <div className="textProfile">Jugadores: {match.number_players}</div>
+                                            <div className="space"></div>
+                                            <div className="textProfile"> Apuntados: {match.signedCount}</div>
+                                        </div>
+                                        <div className="textProfile">{match.information.length > 30 ? match.information.substring(0, 30) + "..." : match.information}</div>
+                                        <div className="textProfile">{match.court.name}</div>
+                                    </button>
+                                    {match.user.id === userId && (
+                                        <button className="buttonDeleteProfile" onClick={() => matchRemove(match.id)}>Eliminar</button>
+                                    )}
+                                </div>
+                            ))}
+                        </div>
+                        <div className="pagination">
+                            <button className="buttonAnterior" onClick={prevPage} disabled={currentPage === 1}>
+                                <img draggable="false" className="logoArrow" src={arrowLeft} alt="Anterior" />
+                            </button>
+                            <div className="spacePaginate"></div>
+                            <span className="numberPage"> {currentPage} - {Math.ceil(matches.length / itemsPerPage)}</span>
+                            <div className="spacePaginate"></div>
+                            <button className="buttonSiguiente" onClick={nextPage} disabled={currentPage === Math.ceil(matches.length / itemsPerPage)}>
+                                <img draggable="false" className="logoArrow" src={arrowRight} alt="Siguiente" />
+                            </button>
+                        </div>
                     </div>
                 ) : (
                     <div></div>
