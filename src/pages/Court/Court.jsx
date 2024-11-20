@@ -17,7 +17,10 @@ export const Court = () => {
             try {
                 if (token) {
                     const fetched = await GetCourts(token);
-                    setCourts(fetched.data);
+                    const sortedCourts = fetched.data.sort((a, b) =>
+                        a.name.localeCompare(b.name)
+                    );
+                    setCourts(sortedCourts);
                 }
             } catch (error) {
                 console.log(error);
@@ -47,7 +50,7 @@ export const Court = () => {
                 <div className="courtCard" key={court.id}>
                     <div className="rowCourt">
                         <button className="buttonFav" onClick={() => addFavoriteCourt(court.id)}>
-                            <img draggable="false" className="starCourt" src={star} alt="Favortios" />
+                            <img draggable="false" className="starCourt" src={star} alt="Favoritos" />
                         </button>
                         <div className="textCourt">{court.name}</div>
                     </div>
