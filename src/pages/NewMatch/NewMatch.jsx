@@ -90,7 +90,7 @@ export const NewMatch = () => {
     return (
         <div className="containerNewMatch"
             style={{
-                backgroundImage: `url(${('../../../img/court-70.jpg')})`,
+                backgroundImage: `url(${('../../../public/court-70.jpg')})`,
                 backgroundSize: 'cover',
                 backgroundPosition: 'center',
                 width: '100vw',
