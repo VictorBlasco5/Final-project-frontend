@@ -78,7 +78,7 @@ export const Register = () => {
         <>
             <div className="registerDesign"
                 style={{
-                    backgroundImage: `url(${('../../../public/court-70.jpg')})`,
+                    backgroundImage: `url('/court-70.jpg')`,
                     backgroundSize: 'cover',
                     backgroundPosition: 'center',
                     width: '100vw',
