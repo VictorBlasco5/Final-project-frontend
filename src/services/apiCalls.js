@@ -1,4 +1,5 @@
-const root = "http://localhost:4000/api/"
+const root = import.meta.env.VITE_API_BASE_URL;
+
 
 //AUTH
 export const loginService = async (user) => {
