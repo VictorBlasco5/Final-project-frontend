@@ -63,6 +63,15 @@
     margin-left: 1em;
     cursor: pointer;
     background-color: transparent;
+    transition: transform 0.2s ease, opacity 0.2s ease;
+}
+
+.starCourtActive {
+    opacity: 1;
+}
+
+.starCourtInactive {
+    opacity: 0.2;
 }
 
 .starCourt:hover {

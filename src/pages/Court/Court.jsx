@@ -1,7 +1,7 @@
 import "./Court.css";
 import { useSelector } from "react-redux"
 import { useState, useEffect } from "react"
-import { AddFavorite, GetCourts } from "../../services/apiCalls";
+import { AddFavorite, GetCourts, GetMyFavoriteCourts } from "../../services/apiCalls";
 import { userData } from "../../app/slices/userSlice"
 import star from "../../../img/star.png";
 import logoMaps from "../../../img/maps.png";
@@ -9,14 +9,28 @@ import logoMaps from "../../../img/maps.png";
 export const Court = () => {
 
     const [courts, setCourts] = useState([])
+    const [favoriteCourtIds, setFavoriteCourtIds] = useState([])
     const reduxUser = useSelector(userData)
     const token = reduxUser.credentials.token || ({});
+
+    const getFavoriteCourtIds = async () => {
+        const fetchedFavorites = await GetMyFavoriteCourts(token);
+        const favorites = fetchedFavorites.data || [];
+        const ids = favorites
+            .map((favorite) => favorite.court?.id ?? favorite.id)
+            .filter((id) => id !== undefined && id !== null);
+
+        setFavoriteCourtIds(ids);
+    };
 
     useEffect(() => {
         const getCourts = async () => {
             try {
                 if (token) {
-                    const fetched = await GetCourts(token);
+                    const [fetched] = await Promise.all([
+                        GetCourts(token),
+                        getFavoriteCourtIds()
+                    ]);
                     const sortedCourts = fetched.data.sort((a, b) =>
                         a.name.localeCompare(b.name)
                     );
@@ -31,7 +45,8 @@ export const Court = () => {
 
     const addFavoriteCourt = async (courtId) => {
         try {
-            const fetched = await AddFavorite(token, courtId)
+            await AddFavorite(token, courtId)
+            await getFavoriteCourtIds()
         } catch (error) {
             console.log(error)
         }
@@ -50,7 +65,12 @@ export const Court = () => {
                 <div className="courtCard" key={court.id}>
                     <div className="rowCourt">
                         <button className="buttonFav" onClick={() => addFavoriteCourt(court.id)}>
-                            <img draggable="false" className="starCourt" src={star} alt="Favoritos" />
+                            <img
+                                draggable="false"
+                                className={`starCourt ${favoriteCourtIds.includes(court.id) ? "starCourtActive" : "starCourtInactive"}`}
+                                src={star}
+                                alt="Favoritos"
+                            />
                         </button>
                         <div className="textCourt">{court.name}</div>
                     </div>
