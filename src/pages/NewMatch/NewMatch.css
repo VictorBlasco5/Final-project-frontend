@@ -175,3 +175,43 @@
 .buttonCreateMatch:focus {
     outline: none;
 }
+
+@media (max-width: 1024px) {
+    .containerNewMatch {
+        height: auto;
+        min-height: 88vh;
+    }
+
+    .createNewMatch,
+    .containerCards {
+        width: 100%;
+        height: auto;
+    }
+
+    .position {
+        justify-content: center;
+    }
+}
+
+@media (max-width: 768px) {
+    .cardNewMatch {
+        width: min(92vw, 24em);
+        margin-left: 0;
+    }
+
+    .cInputNewMatch,
+    .cInputNewMatchInfo,
+    .informationNewMatch,
+    .courtNewMatch {
+        width: min(90vw, 20em);
+    }
+}
+
+@media (max-width: 480px) {
+    .dateNewMatch,
+    .playersNewMatch,
+    .signedNewMatch {
+        width: auto;
+        min-width: 3em;
+    }
+}

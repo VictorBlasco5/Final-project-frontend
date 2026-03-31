@@ -219,3 +219,43 @@
 .buttonSiguiente:focus {
     outline: none;
 }
+
+@media (max-width: 1024px) {
+    .dataProfile {
+        flex-wrap: wrap;
+        gap: 0.6em;
+        padding-bottom: 0.7em;
+    }
+
+    .positionCardProfile {
+        justify-content: center;
+        margin-left: 0;
+        margin-right: 0;
+    }
+}
+
+@media (max-width: 768px) {
+    .presentationProfile {
+        width: min(92vw, 24em);
+        margin-left: 0;
+    }
+
+    .cardProfile,
+    .buttonCardProfile {
+        width: min(92vw, 22em);
+    }
+}
+
+@media (max-width: 480px) {
+    .dataProfile {
+        flex-direction: column;
+    }
+
+    .rowCardProfile {
+        flex-wrap: wrap;
+    }
+
+    .space {
+        width: 1em;
+    }
+}

@@ -29,3 +29,19 @@
     color: black;
     background-color:white
 }
+
+@media (max-width: 768px) {
+    .cInputDesign,
+    .input {
+        width: 12.5em;
+    }
+}
+
+@media (max-width: 480px) {
+    .cInputDesign,
+    .input {
+        width: 90vw;
+        max-width: 18em;
+        margin: 0.6em;
+    }
+}

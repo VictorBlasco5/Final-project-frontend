@@ -12,3 +12,15 @@
 .inputDesignError {
     border-color: red;
 }
+
+@media (max-width: 768px) {
+    .newCourtDesign {
+        padding: 0.8em;
+    }
+}
+
+@media (max-width: 480px) {
+    .newCourtDesign {
+        padding: 0.5em;
+    }
+}

@@ -99,3 +99,35 @@
     background-color: rgba(192, 121, 28, 0.664);
     border-radius: 0.5em;
 }
+
+@media (max-width: 1024px) {
+    .leftMatchDesign {
+        display: none;
+    }
+
+    .rightMatchDesign {
+        width: 100%;
+    }
+
+    .positionCourtCard {
+        justify-content: center;
+    }
+}
+
+@media (max-width: 768px) {
+    .courtCardAdmin {
+        width: min(92vw, 26em);
+        height: auto;
+    }
+
+    .courtName,
+    .courtDirection {
+        width: min(84vw, 22em);
+    }
+}
+
+@media (max-width: 480px) {
+    .positionButtonEdit {
+        flex-wrap: wrap;
+    }
+}

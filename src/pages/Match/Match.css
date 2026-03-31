@@ -136,3 +136,41 @@
 .buttonFull:hover {
     background-color: rgba(66, 66, 66, 0.377);
 }
+
+@media (max-width: 1024px) {
+    .leftMatchDesign {
+        display: none;
+    }
+
+    .rightMatchDesign {
+        width: 100%;
+    }
+
+    .positionMatchCard {
+        justify-content: center;
+    }
+}
+
+@media (max-width: 768px) {
+    .card,
+    .buttonMatchDetail {
+        width: min(92vw, 22em);
+    }
+
+    .buttonNewMatch {
+        margin: 0.8em 0 0.2em 0;
+    }
+}
+
+@media (max-width: 480px) {
+    .matchDesign,
+    .rightMatchDesign {
+        height: auto;
+        min-height: 88vh;
+    }
+
+    .card {
+        height: auto;
+        min-height: 13em;
+    }
+}

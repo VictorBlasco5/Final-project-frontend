@@ -14,3 +14,17 @@
     transition: 0.2s;
 
 }
+
+@media (max-width: 768px) {
+    .navigatorDesign {
+        margin: 0.35em;
+        font-size: 0.95em;
+    }
+}
+
+@media (max-width: 480px) {
+    .navigatorDesign {
+        margin: 0.25em;
+        font-size: 0.85em;
+    }
+}

@@ -22,3 +22,17 @@
     transition: 0.2s;
     background-color: rgb(63, 62, 62);
 }
+
+@media (max-width: 768px) {
+    .cButtonDesign {
+        width: 11em;
+    }
+}
+
+@media (max-width: 480px) {
+    .cButtonDesign {
+        width: 90vw;
+        max-width: 18em;
+        margin: 0.6em;
+    }
+}

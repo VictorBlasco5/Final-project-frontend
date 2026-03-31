@@ -124,3 +124,54 @@
     height: 6em;
     width: 15em;
 }
+
+@media (max-width: 1024px) {
+    .homeDesign {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .leftHome {
+        display: none;
+    }
+
+    .textHome,
+    .downHome {
+        width: 100%;
+        height: auto;
+    }
+}
+
+@media (max-width: 768px) {
+    .title {
+        font-size: 2em;
+    }
+
+    .textHome {
+        font-size: 1.4em;
+        padding: 0 0.6em;
+    }
+
+    .downHome {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .friends,
+    .numberOne,
+    .court {
+        width: 100%;
+        height: auto;
+    }
+}
+
+@media (max-width: 480px) {
+    .subtitle {
+        font-size: 0.95em;
+    }
+
+    .textLogos {
+        width: 90%;
+        height: auto;
+    }
+}

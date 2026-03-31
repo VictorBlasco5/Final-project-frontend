@@ -53,3 +53,26 @@
     margin-left: 10em;
     margin-bottom: 1em;
 }
+
+@media (max-width: 1024px) {
+    .loginDesign {
+        justify-content: center;
+    }
+
+    .logoLogin,
+    .logoPerson2 {
+        display: none;
+    }
+}
+
+@media (max-width: 480px) {
+    .inputsLogin {
+        width: 92vw;
+        max-width: 20em;
+        padding: 0.6em;
+    }
+
+    .buttonLogin {
+        width: 90%;
+    }
+}

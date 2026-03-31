@@ -45,3 +45,26 @@
     color: black;
 }
 
+@media (max-width: 768px) {
+    .matchCourtDesign {
+        align-items: center;
+    }
+
+    .titleCourt {
+        margin-left: 0;
+        text-align: center;
+    }
+
+    .cardMatchCourt {
+        width: min(92vw, 22em);
+        margin-left: 0;
+    }
+}
+
+@media (max-width: 480px) {
+    .cardMatchCourt {
+        height: auto;
+        min-height: 10em;
+    }
+}
+

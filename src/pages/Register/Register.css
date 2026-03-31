@@ -21,3 +21,21 @@
     height: 1em;
     color: black;
 }
+
+@media (max-width: 1024px) {
+    .registerDesign {
+        justify-content: center;
+        padding: 1em;
+    }
+}
+
+@media (max-width: 480px) {
+    .registerDesign {
+        padding: 0.5em;
+    }
+
+    .error,
+    .successfully {
+        font-size: 0.85em;
+    }
+}

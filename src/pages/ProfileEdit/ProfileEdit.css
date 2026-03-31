@@ -127,3 +127,44 @@
 .inputMargin {
     margin-bottom: -0.8em;
 }
+
+@media (max-width: 1024px) {
+    .profileEdit {
+        width: min(92vw, 35em);
+    }
+}
+
+@media (max-width: 768px) {
+    .row {
+        flex-wrap: wrap;
+        justify-content: flex-start;
+    }
+
+    .urlImage,
+    .presentation {
+        width: min(88vw, 24em);
+        margin-left: 0.6em;
+    }
+
+    .name,
+    .email,
+    .nickname,
+    .positionFav {
+        margin-left: 0.6em;
+    }
+}
+
+@media (max-width: 480px) {
+    .space2 {
+        width: 1em;
+    }
+
+    .urlImage,
+    .presentation,
+    .name,
+    .email,
+    .nickname {
+        width: 92vw;
+        max-width: 20em;
+    }
+}

@@ -1,6 +1,9 @@
 .headerDesign {
     height: 12vh;
-    width: 100vw;
+    width: 100%;
+    max-width: 100%;
+    overflow-x: clip;
+    box-sizing: border-box;
     
     background-color:  rgba(245, 235, 216, 0.589);
 
@@ -38,6 +41,35 @@ margin-left: 1em;
 
 .positionNavBar {
     display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    flex-wrap: wrap;
+    max-width: calc(100% - 5.5em);
+}
+
+.navGroup {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.hamburgerButton {
+    display: none;
+    align-items: center;
+    justify-content: center;
+    width: 2.2em;
+    height: 2.2em;
+    margin-right: 0.6em;
+    border: none;
+    border-radius: 0.3em;
+    background-color: rgba(255, 255, 255, 0.5);
+    color: black;
+    font-size: 1.2em;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.hamburgerButton:focus {
+    outline: none;
 }
 
 .logOutDesign {
@@ -54,4 +86,68 @@ margin-left: 1em;
     transition: 0.3s;
     color: gray;
     cursor: pointer;
+}
+
+@media (max-width: 768px) {
+    .headerDesign {
+        height: 12vh;
+        min-height: 12vh;
+        justify-content: space-between;
+        padding: 0.4em;
+        position: relative;
+    }
+
+    .hamburgerButton {
+        display: flex;
+    }
+
+    .positionNavBar {
+        display: none;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        max-width: 100%;
+        z-index: 50;
+        padding: 0.6em 0;
+        background-color: rgba(245, 235, 216, 0.98);
+        box-shadow: 0 0.5em 1.2em rgba(0, 0, 0, 0.15);
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .mobileMenuOpen {
+        display: flex;
+    }
+
+    .navGroup {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .logoNavBar,
+    .logOutDesign {
+        margin: 0.3em;
+    }
+
+    .icon {
+        height: 2.8em;
+        width: 2.8em;
+    }
+}
+
+@media (max-width: 480px) {
+    .navigatorDesign {
+        font-size: 0.9em;
+    }
+
+    .logOutDesign {
+        font-size: 0.85em;
+    }
+
+    .starHeader {
+        height: 1.6em;
+        width: 1.6em;
+    }
 }

@@ -58,3 +58,20 @@
 .direction {
     margin-left: 0.5em;
 }
+
+@media (max-width: 768px) {
+    .cardMatchDetail {
+        width: min(92vw, 35em);
+        height: auto;
+    }
+}
+
+@media (max-width: 480px) {
+    .cardMatchDetail {
+        padding: 0.8em;
+    }
+
+    .text {
+        font-size: 0.95em;
+    }
+}
