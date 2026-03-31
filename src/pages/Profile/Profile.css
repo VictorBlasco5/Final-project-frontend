@@ -104,9 +104,8 @@
 .positionCardProfile {
     display: flex;
     flex-wrap: wrap;
-    justify-content: flex-start;
-    margin-left: 9em;
-    margin-right: 9em;
+    justify-content: center;
+    width: 100%;
 }
 
 .cardProfile {
